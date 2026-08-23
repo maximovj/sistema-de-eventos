@@ -1,32 +1,21 @@
-# Turborepo starter
+# Eventos Elite (EE)
 
-This is a community-maintained example. If you experience a problem, please submit a pull request with a fix. GitHub Issues will be closed.
+un sistema de gestión de eventos con organización, sedes, artistas, actividades, ventas, proveedores, patrocinadores, gastos, staff e incidencias
 
-## Using this example
+## Requisitos
 
-Run the following command:
+- node v24.19.0
+- npm v11.17.0
+- angular/cli v22.1.3
+- turbo@2.10.8 (minimo)
 
-```sh
-npx create-turbo@latest -e with-angular
+## Como usarlo
+
+### Levantar apps modo desarrollador usando monorepo
+
+```shell
+# Desde la raíz
+npm install
+npx turbo build check-types
+npm run start # o también npx turbo start
 ```
-
-## What's inside?
-
-This Turborepo includes the following pckages/apps:
-
-### Apps and Packages
-
-- `docs` an [angular](https://angular.dev/) app
-- `web` another [angular](https://angular.dev/) app
-- `ui` a stub Angular component library shared by both `web` and `docs` application
-- `eslint-config`: `eslint` configurations (based on [@angular-eslint/eslint-plugin](https://github.com/angular-eslint/angular-eslint#readme))
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io/) for code formatting
