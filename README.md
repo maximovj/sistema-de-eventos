@@ -4,10 +4,10 @@ un sistema de gestión de eventos con organización, sedes, artistas, actividade
 
 ## Requisitos
 
-- node v24.19.0
+- node v18.20.8
 - npm v11.17.0
-- angular/cli v22.1.3
-- turbo@2.10.8 (minimo)
+- angular/cli v17.3.7
+- turbo@2.10.11 (minimo)
 
 ## Como usarlo
 
