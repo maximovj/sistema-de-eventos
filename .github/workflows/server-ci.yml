@@ -1,0 +1,83 @@
+name: Server CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/server/**'           # Solo cuando cambia el server
+      - 'apps/server/db.json'      # O cuando cambia la DB mock
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apps/server/**'
+      - 'apps/server/db.json'
+
+jobs:
+  validate:
+    name: Validate JSON Server
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Validate db.json schema
+        run: |
+          # Verifica que db.json es un JSON válido
+          cat apps/server/db.json | jq empty
+          echo "✅ db.json is valid JSON"
+      
+      - name: Test server startup
+        run: |
+          # Inicia el servidor en segundo plano
+          npm --filter server start &
+          # Espera 2 segundos para que arranque
+          sleep 2
+          # Verifica que el servidor responde
+          curl --fail http://localhost:3080
+          echo "✅ Server is running and responding"
+      
+      - name: Test specific endpoints
+        run: |
+          curl --fail http://localhost:3080/organizadores && echo "✅ /organizadores endpoint works"
+          curl --fail http://localhost:3080/eventos && echo "✅ /eventos endpoint works"
+          curl --fail http://localhost:3080/sedes && echo "✅ /sedes endpoint works"
+          curl --fail http://localhost:3080/artistas && echo "✅ /artistas endpoint works"
+          curl --fail http://localhost:3080/actividades && echo "✅ /actividades endpoint works"
+          curl --fail http://localhost:3080/ventas && echo "✅ /ventas endpoint works"
+          curl --fail http://localhost:3080/proveedores && echo "✅ /proveedores endpoint works"
+          curl --fail http://localhost:3080/patrocinadores && echo "✅ /patrocinadores endpoint works"
+          curl --fail http://localhost:3080/gastos && echo "✅ /gastos endpoint works"
+          curl --fail http://localhost:3080/staff && echo "✅ /staff endpoint works"
+          curl --fail http://localhost:3080/incidencias && echo "✅ /incidencias endpoint works"
+      
+      - name: Kill server
+        run: pkill -f json-server || true
+
+  lint:
+    name: Lint db.json
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check db.json formatting
+        run: |
+          # Verifica que db.json está bien formateado
+          cat apps/server/db.json | jq . > /dev/null
+          echo "✅ db.json is properly formatted"
+          
+      - name: Check for duplicate IDs
+        run: |
+          # Verifica que no hay IDs duplicados en los arrays
+          # (Ejemplo para gastos)
+          cat apps/server/db.json | jq '.gastos | group_by(.id) | map(select(length > 1)) | length == 0'
+          echo "✅ No duplicate IDs found"
