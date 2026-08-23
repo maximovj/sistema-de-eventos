@@ -1,0 +1,13 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "json-server db.json --port 3080",
+    "watch": "json-server --watch db.json --port 3080",
+    "clean": "rm -rf .turbo && rm -rf node_modules"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.15"
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "organizadores": [
+    {
+      "id": 8923,
+      "tipo": "EMPRESA_PRIVADA",
+      "nombre": "Producciones Élite S.A. de C.V.",
+      "rfc": "PES890213XYZ",
+      "telefono": "555-456-7890",
+      "email": "eventos@produccioneselite.com.mx",
+      "direccion": "Blvd. de los Artistas 456, Colonia Roma, CDMX",
+      "antiguedad": "8 años",
+      "contacto_nombre": "Sofía Marín Gutiérrez",
+      "contacto_cargo": "Directora de Producción",
+      "contacto_telefono": "555-234-5678",
+      "contacto_celular": "55-1234-5678"
+    }
+  ],
+  "eventos": [
+    {
+      "id": 234,
+      "organizadorId": 8923,
+      "nombreEvento": "Festival Internacional de Música y Arte 2026",
+      "tipoEvento": "FESTIVAL_MULTIDISCIPLINARIO",
+      "categoria": "CULTURAL_ARTISTICO",
+      "modalidad": "PRESENCIAL",
+      "fechaInicio": "2026-10-15T10:00:00.000Z",
+      "fechaFin": "2026-10-18T23:59:00.000Z",
+      "fechaApertura": "2026-10-15T08:00:00.000Z",
+      "fechaCierre": "2026-10-19T06:00:00.000Z",
+      "presupuestoTotal": 12500000.00,
+      "presupuestoEjercido": 5640000.50,
+      "estatus": "EN_PREPARACION",
+      "etapaActual": "LOGISTICA_Y_MONTAJE",
+      "descripcion": "Festival de 4 días con presentaciones musicales, exposiciones de arte, talleres interactivos y zona gastronómica. Participan 45 artistas nacionales e internacionales.",
+      "capacidadMaxima": 15000,
+      "boletosVendidos": 8760,
+      "porcentajeAvance": 45.2,
+      "creadoPor": "Sofía Marín Gutiérrez",
+      "fechaCreacion": "2026-04-15T14:30:00.000Z",
+      "actualizadoPor": "Carlos Nava Flores",
+      "fechaActualizacion": "2026-08-21T09:15:00.000Z"
+    }
+  ],
+  "sedes": [
+    {
+      "id": 12,
+      "eventoId": 234,
+      "nombre": "Centro de Convenciones Metropolitano",
+      "direccion": "Av. Insurgentes Sur 3000, Colonia Del Valle, CDMX",
+      "capacidad": 12000,
+      "areaTotal": 45000,
+      "areaCubierta": 25000,
+      "areaDescubierta": 20000,
+      "tieneEstacionamiento": true,
+      "capacidadEstacionamiento": 500,
+      "tieneAccesoDiscapacitados": true,
+      "tieneWifi": true,
+      "tieneAudio": true,
+      "tieneIluminacion": true,
+      "tieneProyectores": true,
+      "tieneCamaras": true,
+      "costoRenta": 450000.00,
+      "fechaInicioOcupacion": "2026-10-10T08:00:00.000Z",
+      "fechaFinOcupacion": "2026-10-21T20:00:00.000Z",
+      "responsable": "Ing. Ricardo Fuentes Mena"
+    }
+  ],
+  "artistas": [
+    {
+      "id": 78,
+      "eventoId": 234,
+      "nombre": "María Belén Acosta",
+      "nombreArtistico": "Belén Soul",
+      "tipoArtista": "MUSICO_CANTANTE",
+      "generoMusical": "FUSION_LATINA",
+      "paisOrigen": "México",
+      "ciudadOrigen": "Guadalajara",
+      "telefono": "33-9876-5432",
+      "email": "belen.soul@artista.com",
+      "paginaWeb": "www.belensoul.com",
+      "instagram": "@belen.soul",
+      "spotify": "belen-soul",
+      "cache": 85000.00,
+      "costoTransporte": 15000.00,
+      "costoHospedaje": 25000.00,
+      "costoAlimentacion": 5000.00,
+      "costoTotal": 130000.00,
+      "fechaPresentacion": "2026-10-15T20:00:00.000Z",
+      "duracionPresentacion": 90,
+      "requiereTecnicos": 3,
+      "requiereInstrumentos": true,
+      "requiereBackline": true,
+      "checkIn": "2026-10-15T14:00:00.000Z",
+      "soundCheck": "2026-10-15T17:00:00.000Z",
+      "estatus": "CONFIRMADO"
+    }
+  ],
+  "actividades": [
+    {
+      "id": 456,
+      "eventoId": 234,
+      "sedeId": 12,
+      "nombre": "Montaje de escenario principal",
+      "descripcion": "Instalación de estructura, sonido, iluminación y pantallas LED",
+      "tipo": "LOGISTICA",
+      "fechaInicio": "2026-10-11T08:00:00.000Z",
+      "fechaFin": "2026-10-14T22:00:00.000Z",
+      "porcentajeAvance": 40,
+      "estatus": "EN_PROGRESO",
+      "responsable": "Ing. Ricardo Fuentes Mena",
+      "prioridad": "ALTA",
+      "dependencias": []
+    }
+  ],
+  "ventas": [
+    {
+      "id": 567,
+      "eventoId": 234,
+      "tipoBoleto": "VIP",
+      "nombreBoleto": "Pase VIP - Acceso a todas las áreas",
+      "precio": 3500.00,
+      "cantidadDisponible": 1000,
+      "cantidadVendida": 876,
+      "cantidadApartada": 124,
+      "montoTotal": 3066000.00,
+      "porcentajeVendido": 87.6,
+      "fechaInicioVenta": "2026-07-01T09:00:00.000Z",
+      "fechaFinVenta": "2026-10-14T23:59:00.000Z",
+      "incluye": "Acceso VIP, área de hospitalidad, estacionamiento preferente, meet & greet con artistas seleccionados",
+      "estatus": "ACTIVA"
+    }
+  ],
+  "proveedores": [
+    {
+      "id": 34,
+      "eventoId": 234,
+      "nombre": "Sonido Profesional del Centro",
+      "tipo": "EQUIPO_SONIDO",
+      "contacto": "Ing. Luis Fernández",
+      "telefono": "555-789-1234",
+      "email": "ventas@sonidoprofesional.com",
+      "servicio": "Renta de sistema de sonido línea array, monitores y mezcladores",
+      "costo": 280000.00,
+      "fechaEntrega": "2026-10-11T08:00:00.000Z",
+      "fechaDevolucion": "2026-10-20T18:00:00.000Z",
+      "estatus": "CONTRATADO"
+    }
+  ],
+  "patrocinadores": [
+    {
+      "id": 56,
+      "eventoId": 234,
+      "nombre": "Cervecería Modelo",
+      "tipo": "PATROCINADOR_MASTER",
+      "monto": 1500000.00,
+      "beneficios": "Exclusividad en cervezas, branding en todas las áreas, 2 zonas de activación, presencia en redes sociales",
+      "contacto": "Lic. Eduardo Torres",
+      "telefono": "555-123-4567",
+      "email": "eduardo.torres@modelo.com",
+      "fechaAcuerdo": "2026-06-15T12:00:00.000Z",
+      "estatus": "ACTIVO"
+    }
+  ],
+  "gastos": [
+    {
+      "id": 1234,
+      "eventoId": 234,
+      "categoria": "LOGISTICA",
+      "concepto": "Renta de centro de convenciones",
+      "descripcion": "Primer pago - 50% del total",
+      "monto": 225000.00,
+      "fecha": "2026-07-15T10:00:00.000Z",
+      "proveedor": "Centro de Convenciones Metropolitano",
+      "metodoPago": "TRANSFERENCIA",
+      "comprobante": "GTO-2026-07-15-001.pdf",
+      "estatus": "PAGADO"
+    }
+  ],
+  "staff": [
+    {
+      "id": 567,
+      "eventoId": 234,
+      "nombre": "Miguel Ángel Herrera",
+      "puesto": "Coordinador de Producción",
+      "area": "PRODUCCION",
+      "telefono": "55-2345-6789",
+      "email": "miguel.herrera@produccion.com",
+      "horarioInicio": "2026-10-10T08:00:00.000Z",
+      "horarioFin": "2026-10-20T20:00:00.000Z",
+      "salario": 6000.00,
+      "tipoContrato": "TEMPORAL",
+      "estatus": "ACTIVO"
+    }
+  ],
+  "incidencias": [
+    {
+      "id": 78,
+      "eventoId": 234,
+      "fecha": "2026-08-15T16:30:00.000Z",
+      "tipo": "CANCELACION_ARTISTA",
+      "descripcion": "El artista internacional 'The Groove Collective' canceló su participación por problemas de agenda",
+      "impacto": "Requiere búsqueda de reemplazo o ajuste en programación del día 17",
+      "severidad": "ALTA",
+      "responsable": "Sofía Marín Gutiérrez",
+      "accionTomada": "Iniciar contacto con otros artistas disponibles. Contactar agencia de reservas.",
+      "estatus": "EN_PROCESO",
+      "fechaResolucion": null,
+      "usuarioRegistro": "Sofía Marín Gutiérrez"
+    }
+  ]
+}
