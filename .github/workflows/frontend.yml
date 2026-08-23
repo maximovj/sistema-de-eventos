@@ -1,0 +1,38 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/web/**'         
+      - 'packages/ui/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apps/web/**'
+      - 'packages/ui/**'
+
+jobs:
+  build:
+    name: Build Angular App
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Build Angular
+        run: pnpm --filter web build
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: angular-dist
+          path: dist/web/
