@@ -1,0 +1,28 @@
+{
+  "name": "with-angular",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "eslint": "^8.57.0",
+    "prettier": "^2.8.8",
+    "turbo": "^2.10.11"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": "11.17.0"
+    }
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
