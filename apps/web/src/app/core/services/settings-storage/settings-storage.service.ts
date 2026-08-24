@@ -1,6 +1,6 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { ConfigApp } from '../../../shared/models/config-app.model';
-import { ConfigAppSchema } from '../../schemas/config-app.schema';
+import { SettingsStorage } from '../../../shared/models/settings-storage.model';
+import { SettingsStorageSchema } from '../../../shared/models/schemas/settings-storage.schema';
 import { Tab } from '../../../shared/enum/Tab.enum';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class SettingsStorageService {
   private _keyName = "settings";
 
   // Estado global
-  private ConfigAppState = signal<ConfigApp| null>(null);
+  private ConfigAppState = signal<SettingsStorage| null>(null);
   private LoadingState = signal<boolean>(false);
   private ErrorState = signal<string | null>(null);
 
@@ -41,7 +41,7 @@ export class SettingsStorageService {
       const datosParseados = JSON.parse(datosString);
       
       // Validar con Zod
-      const resultado = ConfigAppSchema.safeParse(datosParseados);
+      const resultado = SettingsStorageSchema.safeParse(datosParseados);
       
       if (resultado.success) {
         this.ConfigAppState.set(resultado.data);
