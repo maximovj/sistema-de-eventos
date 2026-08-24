@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { SettingsStorageService } from './core/services/settings-storage/settings-storage.service';
+import { Component, computed, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MyCounterButtonComponent } from '@repo/ui';
 import { TopHeaderComponent, NavVerticalComponent } from './shared/components';
@@ -19,11 +20,14 @@ import { Tab } from './shared/enum/Tab.enum';
 })
 export class AppComponent {
   tabs = Tab;
-  tabActive: Tab = Tab.TabDashboard;
   title = 'web';
 
+  private settings = inject(SettingsStorageService);
+
+  tabActive = computed(() => this.settings.tabActive());
+
   handleTabActive(tab: Tab) {
-    this.tabActive = tab;
+    //this.tabActive = tab;
   }
 
 }

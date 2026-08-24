@@ -5,17 +5,16 @@
 <div class="main-layout">
 
     <app-nav-vertical
-        [tabActive]="tabActive"
         (onChangeTab)="handleTabActive($event)"
     ></app-nav-vertical>
 
     <!-- CONTENIDO -->
     <div class="content">
-        @if (tabActive == tabs.TabDashboard) {
+        @if (tabActive() == tabs.TabDashboard) {
             <app-tab-dashboard></app-tab-dashboard>
         }
 
-        @if (tabActive == tabs.TabEventos) {
+        @if (tabActive() == tabs.TabEventos) {
             <app-tab-eventos></app-tab-eventos>
         }
     </div>
