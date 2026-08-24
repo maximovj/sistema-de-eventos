@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { MyCounterButtonComponent } from '@repo/ui';
 import { TopHeaderComponent, NavVerticalComponent } from './shared/components';
 import { TabEventosComponent } from './features';
+import { Tab } from './shared/enum/Tab.enum';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,12 @@ import { TabEventosComponent } from './features';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  tabs = Tab;
+  tabActive: Tab = Tab.TabDashboard;
   title = 'web';
+
+  handleTabActive(tab: Tab) {
+    this.tabActive = tab;
+  }
+
 }

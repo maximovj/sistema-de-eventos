@@ -4,11 +4,19 @@
 <!-- MAIN LAYOUT -->
 <div class="main-layout">
 
-    <app-nav-vertical></app-nav-vertical>
+    <app-nav-vertical
+        (onChangeTab)="handleTabActive($event)"
+    ></app-nav-vertical>
 
     <!-- CONTENIDO -->
     <div class="content">
-        <app-tab-eventos></app-tab-eventos>
+        @if (tabActive == tabs.TabDashboard) {
+            <p>Contendido de TabDashboard</p>
+        }
+
+        @if (tabActive == tabs.TabEventos) {
+            <app-tab-eventos></app-tab-eventos>
+        }
     </div>
 
 </div>
