@@ -70,7 +70,6 @@ export class SettingsStorageService {
         tab: tab,
       }));
       sessionStorage.setItem(this._keyName, JSON.stringify(this.ConfigAppState()));
-      console.log("Guardado !!!");
     }
     
     this.LoadingState.set(false);
