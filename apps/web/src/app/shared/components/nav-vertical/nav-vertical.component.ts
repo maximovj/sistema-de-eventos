@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tab } from '../../enum/Tab.enum';
 
 @Component({
@@ -9,13 +9,17 @@ import { Tab } from '../../enum/Tab.enum';
   styleUrl: './nav-vertical.component.css'
 })
 export class NavVerticalComponent {
+  @Input() tabActive!:Tab;
   @Output() onChangeTab: EventEmitter<Tab> = new EventEmitter<Tab>();
   tabs = Tab;
-  tabActive: string = 'dashboard';
 
   changeTab(tab: Tab) {
     sessionStorage.setItem('tab', tab.etiqueta);
     this.onChangeTab.emit(tab);
+  }
+
+  isActive(tab: Tab): string {
+    return this.tabActive == tab ? 'nav-item active' : 'nav-item';
   }
 
 }

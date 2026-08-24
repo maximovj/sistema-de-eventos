@@ -1,20 +1,25 @@
 <!-- NAVEGACIÓN VERTICAL -->
 <nav class="nav-vertical">
-    <div class="nav-item" (click)="changeTab(tabs.TabDashboard)">
+    <div [attr.class]="isActive(tabs.TabDashboard)"  
+        (click)="changeTab(tabs.TabDashboard)">
         <i class="fas fa-th-large"></i> Dashboard
     </div>
-    <div class="nav-item active" (click)="changeTab(tabs.TabEventos)">
+    <div [attr.class]="isActive(tabs.TabEventos)"  
+        (click)="changeTab(tabs.TabEventos)">
         <i class="fas fa-calendar-check"></i> Eventos
         <span class="badge">12</span>
     </div>
-    <div class="nav-item" (click)="changeTab(tabs.TabSedes)">
+    <div [attr.class]="isActive(tabs.TabSedes)" 
+        (click)="changeTab(tabs.TabSedes)">
         <i class="fas fa-map-pin"></i> Sedes
     </div>
-    <div class="nav-item" (click)="changeTab(tabs.TabArtistas)">
+    <div [attr.class]="isActive(tabs.TabArtistas)" 
+        (click)="changeTab(tabs.TabArtistas)">
         <i class="fas fa-microphone-alt"></i> Artistas
         <span class="badge rosa">78</span>
     </div>
-    <div class="nav-item" (click)="changeTab(tabs.TabActividades)">
+    <div [attr.class]="isActive(tabs.TabActividades)" 
+        (click)="changeTab(tabs.TabActividades)">
         <i class="fas fa-tasks"></i> Actividades
     </div>
     <div class="nav-item">
