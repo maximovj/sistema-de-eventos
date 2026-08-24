@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-content',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './content.component.html',
   styleUrl: './content.component.css'
 })
