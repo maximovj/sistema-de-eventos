@@ -1,1 +1,203 @@
-<p>content works!</p>
+<!-- CONTENIDO -->
+<div class="content">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <div>
+            <h1>Panel de Control <small>Gestión del evento principal</small></h1>
+        </div>
+        <div class="breadcrumb">
+            <i class="fas fa-home"></i> Dashboard / <span>Evento principal</span>
+        </div>
+    </div>
+
+    <!-- STATS PANEL -->
+    <div class="stats-panel">
+        <div class="stat-block">
+            <div class="icon morado"><i class="fas fa-dollar-sign"></i></div>
+            <div class="info">
+                <div class="value">$12.5M</div>
+                <div class="label">Presupuesto total</div>
+                <span class="change up"><i class="fas fa-arrow-up"></i> 12%</span>
+            </div>
+        </div>
+        <div class="stat-block">
+            <div class="icon rosa"><i class="fas fa-ticket-alt"></i></div>
+            <div class="info">
+                <div class="value">8,760</div>
+                <div class="label">Boletos vendidos</div>
+                <span class="change up"><i class="fas fa-arrow-up"></i> 8%</span>
+            </div>
+        </div>
+        <div class="stat-block">
+            <div class="icon azul"><i class="fas fa-microphone"></i></div>
+            <div class="info">
+                <div class="value">45</div>
+                <div class="label">Artistas</div>
+                <span class="change up"><i class="fas fa-arrow-up"></i> 5%</span>
+            </div>
+        </div>
+        <div class="stat-block">
+            <div class="icon negro"><i class="fas fa-users"></i></div>
+            <div class="info">
+                <div class="value">18</div>
+                <div class="label">Staff activo</div>
+                <span class="change down"><i class="fas fa-arrow-down"></i> 2%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL GRID -->
+    <div class="panel-grid">
+
+        <!-- PANEL: GRÁFICA HORIZONTAL -->
+        <div class="panel">
+            <div class="panel-header">
+                <h3><i class="fas fa-chart-simple"></i> Ventas por día</h3>
+                <span class="link">Ver detalle →</span>
+            </div>
+            <div class="h-chart">
+                <div class="row">
+                    <span class="label">Lun</span>
+                    <div class="track">
+                        <div class="fill" style="width:45%; background:#1a1a1a;"></div>
+                    </div>
+                    <span class="value">450</span>
+                </div>
+                <div class="row">
+                    <span class="label">Mar</span>
+                    <div class="track">
+                        <div class="fill" style="width:72%; background:#7c3aed;"></div>
+                    </div>
+                    <span class="value">720</span>
+                </div>
+                <div class="row">
+                    <span class="label">Mié</span>
+                    <div class="track">
+                        <div class="fill" style="width:58%; background:#d81b60;"></div>
+                    </div>
+                    <span class="value">580</span>
+                </div>
+                <div class="row">
+                    <span class="label">Jue</span>
+                    <div class="track">
+                        <div class="fill" style="width:95%; background:#1a1a1a;"></div>
+                    </div>
+                    <span class="value">950</span>
+                </div>
+                <div class="row">
+                    <span class="label">Vie</span>
+                    <div class="track">
+                        <div class="fill" style="width:63%; background:#7c3aed;"></div>
+                    </div>
+                    <span class="value">630</span>
+                </div>
+                <div class="row">
+                    <span class="label">Sáb</span>
+                    <div class="track">
+                        <div class="fill" style="width:48%; background:#2563eb;"></div>
+                    </div>
+                    <span class="value">480</span>
+                </div>
+                <div class="row">
+                    <span class="label">Dom</span>
+                    <div class="track">
+                        <div class="fill" style="width:88%; background:#d81b60;"></div>
+                    </div>
+                    <span class="value">880</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL: INCIDENCIAS -->
+        <div class="panel">
+            <div class="panel-header">
+                <h3><i class="fas fa-exclamation-triangle" style="color:#d81b60;"></i> Incidencias activas</h3>
+                <span class="link">Ver todas →</span>
+            </div>
+            <div class="incident-list">
+                <div class="incident-item">
+                    <div class="dot rosa"></div>
+                    <div class="info">
+                        <div class="title">Cancelación de artista</div>
+                        <div class="meta">The Groove Collective · 15/08/2026</div>
+                    </div>
+                    <span class="severity alta">Alta</span>
+                </div>
+                <div class="incident-item">
+                    <div class="dot azul"></div>
+                    <div class="info">
+                        <div class="title">Retraso en montaje</div>
+                        <div class="meta">Escenario principal · 18/08/2026</div>
+                    </div>
+                    <span class="severity media">Media</span>
+                </div>
+                <div class="incident-item">
+                    <div class="dot morado"></div>
+                    <div class="info">
+                        <div class="title">Pago pendiente</div>
+                        <div class="meta">Proveedor de sonido · 20/08/2026</div>
+                    </div>
+                    <span class="severity baja">Baja</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL COMPLETO: TABLA DE ARTISTAS -->
+        <div class="panel full-panel">
+            <div class="panel-header">
+                <h3><i class="fas fa-microphone-alt"></i> Artistas destacados</h3>
+                <span class="link">Ver todos →</span>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Género</th>
+                            <th>Presentación</th>
+                            <th>Estatus</th>
+                            <th style="text-align:right;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Belén Soul</strong> (María Acosta)</td>
+                            <td>Fusión Latina</td>
+                            <td>2026-10-15 20:00</td>
+                            <td><span class="badge-status active">Confirmado</span></td>
+                            <td class="table-actions" style="text-align:right;">
+                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-eye"></i>
+                                <i class="fas fa-ellipsis-v"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>The Groove Collective</strong></td>
+                            <td>Funk / Soul</td>
+                            <td>2026-10-17 21:30</td>
+                            <td><span class="badge-status rosa">Cancelado</span></td>
+                            <td class="table-actions" style="text-align:right;">
+                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-eye"></i>
+                                <i class="fas fa-ellipsis-v"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ritmo Andino</strong></td>
+                            <td>World Music</td>
+                            <td>2026-10-16 18:00</td>
+                            <td><span class="badge-status azul">Confirmado</span></td>
+                            <td class="table-actions" style="text-align:right;">
+                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-eye"></i>
+                                <i class="fas fa-ellipsis-v"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
