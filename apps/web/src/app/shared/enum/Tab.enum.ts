@@ -17,6 +17,11 @@ export class Tab {
         public etiqueta: string
     ) { }
 
+    public static usarEtiqueta(etiqueta: string | null) {
+        if(etiqueta == null) return Tab.TabDashboard;
+        return this.all().find(item => item.etiqueta == etiqueta);
+    }
+
     public static all() {
         return [
             Tab.TabDashboard,
