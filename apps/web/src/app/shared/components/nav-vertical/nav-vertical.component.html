@@ -22,29 +22,36 @@
         (click)="changeTab(tabs.TabActividades)">
         <i class="fas fa-tasks"></i> Actividades
     </div>
-    <div class="nav-item">
+    <div [attr.class]="isActive(tabs.TabVentas)" 
+        (click)="changeTab(tabs.TabVentas)">
         <i class="fas fa-ticket-alt"></i> Ventas
         <span class="badge azul">876</span>
     </div>
-    <div class="nav-item">
+    <div [attr.class]="isActive(tabs.TabProveedores)" 
+        (click)="changeTab(tabs.TabProveedores)">
         <i class="fas fa-handshake"></i> Proveedores
     </div>
-    <div class="nav-item">
+    <div [attr.class]="isActive(tabs.TabPatrocinadores)" 
+        (click)="changeTab(tabs.TabPatrocinadores)">
         <i class="fas fa-star"></i> Patrocinadores
         <span class="badge">4</span>
     </div>
-    <div class="nav-item">
+    <div [attr.class]="isActive(tabs.TabGastos)" 
+        (click)="changeTab(tabs.TabGastos)">
         <i class="fas fa-coins"></i> Gastos
     </div>
-    <div class="nav-item">
+    <div [attr.class]="isActive(tabs.TabStaff)" 
+        (click)="changeTab(tabs.TabStaff)">
         <i class="fas fa-users"></i> Staff
     </div>
-    <div class="nav-item">
+    <div [attr.class]="isActive(tabs.TabIncidencias)" 
+        (click)="changeTab(tabs.TabIncidencias)">
         <i class="fas fa-exclamation-triangle"></i> Incidencias
         <span class="badge rosa">2</span>
     </div>
     <div class="divider"></div>
-    <div class="nav-item">
+    <div [attr.class]="isActive(tabs.TabConfiguracion)" 
+        (click)="changeTab(tabs.TabConfiguracion)">
         <i class="fas fa-cog"></i> Configuración
     </div>
 </nav>
