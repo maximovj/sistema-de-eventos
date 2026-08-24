@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { MyCounterButtonComponent } from '@repo/ui';
 import { TopHeaderComponent, NavVerticalComponent } from './shared/components';
 import { TabEventosComponent, TabDashboardComponent } from './features';
-import { Tab } from './shared/enum/Tab.enum';
+import { Tab } from './shared/enums/Tab.enum';
 
 @Component({
   selector: 'app-root',

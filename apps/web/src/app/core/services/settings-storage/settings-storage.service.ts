@@ -1,7 +1,7 @@
 import { computed, Injectable, signal } from '@angular/core';
 import { SettingsStorage } from '../../../shared/models/settings-storage.model';
 import { SettingsStorageSchema } from '../../../shared/models/schemas/settings-storage.schema';
-import { Tab } from '../../../shared/enum/Tab.enum';
+import { Tab } from '../../../shared/enums/Tab.enum';
 
 @Injectable({
   providedIn: 'root'
