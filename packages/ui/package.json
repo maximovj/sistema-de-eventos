@@ -7,6 +7,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
+    "start": "ng build --watch --configuration development",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "eslint --max-warnings 0",

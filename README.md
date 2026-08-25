@@ -16,8 +16,26 @@ un sistema de gestión de eventos con organización, sedes, artistas, actividade
 ```shell
 # Desde la raíz
 npm install
-npx turbo build check-types
-npm run start # o también npx turbo start
+npx turbo build check-types # Construir
+npx turbo run start --filter=web --filter=server --only
+npx turbo run start --filter=@repo/ui --only
+
+# reconstruir componentes
+npx turbo build --filter=@repo/ui # reconstruir componentes ui
+npx turbo build --filter=web # reconstruir componentes web
+
+# Levantar modo demo (sin desarrollo)
+npx turbo build check-types # Construir
+npx turbo start # o también npm run start 
+```
+
+### Construir apps modo desarrollador usando monorepo
+
+```shell
+# Desde la raíz
+npm install
+npx turbo build check-types # Construir 
+npx turbo build # o también npm run build 
 ```
 
 ### Endpoints disponibles
