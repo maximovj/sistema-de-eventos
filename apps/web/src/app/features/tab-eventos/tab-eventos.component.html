@@ -80,9 +80,23 @@
     <ng-template #mostrarEventos>
         <div class="events-grid">
             @for (evento of eventos(); track $index) {
-                <lib-event-card [evento]="evento"></lib-event-card>
+                <lib-event-card 
+                [evento]="evento"
+                (onVerEvento)="onVerEvento($event)"
+                (onEditarEvento)="onEditarEvento($event)"
+                ></lib-event-card>
             }
         </div>
     </ng-template>
     }
+
+    <lib-modal-event
+        [isOpen]="modalAbierto"
+        [mode]="modalTipo"
+        [event]="eventoSeleccionado"
+        [title]="modalTitulo"
+        (close)="onCerrarModal()"
+        (save)="onGuardarEvento($event)"
+        (edit)="onActualizarEvento($event)"
+    ></lib-modal-event>
 </app-content>

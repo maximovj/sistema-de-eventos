@@ -4,12 +4,19 @@ import { EventosService } from '../../core/services/eventos/eventos.service';
 import { Evento } from '../../shared/models/evento.model';
 import { delay } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { SpinnerComponent, StatGridComponent, EventCardComponent } from '@repo/ui';
+import { SpinnerComponent, StatGridComponent, EventCardComponent, ModalEventComponent } from '@repo/ui';
 
 @Component({
   selector: 'app-tab-eventos',
   standalone: true,
-  imports: [CommonModule, ContentComponent, EventCardComponent, StatGridComponent, SpinnerComponent],
+  imports: [
+    CommonModule, 
+    ContentComponent, 
+    EventCardComponent, 
+    StatGridComponent, 
+    SpinnerComponent,
+    ModalEventComponent
+  ],
   templateUrl: './tab-eventos.component.html',
   styleUrl: './tab-eventos.component.css'
 })
@@ -17,6 +24,10 @@ export class TabEventosComponent implements OnInit {
   private eventosService = inject(EventosService);
   public eventos = signal<Evento[]>([]);
   public cargando = signal<boolean>(false);
+  eventoSeleccionado: any | null = null;
+  modalAbierto: boolean = false;
+  modalTipo: 'view' | 'create' | 'edit' = 'view';
+  modalTitulo: string = 'Detalle del evento';
 
   public bolentosVendidos = computed(() => this.eventos().reduce(
     (acc, evento) => acc+evento.boletosVendidos, 0)
@@ -49,6 +60,33 @@ export class TabEventosComponent implements OnInit {
         this.cargando.set(false);
       },
     });
+  }
+
+  onEditarEvento(evento: any) {
+    this.eventoSeleccionado = evento;
+    this.modalAbierto = true;
+    this.modalTipo = 'edit';
+    this.modalTitulo = 'Editar información del evento';
+  }
+
+  onVerEvento(evento: any) {
+    this.eventoSeleccionado = evento;
+    this.modalAbierto = true;
+    this.modalTipo = 'view';
+    this.modalTitulo = 'Información del evento';
+  }
+
+  onGuardarEvento(evento: any) {
+    console.log("Guardar evento: ", evento);
+    
+  }
+  
+  onActualizarEvento(evento: any) {
+    console.log("Actualizar evento: ", evento);
+  }
+  
+  onCerrarModal() {
+    this.modalAbierto = false; 
   }
 
 }
