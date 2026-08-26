@@ -17,8 +17,8 @@ un sistema de gestión de eventos con organización, sedes, artistas, actividade
 # Desde la raíz
 npm install
 npx turbo build check-types # Construir
-npx turbo run start --filter=web --filter=server --only
-npx turbo run start --filter=@repo/ui --only
+npx turbo run start:iu # o también npx turbo run start --filter=@repo/ui --only
+npx turbo run start # o también npx turbo run start --filter=web --filter=server --only
 
 # reconstruir componentes
 npx turbo build --filter=@repo/ui # reconstruir componentes ui
