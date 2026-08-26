@@ -1,0 +1,185 @@
+<div class="modal-overlay" [class.active]="isOpen">
+  <div class="modal">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h2>
+        <i class="fas" [class.fa-eye]="mode === 'view'" 
+           [class.fa-plus-circle]="mode === 'create'"
+           [class.fa-edit]="mode === 'edit'"></i>
+        {{ mode === 'view' ? 'Detalle del Evento' : 
+           mode === 'create' ? 'Nuevo Evento' : 'Editar Evento' }}
+      </h2>
+      <button class="modal-close" (click)="onClose()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <!-- MODO VER -->
+      @if (mode === 'view' && event) {
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 1.2rem;">
+          <div>
+            <h2 style="font-size: 1.2rem; font-weight: 700; color: #1a1a1a;">
+              🎪 {{ event.title }}
+            </h2>
+            <div style="display: flex; gap: 12px; font-size: 0.8rem; color: #666; margin-top: 4px;">
+              <span><i class="fas fa-hashtag" style="color:#7c3aed;"></i> #{{ event.id }}</span>
+              <span><i class="fas fa-user" style="color:#7c3aed;"></i> Organizador: {{ event.organizadorId }}</span>
+            </div>
+          </div>
+          <div>
+            <span class="badge-status" [class]="getStatusClass(event.estatus)" style="font-size:0.75rem;">
+              <i class="fas" [class]="getStatusIcon(event.estatus)"></i> {{ event.estatus }}
+            </span>
+          </div>
+        </div>
+
+        <div class="view-grid">
+          <div class="view-item">
+            <span class="label">Tipo</span>
+            <span class="value">{{ event.tipoEvento }}</span>
+          </div>
+          <div class="view-item">
+            <span class="label">Categoría</span>
+            <span class="value">{{ event.categoria }}</span>
+          </div>
+          <div class="view-item">
+            <span class="label">Modalidad</span>
+            <span class="value">{{ event.modalidad }}</span>
+          </div>
+          <div class="view-item">
+            <span class="label">Fecha Inicio</span>
+            <span class="value">{{ formatDate(event.fechaApertura) }}</span>
+          </div>
+          <div class="view-item">
+            <span class="label">Fecha Fin</span>
+            <span class="value">{{ formatDate(event.fechaCierre) }}</span>
+          </div>
+          <div class="view-item">
+            <span class="label">Presupuesto</span>
+            <span class="value">{{ formatCurrency(event.presupuestoTotal) }}</span>
+          </div>
+          <div class="view-item">
+            <span class="label">Capacidad</span>
+            <span class="value">{{ event.capacidadMaxima | number }} personas</span>
+          </div>
+          <div class="view-item">
+            <span class="label">Boletos Vendidos</span>
+            <span class="value">
+              {{ event.boletosVendidos || 0 }} 
+              @if (event.capacidadMaxima) {
+                ({{ (event.boletosVendidos! / event.capacidadMaxima * 100) | number:'1.0-0' }}%)
+              }
+            </span>
+          </div>
+          <div class="view-item">
+            <span class="label">Avance</span>
+            <span class="value">{{ event.porcentajeAvance }}%</span>
+          </div>
+          <div class="view-item">
+            <span class="label">Etapa</span>
+            <span class="value">{{ event.etapaActual }}</span>
+          </div>
+          <div class="view-description">
+            <strong style="color: #7c3aed;"><i class="fas fa-align-left"></i> Descripción:</strong><br>
+            {{ event.descripcion }}
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-outline" (click)="onClose()">Cerrar</button>
+          <button class="btn-rosa" (click)="onEdit()">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+        </div>
+      }
+
+      <!-- MODO CREAR/EDITAR -->
+      @if (mode === 'create' || mode === 'edit') {
+        <form (ngSubmit)="onSave()">
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Nombre del evento <span class="required">*</span></label>
+              <input type="text" [(ngModel)]="editEvent.nombreEvento" name="title" placeholder="Ej: Festival de Verano 2026" required>
+            </div>
+            <div class="form-group">
+              <label>Tipo <span class="required">*</span></label>
+              <select [(ngModel)]="editEvent.tipoEvento" name="type" required>
+                <option value="FESTIVAL_MULTIDISCIPLINARIO">FESTIVAL_MULTIDISCIPLINARIO</option>
+                <option value="CONCIERTO">CONCIERTO</option>
+                <option value="CONFERENCIA">CONFERENCIA</option>
+                <option value="EXPOSICIÓN">EXPOSICIÓN</option>
+                <option value="TALLER">TALLER</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Categoría <span class="required">*</span></label>
+              <select [(ngModel)]="editEvent.categoria" name="category" required>
+                <option value="CULTURAL_ARTISTICO">CULTURAL_ARTISTICO</option>
+                <option value="MUSICAL">MUSICAL</option>
+                <option value="DEPORTIVO">DEPORTIVO</option>
+                <option value="EDUCATIVO">EDUCATIVO</option>
+                <option value="GASTRONOMICO">GASTRONOMICO</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Modalidad <span class="required">*</span></label>
+              <select [(ngModel)]="editEvent.modalidad" name="modality" required>
+                <option value="PRESENCIAL">PRESENCIAL</option>
+                <option value="VIRTUAL">VIRTUAL</option>
+                <option value="HIBRIDO">HIBRIDO</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Fecha inicio <span class="required">*</span></label>
+              <input type="datetime-local" [(ngModel)]="editEvent.fechaApertura" name="startDate" required>
+            </div>
+            <div class="form-group">
+              <label>Fecha fin <span class="required">*</span></label>
+              <input type="datetime-local" [(ngModel)]="editEvent.fechaCierre" name="endDate" required>
+            </div>
+            <div class="form-group">
+              <label>Presupuesto total <span class="required">*</span></label>
+              <input type="number" step="0.01" [(ngModel)]="editEvent.presupuestoEjercido" name="budget" required>
+            </div>
+            <div class="form-group">
+              <label>Capacidad máxima <span class="required">*</span></label>
+              <input type="number" [(ngModel)]="editEvent.capacidadMaxima" name="capacity" required>
+            </div>
+            <div class="form-group full-width">
+              <label>Descripción <span class="required">*</span></label>
+              <textarea [(ngModel)]="editEvent.descripcion" name="description" required></textarea>
+            </div>
+            @if (mode === 'edit') {
+              <div class="form-group">
+                <label>Estatus</label>
+                <select [(ngModel)]="editEvent.estatus" name="status">
+                  <option value="EN_PREPARACION">EN_PREPARACION</option>
+                  <option value="ACTIVO">ACTIVO</option>
+                  <option value="FINALIZADO">FINALIZADO</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Etapa</label>
+                <select [(ngModel)]="editEvent.etapaActual" name="stage">
+                  <option value="PLANEACION">PLANEACION</option>
+                  <option value="LOGISTICA_Y_MONTAJE">LOGISTICA_Y_MONTAJE</option>
+                  <option value="EJECUCION">EJECUCION</option>
+                  <option value="CIERRE">CIERRE</option>
+                </select>
+              </div>
+            }
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-outline" (click)="onClose()">Cancelar</button>
+            <button type="submit" class="btn-primary">
+              <i class="fas fa-save"></i> 
+              {{ mode === 'create' ? 'Crear evento' : 'Guardar cambios' }}
+            </button>
+          </div>
+        </form>
+      }
+    </div>
+  </div>
+</div>
