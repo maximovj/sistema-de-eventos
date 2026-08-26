@@ -1,12 +1,88 @@
-<app-content
-    titulo="Eventos"
-    subtitulo="Mis eventos"
->
-<ng-template #breadcrumb>
-    <div class="breadcrumb">
-        <i class="fas fa-home"></i> Eventos
-    </div>
-</ng-template>
+<app-content titulo="Gestión de Eventos" subtitulo="Administra todos los eventos del sistema">
+    <ng-template #breadcrumb>
+        <!-- PAGE HEADER -->
+        <div class="actions">
+            <button class="btn-outline"><i class="fas fa-download"></i> Exportar</button>
+            <button class="btn-primary">
+                <i class="fas fa-plus-circle"></i> Nuevo evento
+            </button>
+        </div>
+    </ng-template>
 
-<p>tab-eventos works!</p>
+    @if (cargando()) {
+        <lib-spinner size="medium" align="start"></lib-spinner>
+    } @else {
+    <!-- STATS -->
+    <div class="stats-grid">
+        <lib-stat-grid 
+            titulo="Total eventos" 
+            [valor]="eventos().length" 
+            subtitulo="+12 este mes"
+            colorIcon="purple"
+            faIcon="fa-calendar-alt" />
+        <lib-stat-grid 
+            titulo="Boletos vendidos" 
+            [valor]="bolentosVendidos()" 
+            colorIcon="purple"
+            faIcon="fa-ticket-alt" />
+        <lib-stat-grid 
+            titulo="Presupuesto total" 
+            [valor]="presupuestoTotal()" 
+            colorIcon="purple"
+            faIcon="fa-ticket-alt" />
+        <lib-stat-grid 
+            titulo="Presupuesto total" 
+            [valor]="presupuestoEjercido()" 
+            subtitulo="Presupuesto ejercido"
+            colorIcon="purple"
+            faIcon="fa-ticket-alt" />
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+        <div class="filter-group">
+            <i class="fas fa-filter"></i>
+            <select>
+                <option>Todos los eventos</option>
+                <option>En preparación</option>
+                <option>Activos</option>
+                <option>Finalizados</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <i class="fas fa-tag"></i>
+            <select>
+                <option>Todas las categorías</option>
+                <option>Cultural</option>
+                <option>Musical</option>
+                <option>Deportivo</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <i class="fas fa-video"></i>
+            <select>
+                <option>Todas las modalidades</option>
+                <option>Presencial</option>
+                <option>Virtual</option>
+                <option>Híbrido</option>
+            </select>
+        </div>
+        <div class="view-toggle">
+            <button class="active"><i class="fas fa-th"></i></button>
+            <button><i class="fas fa-list"></i></button>
+        </div>
+    </div>
+
+    <!-- EVENTS GRID -->
+    <ng-container *ngIf="cargando(); else mostrarEventos">
+        <lib-spinner></lib-spinner>
+    </ng-container>
+    <ng-template #mostrarEventos>
+        <div class="events-grid">
+            @for (evento of eventos(); track $index) {
+                <lib-event-card [evento]="evento"></lib-event-card>
+            }
+        </div>
+    </ng-template>
+    }
 </app-content>
