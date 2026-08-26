@@ -1,0 +1,42 @@
+@if (evento != null) {
+<!-- Event Card -->
+<div class="event-card">
+    <div class="card-header">
+        <div class="event-title">
+            <i class="fas fa-music"></i> {{evento.nombreEvento}}
+        </div>
+        <span class="event-id">#{{evento.id}}</span>
+    </div>
+    <div class="card-body">
+        <div class="event-meta">
+            <span><i class="fas fa-calendar-alt"></i> {{evento.fechaApertura | date}}</span>
+            <span><i class="fas fa-map-pin"></i> {{ evento.modalidad }}</span>
+            <span><i class="fas fa-user"></i> Org: {{evento.organizadorId}}</span>
+        </div>
+        <div class="event-desc">
+            {{evento.descripcion}}
+        </div>
+        <div class="event-progress">
+            <div class="progress-label">
+                <span>Avance</span>
+                <span class="percent">{{evento.porcentajeAvance}}%</span>
+            </div>
+            <div class="track">
+                <div class="fill" [style.width]="evento.porcentajeAvance+'%'"></div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="badge-group">
+            <span class="badge-status en-preparacion"><i class="fas fa-clock"></i> {{evento.estatus}}</span>
+            <span class="badge-status pendiente"> {{evento.etapaActual}}</span>
+        </div>
+        <div class="card-actions">
+            <button class="btn-ver" onclick="openModal('modalVer')" title="Ver"><i class="fas fa-eye"></i></button>
+            <button class="btn-edit" onclick="openModal('modalEditar')" title="Editar"><i
+                    class="fas fa-edit"></i></button>
+            <button title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+        </div>
+    </div>
+</div>
+}
