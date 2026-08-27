@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
     types: [opened, synchronize]
 jobs:
@@ -13,26 +13,20 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 1
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: npm
       - name: Install dependencies
-        run: npm install
-      
-      - name: Check types for types, models,interfaces
+        run: npm ci
+
+      - name: Check shared types
         run: npm run check-types --workspace=@repo/shared-types
 
-      - name: Build components ui
-        run: npx turbo run build --filter=@repo/ui --only
+      - name: Build UI and web
+        run: npx turbo run build --filter=web...
 
-      - name: Build Angular Web
-        run: npx turbo run build --filter=web --only
-      
-      - name: Build Sever
-        run: npx turbo run build --filter=server --only
-
-      - name: Build project
-        run: npx turbo build check-types 
+      - name: Check application types
+        run: npx turbo run check-types --filter=web
