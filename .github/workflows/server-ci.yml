@@ -39,7 +39,7 @@ jobs:
       - name: Test server startup
         run: |
           # Inicia el servidor en segundo plano
-          npm --filter server start &
+          npx turbo run start --filter=server --only &
           # Espera 2 segundos para que arranque
           sleep 2
           # Verifica que el servidor responde
