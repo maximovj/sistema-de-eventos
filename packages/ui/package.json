@@ -2,7 +2,7 @@
   "name": "@repo/ui",
   "version": "0.0.0",
   "private": true,
-  "main": "./dist/ui/fesm2022/ui.mjs",
+  "main": "./dist/ui/fesm2022/repo-ui.mjs",
   "types": "./dist/ui/index.d.ts",
   "scripts": {
     "ng": "ng",
