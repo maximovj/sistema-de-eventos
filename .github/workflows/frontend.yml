@@ -28,9 +28,18 @@ jobs:
       - name: Install dependencies
         run: npm install
       
-      - name: Build Angular
-        run: npx turbo --filter web build
+      - name: Check types for types, models,interfaces
+        run: npm run check-types --workspace=@repo/shared-types
       
+      - name: Build components ui
+        run: npx turbo run build --filter=@repo/ui --only
+
+      - name: Build Angular Web
+        run: npx turbo run build --filter=web --only
+      
+      - name: Build Sever
+        run: npx turbo run build --filter=server --only
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
