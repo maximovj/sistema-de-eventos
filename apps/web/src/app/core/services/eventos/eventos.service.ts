@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Evento } from '../../../shared/models/evento.model';
+import { Evento } from '@repo/shared-types';
 
 @Injectable({
   providedIn: 'root'

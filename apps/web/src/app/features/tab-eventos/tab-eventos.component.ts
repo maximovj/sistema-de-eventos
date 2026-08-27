@@ -1,7 +1,7 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ContentComponent } from '../../shared/components';
 import { EventosService } from '../../core/services/eventos/eventos.service';
-import { Evento } from '../../shared/models/evento.model';
+import { Evento } from '@repo/shared-types';
 import { delay } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent, StatGridComponent, EventCardComponent, ModalEventComponent } from '@repo/ui';
