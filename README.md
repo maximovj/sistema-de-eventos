@@ -18,8 +18,8 @@ un sistema de gestión de eventos con organización, sedes, artistas, actividade
 npm install
 npm run check-types --workspace=@repo/shared-types # Verificar tipos
 npx turbo build check-types # Construir
-npx turbo run start:iu # o también npx turbo run start --filter=@repo/ui --only
-npx turbo run start # o también npx turbo run start --filter=web --filter=server --only
+npm run start:ui  # o también npx turbo run start --filter=@repo/ui --only
+npm run start # o también npx turbo run start --filter=web --filter=server --only
 
 # reconstruir componentes
 npx turbo build --filter=@repo/ui # reconstruir componentes ui
