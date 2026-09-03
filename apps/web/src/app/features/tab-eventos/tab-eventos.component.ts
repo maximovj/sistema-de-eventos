@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { ContentComponent } from '../../shared/components';
+import { TabContentComponent } from '../../shared/components';
 import { EventosService } from '@repo/shared-services';
 import { Evento } from '@repo/shared-types';
 import { delay } from 'rxjs';
@@ -11,7 +11,7 @@ import { SpinnerComponent, StatGridComponent, EventCardComponent, ModalEventComp
   standalone: true,
   imports: [
     CommonModule, 
-    ContentComponent, 
+    TabContentComponent,
     EventCardComponent, 
     StatGridComponent, 
     SpinnerComponent,
