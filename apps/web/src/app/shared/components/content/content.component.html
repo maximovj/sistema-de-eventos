@@ -6,11 +6,17 @@
         <div>
             <h1>{{titulo}}<small>{{subtitulo}}</small></h1>
         </div>
-        <ng-container *ngTemplateOutlet="breadcrumb">
+        
+        <!-- Si hay breadcrumb proyectado, usarlo; si no, usar el por defecto -->
+        <ng-container *ngIf="hasBreadcrumb; else defaultBreadcrumb">
+            <ng-content select="[breadcrumb]"></ng-content>
+        </ng-container>
+        
+        <ng-template #defaultBreadcrumb>
             <div class="breadcrumb">
                 <i class="fas fa-home"></i> {{titulo}} / <span>{{subtitulo}}</span>
             </div>
-        </ng-container>
+        </ng-template>
     </div>
 
     <ng-content></ng-content>

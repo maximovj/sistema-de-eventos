@@ -9,8 +9,13 @@ import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
   styleUrl: './content.component.css'
 })
 export class ContentComponent {
-  @Input() titulo: string | null = null;
-  @Input() subtitulo: string | null = null;
-  @ContentChild('breadcrumb') breadcrumb!: TemplateRef<any>;
+  @Input() titulo: string = '';
+  @Input() subtitulo: string = '';
+  
+  @ContentChild('breadcrumb') breadcrumbContent: any;
+  hasBreadcrumb: boolean = false;
 
+  ngAfterContentInit() {
+    this.hasBreadcrumb = !!this.breadcrumbContent;
+  }
 }
