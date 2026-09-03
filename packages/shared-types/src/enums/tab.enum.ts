@@ -1,5 +1,6 @@
 export class Tab {
     public static TabDashboard = new Tab(1, "tab-dashboard");
+    public static TabOrganizadores = new Tab(1, "tab-organizadores");
     public static TabEventos = new Tab(1, "tab-eventos");
     public static TabSedes = new Tab(1, "tab-sedes");
     public static TabArtistas = new Tab(1, "tab-artistas");
@@ -25,6 +26,7 @@ export class Tab {
     public static all() {
         return [
             Tab.TabDashboard,
+            Tab.TabOrganizadores,
             Tab.TabEventos,
             Tab.TabSedes,
             Tab.TabArtistas,
