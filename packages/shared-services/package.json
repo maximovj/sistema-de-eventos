@@ -1,0 +1,26 @@
+{
+  "name": "@repo/shared-services",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "lint": "eslint --no-ignore src --ext .ts --max-warnings 0"
+  },
+  "peerDependencies": {
+    "@angular/common": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "rxjs": "~7.8.0"
+  },
+  "dependencies": {
+    "@repo/shared-types": "*"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@angular/common": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "rxjs": "~7.8.0",
+    "typescript": "~5.4.2"
+  }
+}
