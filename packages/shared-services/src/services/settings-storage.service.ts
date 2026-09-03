@@ -1,7 +1,5 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { SettingsStorage } from '../../../shared/models/settings-storage.model';
-import { SettingsStorageSchema } from '../../../shared/models/schemas/settings-storage.schema';
-import { Tab } from '../../../shared/enums/Tab.enum';
+import { SettingsStorage, SettingsStorageSchema, Tab } from '@repo/shared-types';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +8,14 @@ export class SettingsStorageService {
   private _keyName = "settings";
 
   // Estado global
-  private ConfigAppState = signal<SettingsStorage| null>(null);
+  private ConfigAppState = signal<SettingsStorage | null>(null);
   private LoadingState = signal<boolean>(false);
   private ErrorState = signal<string | null>(null);
 
   // Exponer estados (de solo lectura)
   public readonly configApp = this.ConfigAppState.asReadonly;
 
-  // Exponer funciones, helpers, utilidades 
+  // Exponer funciones, helpers, utilidades
   public isLoading = computed(() => this.LoadingState());
   public error = computed(() => this.ErrorState());
   public tabActive = computed(() => Tab.usarEtiqueta(this.ConfigAppState()?.tab || null));
@@ -27,22 +25,22 @@ export class SettingsStorageService {
   }
 
   cargarSessionStorage() {
-    if(this.ConfigAppState() != null) return;
-    if(this.LoadingState()) return;
+    if (this.ConfigAppState() != null) return;
+    if (this.LoadingState()) return;
 
     this.LoadingState.set(true);
     this.ErrorState.set(null);
-    
+
     const datosString = sessionStorage.getItem(this._keyName);
-    
+
     if (!datosString) return;
 
     try {
       const datosParseados = JSON.parse(datosString);
-      
+
       // Validar con Zod
       const resultado = SettingsStorageSchema.safeParse(datosParseados);
-      
+
       if (resultado.success) {
         this.ConfigAppState.set(resultado.data);
       } else {
@@ -63,7 +61,7 @@ export class SettingsStorageService {
     this.LoadingState.set(true);
     this.ErrorState.set(null);
 
-    if(tab) {
+    if (tab) {
       const configApp = this.ConfigAppState();
       this.ConfigAppState.update(() => ({
         ...configApp,
@@ -71,8 +69,7 @@ export class SettingsStorageService {
       }));
       sessionStorage.setItem(this._keyName, JSON.stringify(this.ConfigAppState()));
     }
-    
+
     this.LoadingState.set(false);
   }
-
 }
