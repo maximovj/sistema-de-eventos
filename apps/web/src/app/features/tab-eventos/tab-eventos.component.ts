@@ -1,6 +1,6 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ContentComponent } from '../../shared/components';
-import { EventosService } from '../../core/services/eventos/eventos.service';
+import { EventosService } from '@repo/shared-services';
 import { Evento } from '@repo/shared-types';
 import { delay } from 'rxjs';
 import { CommonModule } from '@angular/common';
