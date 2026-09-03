@@ -13,9 +13,10 @@
         @if (tabActive() == tabs.TabDashboard) {
             <app-tab-dashboard></app-tab-dashboard>
         }
-
-        @if (tabActive() == tabs.TabEventos) {
+        @else if (tabActive() == tabs.TabEventos) {
             <app-tab-eventos></app-tab-eventos>
+        } @else {
+            <app-tab-predeterminado></app-tab-predeterminado>
         }
     </div>
 

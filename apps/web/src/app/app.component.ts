@@ -2,7 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SettingsStorageService } from '@repo/shared-services';
 import { TopHeaderComponent, NavVerticalComponent } from './shared/components';
-import { TabEventosComponent, TabDashboardComponent } from './features';
+import { TabEventosComponent, TabDashboardComponent, TabPredeterminadoComponent } from './features';
 import { Tab } from '@repo/shared-types';
 
 @Component({
@@ -12,7 +12,8 @@ import { Tab } from '@repo/shared-types';
     TopHeaderComponent, 
     NavVerticalComponent, 
     TabDashboardComponent,
-    TabEventosComponent
+    TabEventosComponent,
+    TabPredeterminadoComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
