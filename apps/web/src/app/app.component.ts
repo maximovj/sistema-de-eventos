@@ -1,9 +1,9 @@
-import { SettingsStorageService } from './core/services/settings-storage/settings-storage.service';
 import { Component, computed, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SettingsStorageService } from '@repo/shared-services';
 import { TopHeaderComponent, NavVerticalComponent } from './shared/components';
 import { TabEventosComponent, TabDashboardComponent } from './features';
-import { Tab } from './shared/enums/Tab.enum';
+import { Tab } from '@repo/shared-types';
 
 @Component({
   selector: 'app-root',

@@ -24,7 +24,7 @@ export class TabEventosComponent implements OnInit {
   private eventosService = inject(EventosService);
   public eventos = signal<Evento[]>([]);
   public cargando = signal<boolean>(false);
-  eventoSeleccionado: any | null = null;
+  eventoSeleccionado: Evento | null = null;
   modalAbierto: boolean = false;
   modalTipo: 'view' | 'create' | 'edit' = 'view';
   modalTitulo: string = 'Detalle del evento';
@@ -62,26 +62,26 @@ export class TabEventosComponent implements OnInit {
     });
   }
 
-  onEditarEvento(evento: any) {
+  onEditarEvento(evento: Evento) {
     this.eventoSeleccionado = evento;
     this.modalAbierto = true;
     this.modalTipo = 'edit';
     this.modalTitulo = 'Editar información del evento';
   }
 
-  onVerEvento(evento: any) {
+  onVerEvento(evento: Evento) {
     this.eventoSeleccionado = evento;
     this.modalAbierto = true;
     this.modalTipo = 'view';
     this.modalTitulo = 'Información del evento';
   }
 
-  onGuardarEvento(evento: any) {
+  onGuardarEvento(evento: Evento) {
     console.log("Guardar evento: ", evento);
     
   }
   
-  onActualizarEvento(evento: any) {
+  onActualizarEvento(evento: Evento) {
     console.log("Actualizar evento: ", evento);
   }
   

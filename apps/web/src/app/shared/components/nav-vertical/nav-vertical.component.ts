@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
-import { Tab } from '../../enums/Tab.enum';
-import { SettingsStorageService } from '../../../core/services/settings-storage/settings-storage.service';
+import { SettingsStorageService } from '@repo/shared-services';
+import { Tab } from '@repo/shared-types';
 
 @Component({
   selector: 'app-nav-vertical',
