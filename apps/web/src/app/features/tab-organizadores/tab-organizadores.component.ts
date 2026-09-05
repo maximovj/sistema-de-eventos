@@ -120,7 +120,7 @@ export class TabOrganizadoresComponent implements OnInit {
         if (this.filtroTipo() && org.tipo !== this.filtroTipo()) return false;
         // Antigüedad
         if (this.filtroAntiguedad()) {
-          if (parseInt(org.antiguedad) < parseInt(this.filtroAntiguedad())) return false;
+          if (parseInt(org.antiguedad) <= parseInt(this.filtroAntiguedad())) return false;
         }
         return true;
     });
