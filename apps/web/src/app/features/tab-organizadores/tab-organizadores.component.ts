@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { TabContentComponent } from '../../shared/components';
 import { OrganizadoresService } from '@repo/shared-services';
 import { SpinnerComponent } from '@repo/ui';
-import { Organizador, TipoOrganizador } from '@repo/shared-types';
+import { Organizador, TipoOrganizador, ThFiltro } from '@repo/shared-types';
 import { StatGridComponent } from '@repo/ui';
 import { delay } from 'rxjs';
 
@@ -31,6 +31,13 @@ export class TabOrganizadoresComponent implements OnInit {
   public pageSize = signal<number>(10);
   public campoOrden = signal<string>('nombre');
   public ordenAsc = signal<boolean>(true);
+  public thFiltro = signal<ThFiltro>({
+    nombre: 'asc',
+    tipo: null,
+    contacto_nombre: null,
+    telefono: null,
+    antiguedad: null,
+  });
 
   // Estados/Funciones computadas
   public total = computed(() => this.organizadores().length || 0);
@@ -55,8 +62,7 @@ export class TabOrganizadoresComponent implements OnInit {
     .subscribe({
       next: (data: Organizador[]) => {
         this.organizadores.set(data);
-        this.ordenarPor('nombre');
-        this.ordenarPor('nombre');
+        this.ordenarDatos();
       },
       complete: () => {
         this.cargando.set(false);
@@ -75,16 +81,31 @@ export class TabOrganizadoresComponent implements OnInit {
   }
 
   ordenarDatos() {
+    const campo = this.campoOrden();
     this.organizadores().sort((a: Organizador, b: Organizador) => {
-      let valA = a['nombre'] || '';
-      let valB = b['nombre'] || '';
+      let valA = a[campo as keyof Organizador] ?? '';
+      let valB = b[campo as keyof Organizador] ?? '';
+      
       if (typeof valA === 'string') valA = valA.toLowerCase();
       if (typeof valB === 'string') valB = valB.toLowerCase();
+      
       if (valA < valB) return this.ordenAsc() ? -1 : 1;
       if (valA > valB) return this.ordenAsc() ? 1 : -1;
       return 0;
     });
+
+    this.limpiarFiltro();
+    this.thFiltro()[campo as keyof ThFiltro] = this.ordenAsc() ? 'asc' : 'desc';
   }
 
+  private limpiarFiltro() {
+    this.thFiltro.update(() => ({
+      nombre: null,
+      tipo: null,
+      contacto_nombre: null,
+      telefono: null,
+      antiguedad: null,
+    }));
+  }
 
 }

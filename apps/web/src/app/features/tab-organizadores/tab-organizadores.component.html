@@ -62,11 +62,11 @@
                 <table>
                 <thead>
                     <tr>
-                    <th (click)="ordenarPor('nombre')" class="asc">Organizador <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th (click)="ordenarPor('tipo')">Tipo <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th (click)="ordenarPor('contacto_nombre')">Contacto <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th (click)="ordenarPor('telefono')">Teléfono <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th (click)="ordenarPor('antiguedad')">Antigüedad <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                    <th (click)="ordenarPor('nombre')" [attr.class]="thFiltro().nombre" >Organizador <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                    <th (click)="ordenarPor('tipo')" [attr.class]="thFiltro().tipo">Tipo <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                    <th (click)="ordenarPor('contacto_nombre')" [attr.class]="thFiltro().contacto_nombre">Contacto <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                    <th (click)="ordenarPor('telefono')" [attr.class]="thFiltro().telefono">Teléfono <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                    <th (click)="ordenarPor('antiguedad')" [attr.class]="thFiltro().antiguedad">Antigüedad <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
                     <th style="text-align:center;">Acciones</th>
                     </tr>
                 </thead>
