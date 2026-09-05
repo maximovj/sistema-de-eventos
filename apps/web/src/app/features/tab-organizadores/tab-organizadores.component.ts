@@ -26,6 +26,7 @@ export class TabOrganizadoresComponent implements OnInit {
 
   // Estados signals
   public organizadores = signal<Organizador[]>([]);
+  public _filtrado = signal<Organizador[]>([]);
   public cargando = signal<boolean>(false);
   public paginaActual = signal<number>(1);
   public pageSize = signal<number>(10);
@@ -38,9 +39,19 @@ export class TabOrganizadoresComponent implements OnInit {
     telefono: null,
     antiguedad: null,
   });
+  public filtroBusqueda = signal<string|null>(null);
+  public filtroTipo = signal<string|null>('');
+  public filtroAntiguedad = signal<string>('');
 
   // Estados/Funciones computadas
+  public organizadoresFiltro = computed(() => {
+    const items = this._filtrado();
+    if(items.length <= 0) return this.organizadores();
+    else return items;
+  });
+
   public total = computed(() => this.organizadores().length || 0);
+  public totalFiltro = computed(() => this._filtrado().length || 0);
   public totalEmpresas = computed(() => this.organizadores()
     .filter(item => item.tipo == TipoOrganizador.EMPRESA_PRIVADA ||
             item.tipo == TipoOrganizador.EMPRESA_PUBLICA ).length || 0);
@@ -96,6 +107,31 @@ export class TabOrganizadoresComponent implements OnInit {
 
     this.limpiarFiltro();
     this.thFiltro()[campo as keyof ThFiltro] = this.ordenAsc() ? 'asc' : 'desc';
+  }
+
+  aplicarFiltros() {
+    const datos = this.organizadores().filter(org => {
+        // Búsqueda
+        if (this.filtroBusqueda()) {
+          const searchable = `${org.nombre} ${org.rfc} ${org.contacto_nombre} ${org.email} ${org.telefono}`.toLowerCase();
+          if (!searchable.includes(this.filtroBusqueda()||'')) return false;
+        }
+        // Tipo
+        if (this.filtroTipo() && org.tipo !== this.filtroTipo()) return false;
+        // Antigüedad
+        if (this.filtroAntiguedad()) {
+          if (parseInt(org.antiguedad) < parseInt(this.filtroAntiguedad())) return false;
+        }
+        return true;
+    });
+    this._filtrado.update(() => [...datos]);
+  }
+
+  limpiarFiltros() {
+    this.filtroBusqueda.set(null);
+    this.filtroTipo.set('');
+    this.filtroAntiguedad.set('');
+    this.aplicarFiltros();
   }
 
   private limpiarFiltro() {

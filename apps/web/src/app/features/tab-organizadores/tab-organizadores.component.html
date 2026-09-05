@@ -30,29 +30,30 @@
         <div class="filters-bar">
             <div class="filter-group">
                 <i class="fas fa-search"></i>
-                <input type="text" id="filtroBusqueda" placeholder="Buscar por nombre, RFC, contacto...">
+                <input type="text" id="filtroBusqueda" [(ngModel)]="filtroBusqueda" placeholder="Buscar por nombre, RFC, contacto...">
             </div>
             <div class="filter-group">
                 <i class="fas fa-tag"></i>
-                <select id="filtroTipo">
-                <option value="">Todos los tipos</option>
-                <option value="EMPRESA_PRIVADA">Empresa privada</option>
-                <option value="ASOCIACION_CIVIL">Asociación civil</option>
-                <option value="PERSONA_FISICA">Persona física</option>
+                <select id="filtroTipo" [(ngModel)]="filtroTipo">
+                <option [ngValue]="''">Todos los tipos</option>
+                <option [ngValue]="'EMPRESA_PRIVADA'">Empresa privada</option>
+                <option [ngValue]="'EMPRESA_PUBLICA'">Empresa pública</option>
+                <option [ngValue]="'ASOCIACION_CIVIL'">Asociación civil</option>
+                <option [ngValue]="'PERSONA_FISICA'">Persona física</option>
                 </select>
             </div>
             <div class="filter-group">
                 <i class="fas fa-clock"></i>
-                <select id="filtroAntiguedad">
-                <option value="">Todas las antigüedades</option>
-                <option value="5">+5 años</option>
-                <option value="10">+10 años</option>
-                <option value="15">+15 años</option>
+                <select id="filtroAntiguedad" [(ngModel)]="filtroAntiguedad">
+                <option [ngValue]="''">Todas las antigüedades</option>
+                <option [ngValue]="'5'">+5 años</option>
+                <option [ngValue]="'10'">+10 años</option>
+                <option [ngValue]="'15'">+15 años</option>
                 </select>
             </div>
             <div class="filter-actions">
-                <button class="btn-clear" onclick="limpiarFiltros()"><i class="fas fa-undo"></i> Limpiar</button>
-                <button class="btn-apply" onclick="aplicarFiltros()"><i class="fas fa-filter"></i> Filtrar</button>
+                <button class="btn-clear" (click)="limpiarFiltros()"><i class="fas fa-undo"></i> Limpiar</button>
+                <button class="btn-apply" (click)="aplicarFiltros()"><i class="fas fa-filter"></i> Filtrar</button>
             </div>
         </div>
     
@@ -71,10 +72,10 @@
                     </tr>
                 </thead>
                 <tbody id="tablaBody">
-                @if (organizadores().length <= 0) {
+                @if (organizadoresFiltro().length <= 0) {
                     <tr><td colspan="6" style="text-align:center;padding:2rem;color:#aaa;">No se encontraron organizadores</td></tr>
                 } @else {
-                    @for (item of organizadores(); track $index) {
+                    @for (item of organizadoresFiltro(); track $index) {
                     <tr>
                         <td>
                             <div class="organizador-chip">
@@ -108,7 +109,7 @@
             <!-- PAGINACIÓN -->
             <div class="pagination-wrapper">
                 <div class="info">
-                Mostrando <strong id="inicioMostrando">{{total()}}</strong> - <strong id="finMostrando">{{total()}}</strong> de <strong id="totalMostrando">{{total()}}</strong> organizadores
+                Mostrando <strong id="inicioMostrando">{{totalFiltro()}}</strong> - <strong id="finMostrando">{{totalFiltro()}}</strong> de <strong id="totalMostrando">{{total()}}</strong> organizadores
                 </div>
                 <div class="pagination" id="paginationControls">
                 <button onclick="cambiarPagina('primera')" id="btnPrimera" disabled><i class="fas fa-angle-double-left"></i></button>
