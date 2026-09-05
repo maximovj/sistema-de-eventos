@@ -1,10 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { TabContentComponent } from '../../shared/components';
 import { EventosService } from '@repo/shared-services';
 import { Evento } from '@repo/shared-types';
+import { EventCardComponent, ModalEventComponent, SpinnerComponent, StatBoxComponent } from '@repo/ui';
 import { delay } from 'rxjs';
-import { CommonModule } from '@angular/common';
-import { SpinnerComponent, StatGridComponent, EventCardComponent, ModalEventComponent } from '@repo/ui';
+import { TabContentComponent } from '../../shared/components';
 
 @Component({
   selector: 'app-tab-eventos',
@@ -13,7 +13,7 @@ import { SpinnerComponent, StatGridComponent, EventCardComponent, ModalEventComp
     CommonModule, 
     TabContentComponent,
     EventCardComponent, 
-    StatGridComponent, 
+    StatBoxComponent, 
     SpinnerComponent,
     ModalEventComponent
   ],

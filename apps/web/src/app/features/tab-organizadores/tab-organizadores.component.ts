@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TabContentComponent } from '../../shared/components';
 import { OrganizadoresService } from '@repo/shared-services';
-import { SpinnerComponent } from '@repo/ui';
-import { Organizador, TipoOrganizador, ThFiltro } from '@repo/shared-types';
-import { StatGridComponent } from '@repo/ui';
+import { Organizador, ThFiltro, TipoOrganizador } from '@repo/shared-types';
+import { SpinnerComponent, StatBoxComponent } from '@repo/ui';
 import { delay } from 'rxjs';
+import { TabContentComponent } from '../../shared/components';
 
 @Component({
   selector: 'app-tab-organizadores',
@@ -16,7 +15,7 @@ import { delay } from 'rxjs';
     FormsModule, 
     TabContentComponent,
     SpinnerComponent,
-    StatGridComponent,
+    StatBoxComponent,
   ],
   templateUrl: './tab-organizadores.component.html',
   styleUrl: './tab-organizadores.component.css'

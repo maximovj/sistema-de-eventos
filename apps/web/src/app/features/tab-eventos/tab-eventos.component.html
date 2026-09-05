@@ -10,27 +10,27 @@
     </div>
 
     @if (cargando()) {
-        <lib-spinner size="medium" align="start"></lib-spinner>
+        <ui-spinner size="medium" align="start" />
     } @else {
     <!-- STATS -->
     <div class="stats-panel">
-        <lib-stat-grid 
+        <ui-stat-box 
             titulo="Total eventos" 
             [valor]="eventos().length" 
             subtitulo="+12 este mes"
             colorIcon="purple"
             faIcon="fa-calendar-alt" />
-        <lib-stat-grid 
+        <ui-stat-box 
             titulo="Boletos vendidos" 
             [valor]="'$'+bolentosVendidos()" 
             colorIcon="pink"
             faIcon="fas fa-ticket-alt" />
-        <lib-stat-grid 
+        <ui-stat-box 
             titulo="Presupuesto total" 
             [valor]="'$'+presupuestoTotal()" 
             colorIcon="blue"
             faIcon="fas fa-microphone" />
-        <lib-stat-grid 
+        <ui-stat-box 
             titulo="Presupuesto total" 
             [valor]="'$'+presupuestoEjercido()" 
             subtitulo="Presupuesto ejercido"
@@ -75,22 +75,22 @@
 
     <!-- EVENTS GRID -->
     <ng-container *ngIf="cargando(); else mostrarEventos">
-        <lib-spinner></lib-spinner>
+        <ui-spinner />
     </ng-container>
     <ng-template #mostrarEventos>
         <div class="events-grid">
             @for (evento of eventos(); track $index) {
-                <lib-event-card 
+                <ui-event-card 
                 [evento]="evento"
                 (onVerEvento)="onVerEvento($event)"
                 (onEditarEvento)="onEditarEvento($event)"
-                ></lib-event-card>
+                />
             }
         </div>
     </ng-template>
     }
 
-    <lib-modal-event
+    <ui-modal-event
         [isOpen]="modalAbierto"
         [mode]="modalTipo"
         [event]="eventoSeleccionado"
@@ -98,5 +98,5 @@
         (close)="onCerrarModal()"
         (save)="onGuardarEvento($event)"
         (edit)="onActualizarEvento($event)"
-    ></lib-modal-event>
+    />
 </app-tab-content>
