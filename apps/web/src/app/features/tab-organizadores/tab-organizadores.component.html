@@ -1,0 +1,30 @@
+<app-tab-content titulo="Gestión de Organizadores" subtitulo="Administra todos los organizadores de los eventos del sistema">
+    @if(cargando()){
+        <lib-spinner size="medium" align="start"></lib-spinner>
+    } @else {
+        <!-- STATS -->
+        <div class="stats-panel">
+            <lib-stat-grid
+                titulo="Empresas"
+                [valor]="totalEmpresas()"
+                colorIcon="purple"
+                faIcon="fa-building"></lib-stat-grid>
+            <lib-stat-grid
+                titulo="Asociaciones"
+                [valor]="totalAsociaciones()"
+                colorIcon="pink"
+                faIcon="fa-hand-holding-heart"></lib-stat-grid>
+            <lib-stat-grid
+                titulo="Personas Físicas"
+                [valor]="totalPersonasFisicas()"
+                colorIcon="blue"
+                faIcon="fa-user-tie"></lib-stat-grid>
+            <lib-stat-grid
+                titulo="Total organizadores"
+                [valor]="total()"
+                colorIcon="green"
+                faIcon="fa-users"></lib-stat-grid>
+        </div>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque harum maxime dolore autem nostrum velit dicta, esse adipisci libero vel asperiores delectus eveniet aut hic. Mollitia tempore in repudiandae suscipit.</p>
+    }
+</app-tab-content>
