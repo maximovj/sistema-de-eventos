@@ -26,7 +26,7 @@ export class TabOrganizadoresComponent implements OnInit {
 
   // Estados signals
   public organizadores = signal<Organizador[]>([]);
-  public _filtrado = signal<Organizador[]>([]);
+  public datosFiltrados = signal<Organizador[]>([]); // Renombrado para claridad
   public cargando = signal<boolean>(false);
   public paginaActual = signal<number>(1);
   public porPagina = signal<number>(10);
@@ -39,36 +39,66 @@ export class TabOrganizadoresComponent implements OnInit {
     telefono: null,
     antiguedad: null,
   });
-  public filtroBusqueda = signal<string|null>(null);
-  public filtroTipo = signal<string|null>(null);
-  public filtroAntiguedad = signal<string|null>(null);
+  public filtroBusqueda = signal<string>('');
+  public filtroTipo = signal<string>('');
+  public filtroAntiguedad = signal<string>('');
 
-  // Estados/Funciones computadas
+  // Estados computados
   public organizadoresFiltro = computed(() => {
-    const items = this._filtrado();
-    if(items.length <= 0 &&
-      !this.filtroTipo() && 
-      !this.filtroAntiguedad()) return this.organizadores();
-    else return items;
+    // Aplicar filtros a los datos originales
+    let resultado = this.organizadores();
+    
+    // Búsqueda
+    if (this.filtroBusqueda()) {
+      const busqueda = this.filtroBusqueda().toLowerCase();
+      resultado = resultado.filter(org => {
+        const searchable = `${org.nombre} ${org.rfc} ${org.contacto_nombre} ${org.email} ${org.telefono}`.toLowerCase();
+        return searchable.includes(busqueda);
+      });
+    }
+    
+    // Tipo
+    if (this.filtroTipo()) {
+      resultado = resultado.filter(org => org.tipo === this.filtroTipo());
+    }
+    
+    // Antigüedad
+    if (this.filtroAntiguedad()) {
+      const antiguedadMin = parseInt(this.filtroAntiguedad());
+      resultado = resultado.filter(org => parseInt(org.antiguedad) >= antiguedadMin);
+    }
+    
+    return resultado;
   });
 
+  // Datos paginados
+  public datosPaginados = computed(() => {
+    const inicio = (this.paginaActual() - 1) * this.porPagina();
+    const fin = inicio + this.porPagina();
+    return this.organizadoresFiltro().slice(inicio, fin);
+  });
+
+  // Estadísticas
   public total = computed(() => this.organizadores().length || 0);
-  public totalFiltro = computed(() => this.organizadoresFiltro().length || 0);
-  public totalPaginas = computed(() => Math.ceil(this.organizadores().length / this.porPagina()));
+  public totalFiltrado = computed(() => this.organizadoresFiltro().length || 0);
+  public totalPaginas = computed(() => Math.ceil(this.totalFiltrado() / this.porPagina()));
+  public mostradoTotal = computed(()=> Math.min(this.paginaActual() * this.porPagina(), this.totalFiltrado()));
+  
   public paginas = computed(() => {
-    return Array.from({ length: this.totalPaginas() }, (_, i) => i + 1);
+    const total = this.totalPaginas();
+    return Array.from({ length: total }, (_, i) => i + 1);
   });
 
-  public habilitarPaginacionAnterior = computed(()=> this.paginaActual() === 1 || this.totalPaginas() === 0);
-  public habilitarPaginacionSiguiente = computed(()=> this.paginaActual() === this.totalPaginas() || this.totalPaginas() === 0);
+  public habilitarPaginacionAnterior = computed(() => this.paginaActual() === 1 || this.totalPaginas() === 0);
+  public habilitarPaginacionSiguiente = computed(() => this.paginaActual() === this.totalPaginas() || this.totalPaginas() === 0);
 
   public totalEmpresas = computed(() => this.organizadores()
-    .filter(item => item.tipo == TipoOrganizador.EMPRESA_PRIVADA ||
-            item.tipo == TipoOrganizador.EMPRESA_PUBLICA ).length || 0);
+    .filter(item => item.tipo === TipoOrganizador.EMPRESA_PRIVADA ||
+            item.tipo === TipoOrganizador.EMPRESA_PUBLICA).length || 0);
   public totalAsociaciones = computed(() => this.organizadores()
-    .filter(item => item.tipo == TipoOrganizador.ASOCIACION_CIVIL).length || 0);
+    .filter(item => item.tipo === TipoOrganizador.ASOCIACION_CIVIL).length || 0);
   public totalPersonasFisicas = computed(() => this.organizadores()
-    .filter(item => item.tipo == TipoOrganizador.PERSONA_FISICA).length || 0);
+    .filter(item => item.tipo === TipoOrganizador.PERSONA_FISICA).length || 0);
   
   ngOnInit(): void {
     this.cargarOrganizadores();
@@ -84,6 +114,7 @@ export class TabOrganizadoresComponent implements OnInit {
       next: (data: Organizador[]) => {
         this.organizadores.set(data);
         this.ordenarDatos();
+        this.resetearPaginacion();
       },
       complete: () => {
         this.cargando.set(false);
@@ -91,7 +122,7 @@ export class TabOrganizadoresComponent implements OnInit {
     });
   }
 
-  ordenarPor(campo:string) {
+  ordenarPor(campo: string) {
     if (this.campoOrden() === campo) {
       this.ordenAsc.update(() => !this.ordenAsc());
     } else {
@@ -99,11 +130,12 @@ export class TabOrganizadoresComponent implements OnInit {
       this.ordenAsc.update(() => true);
     }
     this.ordenarDatos();
+    this.resetearPaginacion();
   }
 
   ordenarDatos() {
     const campo = this.campoOrden();
-    this.organizadores().sort((a: Organizador, b: Organizador) => {
+    const datosOrdenados = [...this.organizadores()].sort((a: Organizador, b: Organizador) => {
       let valA = a[campo as keyof Organizador] ?? '';
       let valB = b[campo as keyof Organizador] ?? '';
       
@@ -114,34 +146,23 @@ export class TabOrganizadoresComponent implements OnInit {
       if (valA > valB) return this.ordenAsc() ? 1 : -1;
       return 0;
     });
-
+    
+    this.organizadores.set(datosOrdenados);
     this.limpiarFiltro();
     this.thFiltro()[campo as keyof ThFiltro] = this.ordenAsc() ? 'asc' : 'desc';
   }
 
   aplicarFiltros() {
-    const datos = this.organizadores().filter(org => {
-        // Búsqueda
-        if (this.filtroBusqueda()) {
-          const searchable = `${org.nombre} ${org.rfc} ${org.contacto_nombre} ${org.email} ${org.telefono}`.toLowerCase();
-          if (!searchable.includes(this.filtroBusqueda()||'')) return false;
-        }
-        // Tipo
-        if (this.filtroTipo() && org.tipo !== this.filtroTipo()) return false;
-        // Antigüedad
-        if (this.filtroAntiguedad()) {
-          if (parseInt(org.antiguedad) <= parseInt(this.filtroAntiguedad()||'')) return false;
-        }
-        return true;
-    });
-    this._filtrado.update(() => [...datos]);
+    // Los filtros se aplican automáticamente a través de computed
+    // Solo necesitamos resetear la paginación al aplicar filtros
+    this.resetearPaginacion();
   }
 
   limpiarFiltros() {
-    this.filtroBusqueda.set(null);
-    this.filtroTipo.set(null);
-    this.filtroAntiguedad.set(null);
-    this.aplicarFiltros();
+    this.filtroBusqueda.set('');
+    this.filtroTipo.set('');
+    this.filtroAntiguedad.set('');
+    this.resetearPaginacion();
   }
 
   verOrganizador(organizador: Organizador) {
@@ -155,48 +176,63 @@ export class TabOrganizadoresComponent implements OnInit {
   eliminarOrganizador(organizador: Organizador) {
     if (window.confirm(`¿Eliminar organizador ${organizador.nombre}?`)) {
       this.organizadores.update(items => items.filter(item => item.id !== organizador.id));
-      this.aplicarFiltros();
+      this.resetearPaginacion();
     }
   }
 
   obtenerIcono(tipo: TipoOrganizador) {
     switch(tipo){
-      case TipoOrganizador.ASOCIACION_CIVIL: return 'fas fa-hand-holding-heart'; break;
+      case TipoOrganizador.ASOCIACION_CIVIL: return 'fas fa-hand-holding-heart';
       case TipoOrganizador.EMPRESA_PUBLICA:
-      case TipoOrganizador.EMPRESA_PRIVADA: return 'fas fa-building'; break;
-      case TipoOrganizador.PERSONA_FISICA: return 'fas fa-user-tie'; break;
+      case TipoOrganizador.EMPRESA_PRIVADA: return 'fas fa-building';
+      case TipoOrganizador.PERSONA_FISICA: return 'fas fa-user-tie';
+      default: return 'fas fa-building';
     }
   }
 
   obtenerBadgeTipo(tipo: TipoOrganizador) {
     switch(tipo){
-      case TipoOrganizador.ASOCIACION_CIVIL: return 'badge-status asociacion'; break;
+      case TipoOrganizador.ASOCIACION_CIVIL: return 'badge-status asociacion';
       case TipoOrganizador.EMPRESA_PUBLICA:
-      case TipoOrganizador.EMPRESA_PRIVADA: return 'badge-status empresa'; break;
-      case TipoOrganizador.PERSONA_FISICA: return 'badge-status persona'; break;
+      case TipoOrganizador.EMPRESA_PRIVADA: return 'badge-status empresa';
+      case TipoOrganizador.PERSONA_FISICA: return 'badge-status persona';
+      default: return 'badge-status empresa';
     }
   }
 
   cambiarPorPagina() {
-    const datos = this.organizadores().slice(0, this.porPagina());
-    this._filtrado.update(() => [...datos]);
-    console.log("totalPaginas => ", this.totalPaginas());
+    this.resetearPaginacion();
   }
 
-  cambiarPagina(accion:string) {
-      const total = this.totalPaginas();
-      if (accion === 'primera') this.paginaActual.set(1);
-      else if (accion === 'anterior') this.paginaActual.set(Math.max(1, this.paginaActual() - 1));
-      else if (accion === 'siguiente') this.paginaActual.set(Math.min(total, this.paginaActual() + 1));
-      else if (accion === 'ultima') this.paginaActual.set(total);
-      // Navegar a pagina actual
-      this.irPagina(this.paginaActual());
+  cambiarPagina(accion: string) {
+    const total = this.totalPaginas();
+    if (total === 0) return;
+    
+    switch(accion) {
+      case 'primera':
+        this.paginaActual.set(1);
+        break;
+      case 'anterior':
+        this.paginaActual.set(Math.max(1, this.paginaActual() - 1));
+        break;
+      case 'siguiente':
+        this.paginaActual.set(Math.min(total, this.paginaActual() + 1));
+        break;
+      case 'ultima':
+        this.paginaActual.set(total);
+        break;
+    }
   }
 
-  irPagina(pagina:number) {
-    this.paginaActual.set(pagina);
-    const datos = this.organizadores().slice(this._filtrado().length-1, this.porPagina());
-    this._filtrado.update(() => [...datos]);
+  irPagina(pagina: number) {
+    const total = this.totalPaginas();
+    if (pagina >= 1 && pagina <= total) {
+      this.paginaActual.set(pagina);
+    }
+  }
+
+  private resetearPaginacion() {
+    this.paginaActual.set(1);
   }
 
   private limpiarFiltro() {
