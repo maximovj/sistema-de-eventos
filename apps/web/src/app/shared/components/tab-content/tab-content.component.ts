@@ -11,6 +11,7 @@ import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
 export class TabContentComponent {
   @Input() titulo: string = '';
   @Input() subtitulo: string = '';
+  @Input() breadcrumbItem: string = '';
   
   @ContentChild('breadcrumb') breadcrumbContent: any;
   hasBreadcrumb: boolean = false;

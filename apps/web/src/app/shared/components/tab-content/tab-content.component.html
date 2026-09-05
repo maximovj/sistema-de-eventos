@@ -14,7 +14,7 @@
         
         <ng-template #defaultBreadcrumb>
             <div class="breadcrumb">
-                <i class="fas fa-home"></i> {{titulo}} / <span>{{subtitulo}}</span>
+                <i class="fas fa-home"></i> {{titulo}} @if(breadcrumbItem.trim().length > 0 ) { / <span>{{breadcrumbItem}}</span> }
             </div>
         </ng-template>
     </div>
