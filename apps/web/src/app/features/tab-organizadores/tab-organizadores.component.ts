@@ -29,7 +29,7 @@ export class TabOrganizadoresComponent implements OnInit {
   public _filtrado = signal<Organizador[]>([]);
   public cargando = signal<boolean>(false);
   public paginaActual = signal<number>(1);
-  public pageSize = signal<number>(10);
+  public porPagina = signal<number>(10);
   public campoOrden = signal<string>('nombre');
   public ordenAsc = signal<boolean>(true);
   public thFiltro = signal<ThFiltro>({
@@ -54,6 +54,14 @@ export class TabOrganizadoresComponent implements OnInit {
 
   public total = computed(() => this.organizadores().length || 0);
   public totalFiltro = computed(() => this.organizadoresFiltro().length || 0);
+  public totalPaginas = computed(() => Math.ceil(this.organizadores().length / this.porPagina()));
+  public paginas = computed(() => {
+    return Array.from({ length: this.totalPaginas() }, (_, i) => i + 1);
+  });
+
+  public habilitarPaginacionAnterior = computed(()=> this.paginaActual() === 1 || this.totalPaginas() === 0);
+  public habilitarPaginacionSiguiente = computed(()=> this.paginaActual() === this.totalPaginas() || this.totalPaginas() === 0);
+
   public totalEmpresas = computed(() => this.organizadores()
     .filter(item => item.tipo == TipoOrganizador.EMPRESA_PRIVADA ||
             item.tipo == TipoOrganizador.EMPRESA_PUBLICA ).length || 0);
@@ -167,6 +175,28 @@ export class TabOrganizadoresComponent implements OnInit {
       case TipoOrganizador.EMPRESA_PRIVADA: return 'badge-status empresa'; break;
       case TipoOrganizador.PERSONA_FISICA: return 'badge-status persona'; break;
     }
+  }
+
+  cambiarPorPagina() {
+    const datos = this.organizadores().slice(0, this.porPagina());
+    this._filtrado.update(() => [...datos]);
+    console.log("totalPaginas => ", this.totalPaginas());
+  }
+
+  cambiarPagina(accion:string) {
+      const total = this.totalPaginas();
+      if (accion === 'primera') this.paginaActual.set(1);
+      else if (accion === 'anterior') this.paginaActual.set(Math.max(1, this.paginaActual() - 1));
+      else if (accion === 'siguiente') this.paginaActual.set(Math.min(total, this.paginaActual() + 1));
+      else if (accion === 'ultima') this.paginaActual.set(total);
+      // Navegar a pagina actual
+      this.irPagina(this.paginaActual());
+  }
+
+  irPagina(pagina:number) {
+    this.paginaActual.set(pagina);
+    const datos = this.organizadores().slice(this._filtrado().length-1, this.porPagina());
+    this._filtrado.update(() => [...datos]);
   }
 
   private limpiarFiltro() {

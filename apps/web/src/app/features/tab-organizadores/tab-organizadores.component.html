@@ -116,16 +116,20 @@
                 Mostrando <strong id="inicioMostrando">{{totalFiltro()}}</strong> - <strong id="finMostrando">{{totalFiltro()}}</strong> de <strong id="totalMostrando">{{total()}}</strong> organizadores
                 </div>
                 <div class="pagination" id="paginationControls">
-                <button type="button" id="btnPrimera" disabled><i class="fas fa-angle-double-left"></i></button>
-                <button type="button" id="btnAnterior" disabled><i class="fas fa-angle-left"></i></button>
-                <div id="paginacionNumeros" style="display:flex;gap:4px;align-items:center;"></div>
-                <button type="button" id="btnSiguiente" disabled><i class="fas fa-angle-right"></i></button>
-                <button type="button" id="btnUltima" disabled><i class="fas fa-angle-double-right"></i></button>
-                <select class="page-size-select" id="pageSizeSelect">
-                    <option value="5">5</option>
-                    <option value="10" selected>10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
+                <button type="button" (click)="cambiarPagina('primera')" [disabled]="habilitarPaginacionAnterior()"><i class="fas fa-angle-double-left"></i></button>
+                <button type="button" (click)="cambiarPagina('anterior')" [disabled]="habilitarPaginacionAnterior()"><i class="fas fa-angle-left"></i></button>
+                <div style="display:flex;gap:4px;align-items:center;">
+                    @for (pagina of paginas(); track $index) {
+                        <button [ngClass]="{'active': paginaActual() == pagina}" (click)="irPagina(pagina)">{{pagina}}</button>
+                    }
+                </div>
+                <button type="button" (click)="cambiarPagina('siguiente')" [disabled]="habilitarPaginacionSiguiente()"><i class="fas fa-angle-right"></i></button>
+                <button type="button" (click)="cambiarPagina('ultima')" [disabled]="habilitarPaginacionSiguiente()"><i class="fas fa-angle-double-right"></i></button>
+                <select class="page-size-select" [(ngModel)]="porPagina" (ngModelChange)="cambiarPorPagina()" >
+                    <option [ngValue]="5">5</option>
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="50">50</option>
                 </select>
                 </div>
             </div>
