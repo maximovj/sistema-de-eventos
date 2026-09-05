@@ -13,6 +13,9 @@
         @if (tabActive() == tabs.TabDashboard) {
             <app-tab-dashboard></app-tab-dashboard>
         }
+        @else if(tabActive() == tabs.TabOrganizadores){
+            <app-tab-organizadores></app-tab-organizadores>
+        }
         @else if (tabActive() == tabs.TabEventos) {
             <app-tab-eventos></app-tab-eventos>
         } @else {
