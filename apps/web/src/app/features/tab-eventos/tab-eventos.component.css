@@ -5,13 +5,6 @@
     margin-bottom: 1.5rem;
 }
 
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 1.5rem;
-}
-
 /* ============================================
        FILTROS (más compactos)
     ============================================ */
