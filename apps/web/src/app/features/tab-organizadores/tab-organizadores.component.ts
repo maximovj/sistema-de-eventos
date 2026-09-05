@@ -136,12 +136,27 @@ export class TabOrganizadoresComponent implements OnInit {
     this.aplicarFiltros();
   }
 
+  verOrganizador(organizador: Organizador) {
+    window.alert(`${organizador.nombre}\nRFC: ${organizador.rfc}`);
+  }
+
+  editarOrganizador(organizador: Organizador) {
+    window.alert(`Editar organizador: ${organizador.nombre}`);
+  }
+
+  eliminarOrganizador(organizador: Organizador) {
+    if (window.confirm(`¿Eliminar organizador ${organizador.nombre}?`)) {
+      this.organizadores.update(items => items.filter(item => item.id !== organizador.id));
+      this.aplicarFiltros();
+    }
+  }
+
   obtenerIcono(tipo: TipoOrganizador) {
     switch(tipo){
       case TipoOrganizador.ASOCIACION_CIVIL: return 'fas fa-hand-holding-heart'; break;
       case TipoOrganizador.EMPRESA_PUBLICA:
       case TipoOrganizador.EMPRESA_PRIVADA: return 'fas fa-building'; break;
-      case TipoOrganizador.PERSONA_FISICA: return 'fas fa-user-ti'; break;
+      case TipoOrganizador.PERSONA_FISICA: return 'fas fa-user-tie'; break;
     }
   }
 

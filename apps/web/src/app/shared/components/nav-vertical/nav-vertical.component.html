@@ -1,13 +1,13 @@
-<!-- NAVEGACIÓN VERTICAL -->
-<nav class="nav-vertical">
+<nav class="sidebar">
+    <div class="sidebar-title">Navegación</div>
     <div [attr.class]="isActive(tabs.TabDashboard)"  
         (click)="changeTab(tabs.TabDashboard)">
         <i class="fas fa-th-large"></i> Dashboard
     </div>
     <div [attr.class]="isActive(tabs.TabOrganizadores)"  
         (click)="changeTab(tabs.TabOrganizadores)">
-        <i class="fas fa-circle-user"></i> Organizadores
-        <span class="badge">12</span>
+        <i class="fas fa-users"></i> Organizadores
+        <span class="badge">6</span>
     </div>
     <div [attr.class]="isActive(tabs.TabEventos)"  
         (click)="changeTab(tabs.TabEventos)">
@@ -22,10 +22,6 @@
         (click)="changeTab(tabs.TabArtistas)">
         <i class="fas fa-microphone-alt"></i> Artistas
         <span class="badge rosa">78</span>
-    </div>
-    <div [attr.class]="isActive(tabs.TabActividades)" 
-        (click)="changeTab(tabs.TabActividades)">
-        <i class="fas fa-tasks"></i> Actividades
     </div>
     <div [attr.class]="isActive(tabs.TabVentas)" 
         (click)="changeTab(tabs.TabVentas)">
@@ -45,16 +41,12 @@
         (click)="changeTab(tabs.TabGastos)">
         <i class="fas fa-coins"></i> Gastos
     </div>
-    <div [attr.class]="isActive(tabs.TabStaff)" 
-        (click)="changeTab(tabs.TabStaff)">
-        <i class="fas fa-users"></i> Staff
-    </div>
+    <div class="divider"></div>
     <div [attr.class]="isActive(tabs.TabIncidencias)" 
         (click)="changeTab(tabs.TabIncidencias)">
         <i class="fas fa-exclamation-triangle"></i> Incidencias
         <span class="badge rosa">2</span>
     </div>
-    <div class="divider"></div>
     <div [attr.class]="isActive(tabs.TabConfiguracion)" 
         (click)="changeTab(tabs.TabConfiguracion)">
         <i class="fas fa-cog"></i> Configuración

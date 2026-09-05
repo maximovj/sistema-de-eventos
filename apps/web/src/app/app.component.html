@@ -1,14 +1,11 @@
-<!-- TOP HEADER -->
 <app-top-header></app-top-header>
 
-<!-- MAIN LAYOUT -->
 <div class="main-layout">
 
     <app-nav-vertical
         (onChangeTab)="handleTabActive($event)"
     ></app-nav-vertical>
 
-    <!-- CONTENIDO -->
     <div class="content">
         @if (tabActive() == tabs.TabDashboard) {
             <app-tab-dashboard></app-tab-dashboard>

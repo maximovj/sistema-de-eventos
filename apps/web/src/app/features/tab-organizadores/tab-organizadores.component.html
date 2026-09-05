@@ -1,4 +1,8 @@
 <app-tab-content titulo="Gestión de Organizadores" subtitulo="Administra todos los organizadores de los eventos del sistema">
+    <div breadcrumb class="actions">
+        <button class="btn-outline" type="button"><i class="fas fa-download"></i> Exportar</button>
+        <button class="btn-primary" type="button"><i class="fas fa-plus-circle"></i> Nuevo organizador</button>
+    </div>
     @if(cargando()){
         <lib-spinner size="medium" align="start"></lib-spinner>
     } @else {
@@ -94,9 +98,9 @@
                         <td><span style="font-size:0.8rem;">{{item.antiguedad}}</span></td>
                         <td style="text-align:center;">
                             <div class="card-actions">
-                            <button class="btn-ver" onclick="verOrganizador(14902)" title="Ver"><i class="fas fa-eye"></i></button>
-                            <button class="btn-edit" onclick="editarOrganizador(14902)" title="Editar"><i class="fas fa-edit"></i></button>
-                            <button onclick="eliminarOrganizador(14902)" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+                            <button class="btn-ver" type="button" (click)="verOrganizador(item)" title="Ver"><i class="fas fa-eye"></i></button>
+                            <button class="btn-edit" type="button" (click)="editarOrganizador(item)" title="Editar"><i class="fas fa-edit"></i></button>
+                            <button type="button" (click)="eliminarOrganizador(item)" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
                             </div>
                         </td>
                     </tr>
@@ -112,12 +116,12 @@
                 Mostrando <strong id="inicioMostrando">{{totalFiltro()}}</strong> - <strong id="finMostrando">{{totalFiltro()}}</strong> de <strong id="totalMostrando">{{total()}}</strong> organizadores
                 </div>
                 <div class="pagination" id="paginationControls">
-                <button onclick="cambiarPagina('primera')" id="btnPrimera" disabled><i class="fas fa-angle-double-left"></i></button>
-                <button onclick="cambiarPagina('anterior')" id="btnAnterior" disabled><i class="fas fa-angle-left"></i></button>
+                <button type="button" id="btnPrimera" disabled><i class="fas fa-angle-double-left"></i></button>
+                <button type="button" id="btnAnterior" disabled><i class="fas fa-angle-left"></i></button>
                 <div id="paginacionNumeros" style="display:flex;gap:4px;align-items:center;"></div>
-                <button onclick="cambiarPagina('siguiente')" id="btnSiguiente" disabled><i class="fas fa-angle-right"></i></button>
-                <button onclick="cambiarPagina('ultima')" id="btnUltima" disabled><i class="fas fa-angle-double-right"></i></button>
-                <select class="page-size-select" id="pageSizeSelect" onchange="cambiarPageSize()">
+                <button type="button" id="btnSiguiente" disabled><i class="fas fa-angle-right"></i></button>
+                <button type="button" id="btnUltima" disabled><i class="fas fa-angle-double-right"></i></button>
+                <select class="page-size-select" id="pageSizeSelect">
                     <option value="5">5</option>
                     <option value="10" selected>10</option>
                     <option value="25">25</option>

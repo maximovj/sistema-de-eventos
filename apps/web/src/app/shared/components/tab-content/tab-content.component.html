@@ -1,4 +1,3 @@
-<!-- CONTENIDO -->
 <div class="content">
 
     <!-- PAGE HEADER -->
@@ -7,7 +6,6 @@
             <h1>{{titulo}}<small>{{subtitulo}}</small></h1>
         </div>
         
-        <!-- Si hay breadcrumb proyectado, usarlo; si no, usar el por defecto -->
         <ng-container *ngIf="hasBreadcrumb; else defaultBreadcrumb">
             <ng-content select="[breadcrumb]"></ng-content>
         </ng-container>
