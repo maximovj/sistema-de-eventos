@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatGridComponent } from './stat-grid.component';
+import { ModalLayoutComponent } from './modal-layout.component';
 
-describe('StatGridComponent', () => {
-  let component: StatGridComponent;
-  let fixture: ComponentFixture<StatGridComponent>;
+describe('ModalLayoutComponent', () => {
+  let component: ModalLayoutComponent;
+  let fixture: ComponentFixture<ModalLayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StatGridComponent]
+      imports: [ModalLayoutComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(StatGridComponent);
+    fixture = TestBed.createComponent(ModalLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

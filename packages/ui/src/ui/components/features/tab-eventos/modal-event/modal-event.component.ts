@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'lib-modal-event',
+  selector: 'ui-modal-event',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './modal-event.component.html',

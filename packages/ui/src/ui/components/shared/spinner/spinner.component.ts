@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'lib-spinner',
+  selector: 'ui-spinner',
   standalone: true,
   imports: [],
   templateUrl: './spinner.component.html',

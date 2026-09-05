@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'lib-event-card',
+  selector: 'ui-event-card',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './event-card.component.html',

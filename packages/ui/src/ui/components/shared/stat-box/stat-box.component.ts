@@ -1,16 +1,15 @@
-import { CommonModule } from '@angular/common';
-import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 type Color = 'purple' | 'pink' | 'blue' | 'green';
 
 @Component({
-  selector: 'lib-stat-grid',
+  selector: 'ui-stat-box',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './stat-grid.component.html',
-  styleUrl: './stat-grid.component.css'
+  imports: [],
+  templateUrl: './stat-box.component.html',
+  styleUrl: './stat-box.component.css'
 })
-export class StatGridComponent {
+export class StatBoxComponent {
   @Input() titulo: string | null = null;
   @Input() valor: string | number | null = null;
   @Input() subtitulo: string | null = null;
