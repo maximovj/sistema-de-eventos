@@ -30,16 +30,25 @@ export class TabEventosComponent implements OnInit {
   modalTitulo: string = 'Detalle del evento';
 
   public bolentosVendidos = computed(() => this.eventos().reduce(
-    (acc, evento) => acc+evento.boletosVendidos, 0).toLocaleString('es-MX')
-  );
+    (acc, evento) => acc + evento.boletosVendidos, 0
+  ).toLocaleString('es-MX', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }));
 
   public presupuestoEjercido = computed(() => this.eventos().reduce(
-    (acc, evento) => acc+evento.presupuestoEjercido, 0).toLocaleString('es-MX')
-  );
+    (acc, evento) => acc + evento.presupuestoEjercido, 0
+  ).toLocaleString('es-MX', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }));
 
   public presupuestoTotal = computed(() => this.eventos().reduce(
-    (acc, evento) => acc+evento.presupuestoTotal, 0).toLocaleString('es-MX')
-  );
+    (acc, evento) => acc + evento.presupuestoTotal, 0
+  ).toLocaleString('es-MX', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }));
   
   ngOnInit(): void {
     this.cargarEventos();
