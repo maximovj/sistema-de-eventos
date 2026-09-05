@@ -46,11 +46,10 @@ export class TabOrganizadoresComponent implements OnInit {
   // Estados/Funciones computadas
   public organizadoresFiltro = computed(() => {
     const items = this._filtrado();
-    if(items.length <= 0 && 
-      !this.filtroBusqueda() && 
+    if(!this.filtroBusqueda() && 
       !this.filtroTipo() && 
       !this.filtroAntiguedad()) return this.organizadores();
-    else return items;
+    else return items.length <= 0 ? this.organizadores() : items;
   });
 
   public total = computed(() => this.organizadores().length || 0);
