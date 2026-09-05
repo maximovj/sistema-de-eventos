@@ -62,11 +62,11 @@
                 <table>
                 <thead>
                     <tr>
-                    <th onclick="ordenarPor('nombre')" id="thNombre">Organizador <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th onclick="ordenarPor('tipo')" id="thTipo">Tipo <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th onclick="ordenarPor('contacto_nombre')" id="thContacto">Contacto <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th onclick="ordenarPor('telefono')" id="thTelefono">Teléfono <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th onclick="ordenarPor('antiguedad')" id="thAntiguedad">Antigüedad <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                    <th (click)="ordenarPor('nombre')" class="asc">Organizador <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                    <th (click)="ordenarPor('tipo')">Tipo <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                    <th (click)="ordenarPor('contacto_nombre')">Contacto <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                    <th (click)="ordenarPor('telefono')">Teléfono <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                    <th (click)="ordenarPor('antiguedad')">Antigüedad <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
                     <th style="text-align:center;">Acciones</th>
                     </tr>
                 </thead>

@@ -23,8 +23,14 @@ import { delay } from 'rxjs';
 })
 export class TabOrganizadoresComponent implements OnInit {
   private service = inject(OrganizadoresService);
+
+  // Estados signals
   public organizadores = signal<Organizador[]>([]);
   public cargando = signal<boolean>(false);
+  public paginaActual = signal<number>(1);
+  public pageSize = signal<number>(10);
+  public campoOrden = signal<string>('nombre');
+  public ordenAsc = signal<boolean>(true);
 
   // Estados/Funciones computadas
   public total = computed(() => this.organizadores().length || 0);
@@ -49,10 +55,34 @@ export class TabOrganizadoresComponent implements OnInit {
     .subscribe({
       next: (data: Organizador[]) => {
         this.organizadores.set(data);
+        this.ordenarPor('nombre');
+        this.ordenarPor('nombre');
       },
       complete: () => {
         this.cargando.set(false);
       }
+    });
+  }
+
+  ordenarPor(campo:string) {
+    if (this.campoOrden() === campo) {
+      this.ordenAsc.update(() => !this.ordenAsc());
+    } else {
+      this.campoOrden.set(campo);
+      this.ordenAsc.update(() => true);
+    }
+    this.ordenarDatos();
+  }
+
+  ordenarDatos() {
+    this.organizadores().sort((a: Organizador, b: Organizador) => {
+      let valA = a['nombre'] || '';
+      let valB = b['nombre'] || '';
+      if (typeof valA === 'string') valA = valA.toLowerCase();
+      if (typeof valB === 'string') valB = valB.toLowerCase();
+      if (valA < valB) return this.ordenAsc() ? -1 : 1;
+      if (valA > valB) return this.ordenAsc() ? 1 : -1;
+      return 0;
     });
   }
 
