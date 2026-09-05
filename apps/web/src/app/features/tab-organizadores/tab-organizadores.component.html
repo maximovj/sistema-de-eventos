@@ -35,7 +35,7 @@
             <div class="filter-group">
                 <i class="fas fa-tag"></i>
                 <select id="filtroTipo" [(ngModel)]="filtroTipo">
-                <option [ngValue]="''">Todos los tipos</option>
+                <option [ngValue]="null">Todos los tipos</option>
                 <option [ngValue]="'EMPRESA_PRIVADA'">Empresa privada</option>
                 <option [ngValue]="'EMPRESA_PUBLICA'">Empresa pública</option>
                 <option [ngValue]="'ASOCIACION_CIVIL'">Asociación civil</option>
@@ -45,7 +45,7 @@
             <div class="filter-group">
                 <i class="fas fa-clock"></i>
                 <select id="filtroAntiguedad" [(ngModel)]="filtroAntiguedad">
-                <option [ngValue]="''">Todas las antigüedades</option>
+                <option [ngValue]="null">Todas las antigüedades</option>
                 <option [ngValue]="'5'">+5 años</option>
                 <option [ngValue]="'10'">+10 años</option>
                 <option [ngValue]="'15'">+15 años</option>

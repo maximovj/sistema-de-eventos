@@ -40,8 +40,8 @@ export class TabOrganizadoresComponent implements OnInit {
     antiguedad: null,
   });
   public filtroBusqueda = signal<string|null>(null);
-  public filtroTipo = signal<string|null>('');
-  public filtroAntiguedad = signal<string>('');
+  public filtroTipo = signal<string|null>(null);
+  public filtroAntiguedad = signal<string|null>(null);
 
   // Estados/Funciones computadas
   public organizadoresFiltro = computed(() => {
@@ -122,7 +122,7 @@ export class TabOrganizadoresComponent implements OnInit {
         if (this.filtroTipo() && org.tipo !== this.filtroTipo()) return false;
         // Antigüedad
         if (this.filtroAntiguedad()) {
-          if (parseInt(org.antiguedad) <= parseInt(this.filtroAntiguedad())) return false;
+          if (parseInt(org.antiguedad) <= parseInt(this.filtroAntiguedad()||'')) return false;
         }
         return true;
     });
@@ -131,8 +131,8 @@ export class TabOrganizadoresComponent implements OnInit {
 
   limpiarFiltros() {
     this.filtroBusqueda.set(null);
-    this.filtroTipo.set('');
-    this.filtroAntiguedad.set('');
+    this.filtroTipo.set(null);
+    this.filtroAntiguedad.set(null);
     this.aplicarFiltros();
   }
 
