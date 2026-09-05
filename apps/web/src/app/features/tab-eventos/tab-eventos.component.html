@@ -1,5 +1,5 @@
 <app-tab-content titulo="Gestión de Eventos" subtitulo="Administra todos los eventos del sistema">
-    <ng-template #breadcrumb>
+    <div breadcrumb #breadcrumb>
         <!-- PAGE HEADER -->
         <div class="actions">
             <button class="btn-outline"><i class="fas fa-download"></i> Exportar</button>
@@ -7,7 +7,7 @@
                 <i class="fas fa-plus-circle"></i> Nuevo evento
             </button>
         </div>
-    </ng-template>
+    </div>
 
     @if (cargando()) {
         <lib-spinner size="medium" align="start"></lib-spinner>

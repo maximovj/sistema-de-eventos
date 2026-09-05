@@ -246,6 +246,13 @@ body {
     display: block;
 }
 
+.page-header .actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .page-header .breadcrumb {
     font-size: 0.8rem;
     color: #888;
