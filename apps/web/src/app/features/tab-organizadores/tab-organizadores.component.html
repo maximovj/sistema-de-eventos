@@ -79,11 +79,11 @@
                     <tr>
                         <td>
                             <div class="organizador-chip">
-                            <span class="nombre"><i class="fas fa-hand-holding-heart" style="color:#7c3aed;width:18px;"></i> {{ item.nombre }}</span>
+                            <span class="nombre"><i [attr.class]="obtenerIcono(item.tipo)" style="color:#7c3aed;width:18px;"></i> {{ item.nombre }}</span><br/>
                             <span class="rfc">RFC: {{item.rfc}}</span>
                             </div>
                         </td>
-                        <td><span class="badge-status asociacion">{{item.tipo}}</span></td>
+                        <td><span [attr.class]="obtenerBadgeTipo(item.tipo)" >{{item.tipo}}</span></td>
                         <td>
                             <div style="display:flex;flex-direction:column;gap:1px;">
                             <span style="font-weight:500;font-size:0.8rem;">{{item.contacto_nombre}}</span>
