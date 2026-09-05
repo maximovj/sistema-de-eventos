@@ -53,7 +53,7 @@ export class TabOrganizadoresComponent implements OnInit {
   });
 
   public total = computed(() => this.organizadores().length || 0);
-  public totalFiltro = computed(() => this._filtrado().length || 0);
+  public totalFiltro = computed(() => this.organizadoresFiltro().length || 0);
   public totalEmpresas = computed(() => this.organizadores()
     .filter(item => item.tipo == TipoOrganizador.EMPRESA_PRIVADA ||
             item.tipo == TipoOrganizador.EMPRESA_PUBLICA ).length || 0);
