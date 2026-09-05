@@ -22,19 +22,19 @@
             faIcon="fa-calendar-alt" />
         <lib-stat-grid 
             titulo="Boletos vendidos" 
-            [valor]="bolentosVendidos()" 
-            colorIcon="purple"
-            faIcon="fa-ticket-alt" />
+            [valor]="'$'+bolentosVendidos()" 
+            colorIcon="pink"
+            faIcon="fas fa-ticket-alt" />
         <lib-stat-grid 
             titulo="Presupuesto total" 
-            [valor]="presupuestoTotal()" 
-            colorIcon="purple"
-            faIcon="fa-ticket-alt" />
+            [valor]="'$'+presupuestoTotal()" 
+            colorIcon="blue"
+            faIcon="fas fa-microphone" />
         <lib-stat-grid 
             titulo="Presupuesto total" 
-            [valor]="presupuestoEjercido()" 
+            [valor]="'$'+presupuestoEjercido()" 
             subtitulo="Presupuesto ejercido"
-            colorIcon="purple"
+            colorIcon="green"
             faIcon="fa-ticket-alt" />
     </div>
 

@@ -30,7 +30,7 @@ export class TabEventosComponent implements OnInit {
   modalTitulo: string = 'Detalle del evento';
 
   public bolentosVendidos = computed(() => this.eventos().reduce(
-    (acc, evento) => acc+evento.boletosVendidos, 0)
+    (acc, evento) => acc+evento.boletosVendidos, 0).toLocaleString('es-MX')
   );
 
   public presupuestoEjercido = computed(() => this.eventos().reduce(
