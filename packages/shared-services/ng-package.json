@@ -1,0 +1,10 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "./dist/shared-services",
+  "allowedNonPeerDependencies": [
+    "@repo/shared-types"
+  ],
+  "lib": {
+    "entryFile": "src/index.ts"
+  }
+}
