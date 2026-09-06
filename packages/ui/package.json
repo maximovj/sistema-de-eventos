@@ -14,6 +14,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .angular"
   },
   "peerDependencies": {
+    "@repo/shared-services": "*",
     "@angular/common": "^17.3.0",
     "@angular/core": "^17.3.0",
     "@angular/forms": "^17.3.0",

@@ -41,6 +41,11 @@
             ]
           }
         }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "path": "src/ui"
+        }
       }
     }
   }
