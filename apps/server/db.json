@@ -1,7 +1,7 @@
 {
   "organizadores": [
     {
-      "id": 8923,
+      "id": "8923",
       "tipo": "EMPRESA_PRIVADA",
       "nombre": "Producciones Élite S.A. de C.V.",
       "rfc": "PES890213XYZ",
@@ -15,7 +15,7 @@
       "contacto_celular": "55-1234-5678"
     },
     {
-      "id": 10245,
+      "id": "10245",
       "tipo": "ASOCIACION_CIVIL",
       "nombre": "Fundación Cultural Azteca A.C.",
       "rfc": "FCA950714ABC",
@@ -29,7 +29,7 @@
       "contacto_celular": "55-8765-4321"
     },
     {
-      "id": 11578,
+      "id": "11578",
       "tipo": "EMPRESA_PRIVADA",
       "nombre": "Eventos Magnos S.A. de C.V.",
       "rfc": "EMA920831DEF",
@@ -43,7 +43,7 @@
       "contacto_celular": "55-2345-6789"
     },
     {
-      "id": 12634,
+      "id": "12634",
       "tipo": "PERSONA_FISICA",
       "nombre": "María Elena Castro Solís",
       "rfc": "CAS750623GHI",
@@ -57,7 +57,7 @@
       "contacto_celular": "81-2345-6789"
     },
     {
-      "id": 13789,
+      "id": "13789",
       "tipo": "EMPRESA_PRIVADA",
       "nombre": "Grupo Festivo Internacional S.A.P.I. de C.V.",
       "rfc": "GFI881115JKL",
@@ -71,7 +71,7 @@
       "contacto_celular": "33-9876-5432"
     },
     {
-      "id": 14902,
+      "id": "14902",
       "tipo": "ASOCIACION_CIVIL",
       "nombre": "Asociación de Ferias y Exposiciones de México A.C.",
       "rfc": "AFE920301MNO",
@@ -83,12 +83,54 @@
       "contacto_cargo": "Presidente",
       "contacto_telefono": "555-456-1234",
       "contacto_celular": "55-5678-9012"
+    },
+    {
+      "id": "14903",
+      "tipo": "ASOCIACION_CIVIL",
+      "nombre": "Eum dolorum sit nobi",
+      "rfc": "Voluptas iste ut deb",
+      "telefono": "Deserunt ea nostrum ",
+      "email": "sapup@mailinator.com",
+      "direccion": "Et dolore ut officia",
+      "antiguedad": "Consectetur esse p",
+      "contacto_nombre": "",
+      "contacto_cargo": "",
+      "contacto_telefono": "",
+      "contacto_celular": ""
+    },
+    {
+      "id": "14904",
+      "tipo": "ASOCIACION_CIVIL",
+      "nombre": "Et nihil reprehender",
+      "rfc": "Eveniet quia eum su",
+      "telefono": "Est quae assumenda d",
+      "email": "gyneq@mailinator.com",
+      "direccion": "Incididunt impedit ",
+      "antiguedad": "Voluptatibus qui inc",
+      "contacto_nombre": "",
+      "contacto_cargo": "",
+      "contacto_telefono": "",
+      "contacto_celular": ""
+    },
+    {
+      "id": "14905",
+      "tipo": "EMPRESA_PRIVADA",
+      "nombre": "Necessitatibus elit",
+      "rfc": "Quo qui in eiusmod a",
+      "telefono": "Non excepteur et cor",
+      "email": "wygaga@mailinator.com",
+      "direccion": "Accusamus amet inve",
+      "antiguedad": "In quibusdam quod cu",
+      "contacto_nombre": "",
+      "contacto_cargo": "",
+      "contacto_telefono": "",
+      "contacto_celular": ""
     }
   ],
   "eventos": [
     {
       "id": "235",
-      "organizadorId": 7456,
+      "organizadorId": "7456",
       "nombreEvento": "Cumbre de Innovación Tecnológica LATAM 2026",
       "tipoEvento": "CONFERENCIA",
       "categoria": "TECNOLOGICO",
@@ -97,7 +139,7 @@
       "fechaFin": "2026-11-07T18:00:00.000Z",
       "fechaApertura": "2026-11-05T07:30:00.000Z",
       "fechaCierre": "2026-11-07T20:00:00.000Z",
-      "presupuestoTotal": 8750000.00,
+      "presupuestoTotal": 8750000,
       "presupuestoEjercido": 3120000.25,
       "estatus": "EN_PREPARACION",
       "etapaActual": "PLANEACION",
@@ -112,7 +154,7 @@
     },
     {
       "id": "236",
-      "organizadorId": 10234,
+      "organizadorId": "10234",
       "nombreEvento": "Maratón Internacional CDMX 2026",
       "tipoEvento": "FERIA",
       "categoria": "DEPORTIVO",
@@ -121,7 +163,7 @@
       "fechaFin": "2026-12-06T18:00:00.000Z",
       "fechaApertura": "2026-12-06T04:30:00.000Z",
       "fechaCierre": "2026-12-06T20:00:00.000Z",
-      "presupuestoTotal": 6500000.00,
+      "presupuestoTotal": 6500000,
       "presupuestoEjercido": 1850000.75,
       "estatus": "EN_PREPARACION",
       "etapaActual": "LOGISTICA_Y_MONTAJE",
@@ -136,7 +178,7 @@
     },
     {
       "id": "237",
-      "organizadorId": 5678,
+      "organizadorId": "5678",
       "nombreEvento": "Expo Gastronómica y Vino 2026",
       "tipoEvento": "EXPOSICION",
       "categoria": "SOCIAL",
@@ -145,8 +187,8 @@
       "fechaFin": "2026-09-27T22:00:00.000Z",
       "fechaApertura": "2026-09-25T10:00:00.000Z",
       "fechaCierre": "2026-09-28T00:00:00.000Z",
-      "presupuestoTotal": 4300000.00,
-      "presupuestoEjercido": 3980000.00,
+      "presupuestoTotal": 4300000,
+      "presupuestoEjercido": 3980000,
       "estatus": "EN_CURSO",
       "etapaActual": "EJECUCION",
       "descripcion": "Exposición con más de 80 stands de restaurantes, bodegas vinícolas, productores artesanales y demostraciones culinarias en vivo. Incluye catas dirigidas por sommeliers.",
@@ -160,7 +202,7 @@
     },
     {
       "id": "238",
-      "organizadorId": 9876,
+      "organizadorId": "9876",
       "nombreEvento": "Foro de Emprendimiento y Startups 2026",
       "tipoEvento": "TALLER",
       "categoria": "EDUCATIVO",
@@ -169,14 +211,14 @@
       "fechaFin": "2026-12-03T20:00:00.000Z",
       "fechaApertura": "2026-12-01T14:30:00.000Z",
       "fechaCierre": "2026-12-03T21:00:00.000Z",
-      "presupuestoTotal": 2800000.00,
-      "presupuestoEjercido": 980000.00,
+      "presupuestoTotal": 2800000,
+      "presupuestoEjercido": 980000,
       "estatus": "EN_PREPARACION",
       "etapaActual": "PLANEACION",
       "descripcion": "Foro virtual con 15 sesiones magistrales, 8 talleres prácticos y rondas de networking. Enfocado en emprendimiento, financiamiento, metodologías ágiles y casos de éxito.",
       "capacidadMaxima": 3000,
       "boletosVendidos": 2150,
-      "porcentajeAvance": 35.0,
+      "porcentajeAvance": 35,
       "creadoPor": "Daniel Vargas Peña",
       "fechaCreacion": "2026-07-05T09:30:00.000Z",
       "actualizadoPor": "Daniel Vargas Peña",
@@ -184,7 +226,7 @@
     },
     {
       "id": "239",
-      "organizadorId": 4567,
+      "organizadorId": "4567",
       "nombreEvento": "Gala Benéfica Navideña 2026",
       "tipoEvento": "CONCIERTO",
       "categoria": "SOCIAL",
@@ -193,14 +235,14 @@
       "fechaFin": "2026-12-21T01:00:00.000Z",
       "fechaApertura": "2026-12-20T18:00:00.000Z",
       "fechaCierre": "2026-12-21T02:30:00.000Z",
-      "presupuestoTotal": 3200000.00,
-      "presupuestoEjercido": 1500000.00,
+      "presupuestoTotal": 3200000,
+      "presupuestoEjercido": 1500000,
       "estatus": "EN_PREPARACION",
       "etapaActual": "PROMOCION",
       "descripcion": "Cena de gala con subasta silenciosa, música en vivo y actividades para recaudar fondos destinados a programas de alimentación infantil en comunidades vulnerables. Capacidad para 500 asistentes.",
       "capacidadMaxima": 500,
       "boletosVendidos": 280,
-      "porcentajeAvance": 47.0,
+      "porcentajeAvance": 47,
       "creadoPor": "Gabriela del Pozo",
       "fechaCreacion": "2026-08-01T12:00:00.000Z",
       "actualizadoPor": "Gabriela del Pozo",
@@ -209,8 +251,8 @@
   ],
   "sedes": [
     {
-      "id": 12,
-      "eventoId": 234,
+      "id": "12",
+      "eventoId": "234",
       "nombre": "Centro de Convenciones Metropolitano",
       "direccion": "Av. Insurgentes Sur 3000, Colonia Del Valle, CDMX",
       "capacidad": 12000,
@@ -225,7 +267,7 @@
       "tieneIluminacion": true,
       "tieneProyectores": true,
       "tieneCamaras": true,
-      "costoRenta": 450000.00,
+      "costoRenta": 450000,
       "fechaInicioOcupacion": "2026-10-10T08:00:00.000Z",
       "fechaFinOcupacion": "2026-10-21T20:00:00.000Z",
       "responsable": "Ing. Ricardo Fuentes Mena"
@@ -233,8 +275,8 @@
   ],
   "artistas": [
     {
-      "id": 78,
-      "eventoId": 234,
+      "id": "78",
+      "eventoId": "234",
       "nombre": "María Belén Acosta",
       "nombreArtistico": "Belén Soul",
       "tipoArtista": "MUSICO_CANTANTE",
@@ -246,11 +288,11 @@
       "paginaWeb": "www.belensoul.com",
       "instagram": "@belen.soul",
       "spotify": "belen-soul",
-      "cache": 85000.00,
-      "costoTransporte": 15000.00,
-      "costoHospedaje": 25000.00,
-      "costoAlimentacion": 5000.00,
-      "costoTotal": 130000.00,
+      "cache": 85000,
+      "costoTransporte": 15000,
+      "costoHospedaje": 25000,
+      "costoAlimentacion": 5000,
+      "costoTotal": 130000,
       "fechaPresentacion": "2026-10-15T20:00:00.000Z",
       "duracionPresentacion": 90,
       "requiereTecnicos": 3,
@@ -263,9 +305,9 @@
   ],
   "actividades": [
     {
-      "id": 456,
-      "eventoId": 234,
-      "sedeId": 12,
+      "id": "456",
+      "eventoId": "234",
+      "sedeId": "12",
       "nombre": "Montaje de escenario principal",
       "descripcion": "Instalación de estructura, sonido, iluminación y pantallas LED",
       "tipo": "LOGISTICA",
@@ -280,15 +322,15 @@
   ],
   "ventas": [
     {
-      "id": 567,
-      "eventoId": 234,
+      "id": "567",
+      "eventoId": "234",
       "tipoBoleto": "VIP",
       "nombreBoleto": "Pase VIP - Acceso a todas las áreas",
-      "precio": 3500.00,
+      "precio": 3500,
       "cantidadDisponible": 1000,
       "cantidadVendida": 876,
       "cantidadApartada": 124,
-      "montoTotal": 3066000.00,
+      "montoTotal": 3066000,
       "porcentajeVendido": 87.6,
       "fechaInicioVenta": "2026-07-01T09:00:00.000Z",
       "fechaFinVenta": "2026-10-14T23:59:00.000Z",
@@ -298,15 +340,15 @@
   ],
   "proveedores": [
     {
-      "id": 34,
-      "eventoId": 234,
+      "id": "34",
+      "eventoId": "234",
       "nombre": "Sonido Profesional del Centro",
       "tipo": "EQUIPO_SONIDO",
       "contacto": "Ing. Luis Fernández",
       "telefono": "555-789-1234",
       "email": "ventas@sonidoprofesional.com",
       "servicio": "Renta de sistema de sonido línea array, monitores y mezcladores",
-      "costo": 280000.00,
+      "costo": 280000,
       "fechaEntrega": "2026-10-11T08:00:00.000Z",
       "fechaDevolucion": "2026-10-20T18:00:00.000Z",
       "estatus": "CONTRATADO"
@@ -314,11 +356,11 @@
   ],
   "patrocinadores": [
     {
-      "id": 56,
-      "eventoId": 234,
+      "id": "56",
+      "eventoId": "234",
       "nombre": "Cervecería Modelo",
       "tipo": "PATROCINADOR_MASTER",
-      "monto": 1500000.00,
+      "monto": 1500000,
       "beneficios": "Exclusividad en cervezas, branding en todas las áreas, 2 zonas de activación, presencia en redes sociales",
       "contacto": "Lic. Eduardo Torres",
       "telefono": "555-123-4567",
@@ -329,12 +371,12 @@
   ],
   "gastos": [
     {
-      "id": 1234,
-      "eventoId": 234,
+      "id": "1234",
+      "eventoId": "234",
       "categoria": "LOGISTICA",
       "concepto": "Renta de centro de convenciones",
       "descripcion": "Primer pago - 50% del total",
-      "monto": 225000.00,
+      "monto": 225000,
       "fecha": "2026-07-15T10:00:00.000Z",
       "proveedor": "Centro de Convenciones Metropolitano",
       "metodoPago": "TRANSFERENCIA",
@@ -344,8 +386,8 @@
   ],
   "staff": [
     {
-      "id": 567,
-      "eventoId": 234,
+      "id": "567",
+      "eventoId": "234",
       "nombre": "Miguel Ángel Herrera",
       "puesto": "Coordinador de Producción",
       "area": "PRODUCCION",
@@ -353,15 +395,15 @@
       "email": "miguel.herrera@produccion.com",
       "horarioInicio": "2026-10-10T08:00:00.000Z",
       "horarioFin": "2026-10-20T20:00:00.000Z",
-      "salario": 6000.00,
+      "salario": 6000,
       "tipoContrato": "TEMPORAL",
       "estatus": "ACTIVO"
     }
   ],
   "incidencias": [
     {
-      "id": 78,
-      "eventoId": 234,
+      "id": "78",
+      "eventoId": "234",
       "fecha": "2026-08-15T16:30:00.000Z",
       "tipo": "CANCELACION_ARTISTA",
       "descripcion": "El artista internacional 'The Groove Collective' canceló su participación por problemas de agenda",
