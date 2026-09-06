@@ -13,21 +13,24 @@ un sistema de gestión de eventos con organización, sedes, artistas, actividade
 
 ### Levantar apps modo desarrollador usando monorepo
 
+La forma segura de arrancar es construir primero las librerías:
+
 ```shell
 # Desde la raíz
 npm install
-npm run check-types --workspace=@repo/shared-types # Verificar tipos
-npx turbo build check-types # Construir
-npm run start:ui  # o también npx turbo run start --filter=@repo/ui --only
-npm run start # o también npx turbo run start --filter=web --filter=server --only
+npm run build --workspace=@repo/shared-services
+npm run build --workspace=@repo/ui
+npm run start
 
-# reconstruir componentes
-npx turbo build --filter=@repo/ui # reconstruir componentes ui
-npx turbo build --filter=web # reconstruir componentes web
+```
 
-# Levantar modo demo (sin desarrollo)
-npx turbo build check-types # Construir
-npx turbo start # o también npm run start 
+O ejecutar todo el build antes:
+
+```shell
+# Desde la raíz
+npm install
+npx turbo build
+npm run start
 ```
 
 ### Construir apps modo desarrollador usando monorepo
