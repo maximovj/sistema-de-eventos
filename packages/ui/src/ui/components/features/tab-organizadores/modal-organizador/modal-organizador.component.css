@@ -1,0 +1,16 @@
+.view-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+.view-item { display: flex; flex-direction: column; gap: 2px; }
+.view-item .label { font-size: 0.6rem; text-transform: uppercase; color: #888; font-weight: 600; }
+.view-item .value { font-size: 0.95rem; font-weight: 500; color: #1a1a1a; }
+.view-full { grid-column: 1 / -1; }
+.form-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #f0edf5; }
+.form-group { display: flex; flex-direction: column; gap: 4px; }
+.form-group label { font-size: 0.65rem; text-transform: uppercase; color: #7c3aed; font-weight: 600; }
+.form-group input, .form-group select {
+    width: 100%; padding: 0.5rem 0.9rem; border-radius: 10px; border: 1px solid #d6cce6;
+    background: #fcfaff; font-size: 0.85rem;
+}
+.form-group input:focus, .form-group select:focus {
+    outline: none; border-color: #7c3aed; box-shadow: 0 0 0 3px rgba(124,58,237,0.08);
+}
+

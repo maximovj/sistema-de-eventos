@@ -1,7 +1,7 @@
 import { TipoOrganizador } from "../enums/tipo-organizador.enum";
 
 export interface Organizador {
-  id: number;
+  id: string;
   tipo: TipoOrganizador;
   nombre: string;
   rfc: string;

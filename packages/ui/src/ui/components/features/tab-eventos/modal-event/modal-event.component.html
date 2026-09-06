@@ -1,27 +1,13 @@
-<div class="modal-overlay" [class.active]="isOpen">
-  <div class="modal">
-    <!-- Modal Header -->
-    <div class="modal-header">
-      <h2>
-        <i class="fas" [class.fa-eye]="mode === 'view'" 
-           [class.fa-plus-circle]="mode === 'create'"
-           [class.fa-edit]="mode === 'edit'"></i>
-        {{ mode === 'view' ? 'Detalle del Evento' : 
-           mode === 'create' ? 'Nuevo Evento' : 'Editar Evento' }}
-      </h2>
-      <button class="modal-close" (click)="onClose()">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-
-    <!-- Modal Body -->
-    <div class="modal-body">
+<ui-modal-layout [isOpen]="isOpen" [mode]="mode"
+  [title]="mode === 'view' ? 'Detalle del Evento' : mode === 'create' ? 'Nuevo Evento' : 'Editar Evento'"
+  [icons]="{ view: 'fa-calendar-day', create: 'fa-calendar-plus', edit: 'fa-calendar-pen' }"
+  (close)="onClose()">
       <!-- MODO VER -->
       @if (mode === 'view' && event) {
         <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 1.2rem;">
           <div>
             <h2 style="font-size: 1.2rem; font-weight: 700; color: #1a1a1a;">
-              🎪 {{ event.title }}
+              <i class="fas fa-calendar-day" aria-hidden="true"></i> {{ event.nombreEvento }}
             </h2>
             <div style="display: flex; gap: 12px; font-size: 0.8rem; color: #666; margin-top: 4px;">
               <span><i class="fas fa-hashtag" style="color:#7c3aed;"></i> #{{ event.id }}</span>
@@ -180,6 +166,4 @@
           </div>
         </form>
       }
-    </div>
-  </div>
-</div>
+</ui-modal-layout>

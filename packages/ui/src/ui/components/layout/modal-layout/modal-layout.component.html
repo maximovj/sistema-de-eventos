@@ -1,1 +1,17 @@
-<p>modal-layout works!</p>
+<div class="modal-overlay" [class.active]="isOpen" (click)="onClose()">
+  <section class="modal" role="dialog" aria-modal="true" [attr.aria-label]="title" (click)="$event.stopPropagation()" [ngClass]="{'modal-sm': mode==='delete'}">
+    <header class="modal-header">
+      <h2>
+        <i class="fas" [ngClass]="headerIcon" aria-hidden="true"></i>
+        {{ title }}
+      </h2>
+      <button class="modal-close" type="button" aria-label="Cerrar modal" (click)="onClose()">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+    </header>
+
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+  </section>
+</div>

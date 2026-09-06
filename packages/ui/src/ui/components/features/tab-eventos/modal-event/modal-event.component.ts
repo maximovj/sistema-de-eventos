@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ModalLayoutComponent } from '../../../layout/modal-layout/modal-layout.component';
 
 @Component({
   selector: 'ui-modal-event',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ModalLayoutComponent],
   templateUrl: './modal-event.component.html',
   styleUrl: './modal-event.component.css'
 })
@@ -19,31 +20,7 @@ export class ModalEventComponent  implements OnInit, OnDestroy, OnChanges {
   @Output() save = new EventEmitter<any>();
   @Output() edit = new EventEmitter<any>();
 
-  // Copia local del evento para edición
-  editEvent: any | null = {
-    actualizadoPor:"Carlos Nava Flores",
-    boletosVendidos:8760,
-    capacidadMaxima:15000,
-    categoria:"CULTURAL_ARTISTICO",
-    creadoPor:"Sofía Marín Gutiérrez",
-    descripcion:"Festival de 4 días con presentaciones musicales, exposiciones de arte, talleres interactivos y zona gastronómica. Participan 45 artistas nacionales e internacionales.",
-    estatus:"EN_PREPARACION",
-    etapaActual:"LOGISTICA_Y_MONTAJE",
-    fechaActualizacion:"2026-08-21T09:15:00.000Z",
-    fechaApertura:"2026-10-15T08:00:00.000Z",
-    fechaCierre:"2026-10-19T06:00:00.000Z",
-    fechaCreacion:"2026-04-15T14:30:00.000Z",
-    fechaFin:"2026-10-18T23:59:00.000Z",
-    fechaInicio:"2026-10-15T10:00:00.000Z",
-    id:"234",
-    modalidad:"PRESENCIAL",
-    nombreEvento:"Festival Internacional de Música y Arte 2026",
-    organizadorId:8923,
-    porcentajeAvance:45.2,
-    presupuestoEjercido:5640000.5,
-    presupuestoTotal:12500000,
-    tipoEvento:"FESTIVAL_MULTIDISCIPLINARIO",
-  };
+  editEvent: any | null = null;
 
   ngOnInit() {
     // Evitar scroll cuando el modal está abierto
@@ -53,8 +30,8 @@ export class ModalEventComponent  implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.event) {
-      this.editEvent = { ...this.event };
+    if (changes['event'] || changes['mode']) {
+      this.editEvent = this.event ? { ...this.event } : this.createEmptyEvent();
     }
   }
 
@@ -79,6 +56,22 @@ export class ModalEventComponent  implements OnInit, OnDestroy, OnChanges {
     if (this.event) {
       this.edit.emit(this.event);
     }
+  }
+
+  private createEmptyEvent() {
+    return {
+      nombreEvento: '',
+      tipoEvento: 'FESTIVAL_MULTIDISCIPLINARIO',
+      categoria: 'CULTURAL_ARTISTICO',
+      modalidad: 'PRESENCIAL',
+      fechaApertura: '',
+      fechaCierre: '',
+      presupuestoTotal: 0,
+      capacidadMaxima: 0,
+      descripcion: '',
+      estatus: 'EN_PREPARACION',
+      etapaActual: 'PLANEACION'
+    };
   }
 
   // Obtener clase CSS para el status

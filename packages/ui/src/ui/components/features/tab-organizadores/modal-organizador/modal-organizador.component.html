@@ -1,0 +1,71 @@
+<ui-modal-layout 
+  [isOpen]="isOpen" 
+  [mode]="mode"
+  [title]="titulo()"
+  [icons]="{
+    view: 'fa-id-card',
+    create: 'fa-user-plus',
+    edit: 'fa-edit',
+    delete: 'fa-exclamation-triangle',
+  }"
+  (close)="onClose()">
+      <!-- MODO VER -->
+      @if (mode === 'view' && organizador) {
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:1.2rem;">
+          <div><h2 style="font-size:1.2rem;font-weight:700;"><i class="fas fa-hand-holding-heart" style="color:#7c3aed;"></i> {{organizador.nombre}}</h2>
+          <div style="display:flex;gap:12px;font-size:0.8rem;color:#666;margin-top:4px;"><span><i class="fas fa-hashtag" style="color:#7c3aed;"></i> #{{organizador.id}}</span><span><i class="fas fa-id-card" style="color:#7c3aed;"></i> RFC: AFE920301MNO</span></div></div>
+          <span class="badge-status asociacion" style="font-size:0.75rem;padding:0.2rem 1rem;">{{organizador.tipo}}</span>
+        </div>
+        <div class="view-grid">
+          <div class="view-item"><span class="label">Teléfono</span><span class="value">{{organizador.telefono}}</span></div>
+          <div class="view-item"><span class="label">Email</span><span class="value">{{organizador.email}}</span></div>
+          <div class="view-item view-full"><span class="label">Dirección</span><span class="value">{{organizador.direccion}}</span></div>
+          <div class="view-item"><span class="label">Antigüedad</span><span class="value">{{organizador.antiguedad}}</span></div>
+          <div class="view-item"><span class="label">Contacto</span><span class="value">{{organizador.contacto_nombre}}</span></div>
+          <div class="view-item"><span class="label">Cargo</span><span class="value">{{organizador.contacto_cargo}}</span></div>
+          <div class="view-item"><span class="label">Tel. contacto</span><span class="value">{{organizador.contacto_telefono}}</span></div>
+          <div class="view-item"><span class="label">Celular</span><span class="value">{{organizador.contacto_celular}}</span></div>
+        </div>
+        <div class="form-actions">
+          <button class="btn-outline" (click)="onClose()">Cerrar</button>
+          <button class="btn-primary" (click)="onEdit()">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+          <button class="btn-danger" (click)="onDelete()"><i class="fas fa-trash-alt"></i> Eliminar</button>
+        </div>
+      }
+
+      <!-- MODO CREAR/EDITAR -->
+      @if (mode === 'create' || mode === 'edit') {
+        <form (ngSubmit)="onSave()">
+          <div class="view-grid">
+            <div class="form-group view-full"><label>Nombre / Razón social</label><input name="nombre" type="text" [(ngModel)]="editarOrganizador().nombre"></div>
+            <div class="form-group"><label>Tipo</label><select name="tipo" [(ngModel)]="editarOrganizador().tipo"><option selected="">EMPRESA_PRIVADA</option><option>ASOCIACION_CIVIL</option><option>PERSONA_FISICA</option></select></div>
+            <div class="form-group"><label>RFC</label><input name="rfc" type="text" [(ngModel)]="editarOrganizador().rfc"></div>
+            <div class="form-group"><label>Teléfono</label><input name="telefono" type="text" [(ngModel)]="editarOrganizador().telefono"></div>
+            <div class="form-group"><label>Email</label><input name="email" type="email" [(ngModel)]="editarOrganizador().email"></div>
+            <div class="form-group"><label>Antigüedad</label><input name="antiguedad" type="text" [(ngModel)]="editarOrganizador().antiguedad"></div>
+            <div class="form-group view-full"><label>Dirección</label><input name="direccion" type="text" [(ngModel)]="editarOrganizador().direccion"></div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-outline" (click)="onClose()">Cancelar</button>
+            <button type="submit" class="btn-primary">
+              <i class="fas fa-save"></i> 
+              {{ mode === 'create' ? 'Crear evento' : 'Guardar cambios' }}
+            </button>
+          </div>
+        </form>
+      }
+
+      <!-- MODO ELIMINAR -->
+      @if (mode == 'delete' && organizador) {
+        <span class="modal-icon" style="color:#dc2626;">🗑️</span>
+        <div class="modal-title">¿Eliminar organizador?</div>
+        <div class="modal-message" id="deleteModalMessage">Estás a punto de eliminar <strong>#{{organizador.id}}</strong> — <strong>{{organizador.nombre}}</strong>. Esta acción no se puede deshacer.</div>
+        <div class="modal-actions">
+          <button class="btn-outline" (click)="onClose()">Cancelar</button>
+          <button class="btn-danger" (click)="onYesDelete()"><i class="fas fa-trash-alt"></i> Sí, eliminar</button>
+        </div>
+      }
+
+</ui-modal-layout>
