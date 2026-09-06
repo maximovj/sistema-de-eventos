@@ -1,8 +1,14 @@
 <app-tab-content titulo="Gestión de Organizadores" subtitulo="Administra todos los organizadores de los eventos del sistema">
-    <div breadcrumb class="actions">
-        <button class="btn-outline" type="button"><i class="fas fa-download"></i> Exportar</button>
-        <button class="btn-primary" type="button"><i class="fas fa-plus-circle"></i> Nuevo organizador</button>
+    <div breadcrumb #breadcrumb>
+        <!-- PAGE HEADER -->
+        <div class="actions">
+            <button class="btn-outline"><i class="fas fa-download"></i> Exportar</button>
+            <button class="btn-primary" (click)="crearOrganizador()">
+                <i class="fas fa-plus-circle"></i> Nuevo evento
+            </button>
+        </div>
     </div>
+    
     @if(cargando()){
         <ui-spinner size="medium" align="start" />
     } @else {
@@ -94,7 +100,7 @@
                             </div>
                         </td>
                         <td><span style="font-size:0.8rem;">{{item.contacto_telefono}}</span></td>
-                        <td><span style="font-size:0.8rem;">{{item.antiguedad}} años</span></td>
+                        <td><span style="font-size:0.8rem;">{{item.antiguedad}}</span></td>
                         <td style="text-align:center;">
                             <div class="card-actions">
                             <button class="btn-ver" type="button" (click)="verOrganizador(item)" title="Ver"><i class="fas fa-eye"></i></button>
@@ -142,4 +148,15 @@
             <span>© 2026 Eventos Elite (EE) · v3.0</span>
         </div>
     }
+
+    <ui-modal-organizador
+        [isOpen]="modalAbierto"
+        [mode]="modalTipo"
+        [organizador]="organizadorSeleccionado"
+        (close)="onCerrarModal()"
+        (save)="onGuardarOrganizador($event)"
+        (edit)="onActualizarOrganizador($event)"
+        (delete)="onEliminarOrganizador($event)"
+        (yesDelete)="onSiEliminarOrganizador($event)"
+    />
 </app-tab-content>

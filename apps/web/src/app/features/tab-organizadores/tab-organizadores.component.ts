@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { OrganizadoresService } from '@repo/shared-services';
+import { OrganizadoresService, ToastService } from '@repo/shared-services';
 import { Organizador, ThFiltro, TipoOrganizador } from '@repo/shared-types';
-import { SpinnerComponent, StatBoxComponent } from '@repo/ui';
-import { delay } from 'rxjs';
+import { SpinnerComponent, StatBoxComponent, ModalOrganizadorComponent } from '@repo/ui';
+import { delay, finalize } from 'rxjs';
 import { TabContentComponent } from '../../shared/components';
 
 @Component({
@@ -13,6 +13,7 @@ import { TabContentComponent } from '../../shared/components';
   imports: [
     CommonModule, 
     FormsModule, 
+    ModalOrganizadorComponent,
     TabContentComponent,
     SpinnerComponent,
     StatBoxComponent,
@@ -22,10 +23,16 @@ import { TabContentComponent } from '../../shared/components';
 })
 export class TabOrganizadoresComponent implements OnInit {
   private service = inject(OrganizadoresService);
+  private toast = inject(ToastService);
+
+  // Estados literales
+  organizadorSeleccionado: Organizador | null = null;  
+  modalAbierto: boolean = false;
+  modalTipo: 'view' | 'create' | 'edit' | 'delete' = 'view';
 
   // Estados signals
   public organizadores = signal<Organizador[]>([]);
-  public datosFiltrados = signal<Organizador[]>([]); // Renombrado para claridad
+  public datosFiltrados = signal<Organizador[]>([]);
   public cargando = signal<boolean>(false);
   public paginaActual = signal<number>(1);
   public porPagina = signal<number>(10);
@@ -98,16 +105,41 @@ export class TabOrganizadoresComponent implements OnInit {
     .filter(item => item.tipo === TipoOrganizador.ASOCIACION_CIVIL).length || 0);
   public totalPersonasFisicas = computed(() => this.organizadores()
     .filter(item => item.tipo === TipoOrganizador.PERSONA_FISICA).length || 0);
+
+  public siguienteId = computed(() => {
+    const organizadores = this.organizadores();
+    if (organizadores.length === 0) return 1;
+    
+    // Encontrar el ID más alto
+    const maxId = Math.max(...organizadores.map(org => parseInt(org.id)));
+    return maxId + 1;
+  });
+
   
   ngOnInit(): void {
     this.cargarOrganizadores();
+  }
+
+  private resetearPaginacion() {
+    this.paginaActual.set(1);
+  }
+
+  private limpiarFiltro() {
+    this.thFiltro.update(() => ({
+      nombre: null,
+      tipo: null,
+      contacto_nombre: null,
+      telefono: null,
+      antiguedad: null,
+    }));
   }
 
   cargarOrganizadores() {
     this.cargando.set(true);
     this.service.organizadores()
     .pipe(
-      delay(1700)
+      delay(1700),
+      finalize(() => this.cargando.set(false))
     )
     .subscribe({
       next: (data: Organizador[]) => {
@@ -115,8 +147,8 @@ export class TabOrganizadoresComponent implements OnInit {
         this.ordenarDatos();
         this.resetearPaginacion();
       },
-      complete: () => {
-        this.cargando.set(false);
+      error: () => {
+        this.toast.error('Error al cargar organizadores', 'No fue posible obtener los organizadores.');
       }
     });
   }
@@ -162,21 +194,6 @@ export class TabOrganizadoresComponent implements OnInit {
     this.filtroTipo.set('');
     this.filtroAntiguedad.set('');
     this.resetearPaginacion();
-  }
-
-  verOrganizador(organizador: Organizador) {
-    window.alert(`${organizador.nombre}\nRFC: ${organizador.rfc}`);
-  }
-
-  editarOrganizador(organizador: Organizador) {
-    window.alert(`Editar organizador: ${organizador.nombre}`);
-  }
-
-  eliminarOrganizador(organizador: Organizador) {
-    if (window.confirm(`¿Eliminar organizador ${organizador.nombre}?`)) {
-      this.organizadores.update(items => items.filter(item => item.id !== organizador.id));
-      this.resetearPaginacion();
-    }
   }
 
   obtenerIcono(tipo: TipoOrganizador) {
@@ -230,18 +247,84 @@ export class TabOrganizadoresComponent implements OnInit {
     }
   }
 
-  private resetearPaginacion() {
-    this.paginaActual.set(1);
+  crearOrganizador() {
+    this.modalAbierto = true;
+    this.modalTipo = 'create';
   }
 
-  private limpiarFiltro() {
-    this.thFiltro.update(() => ({
-      nombre: null,
-      tipo: null,
-      contacto_nombre: null,
-      telefono: null,
-      antiguedad: null,
-    }));
+  verOrganizador(organizador: Organizador) {
+    this.organizadorSeleccionado = organizador;
+    this.modalAbierto = true;
+    this.modalTipo = 'view';
+  }
+
+  editarOrganizador(organizador: Organizador) {
+    this.organizadorSeleccionado = organizador;
+    this.modalAbierto = true;
+    this.modalTipo = 'edit';
+  }
+
+  eliminarOrganizador(organizador: Organizador) {
+    this.organizadorSeleccionado = organizador;
+    this.modalAbierto = true;
+    this.modalTipo = 'delete';
+  }
+
+  onCerrarModal() {
+    this.modalAbierto = false; 
+  }
+
+  onGuardarOrganizador(organizador: Organizador) {
+    if (this.modalTipo === 'edit') {
+      this.service.actualizar(organizador.id, organizador).subscribe({
+        next: organizadorActualizado => {
+          this.organizadores.update(organizadores => organizadores.map(item =>
+            item.id === organizadorActualizado.id ? organizadorActualizado : item
+          ));
+          this.ordenarDatos();
+          this.toast.success('Organizador actualizado', 'Los cambios se guardaron correctamente.');
+          this.onCerrarModal();
+        },
+        error: () => this.toast.error('Error al actualizar', 'No fue posible guardar los cambios.')
+      });
+      return;
+    }
+
+    organizador = {...organizador, id: this.siguienteId().toString()};
+    this.service.guardar(organizador).subscribe({
+      next: organizadorCreado => {
+        this.organizadores.update(organizadores => [...organizadores, organizadorCreado]);
+        this.ordenarDatos();
+        this.resetearPaginacion();
+        this.toast.success('Organizador agregado', 'El organizador se ha creado exitosamente.');
+        this.onCerrarModal();
+      },
+      error: () => this.toast.error('Error al crear', 'No fue posible crear el organizador.')
+    });
+  }
+  
+  onActualizarOrganizador(organizador: Organizador) {
+    console.log("Actualizar organizador: ", organizador);
+    this.editarOrganizador(organizador);
+  }
+  
+  onEliminarOrganizador(organizador: Organizador) {
+    console.log("Eliminar organizador: ", organizador);
+    this.eliminarOrganizador(organizador);
+  }
+  
+  onSiEliminarOrganizador(organizador: Organizador) {
+    this.service.eliminar(organizador.id).subscribe({
+      next: () => {
+        this.organizadores.update(organizadores =>
+          organizadores.filter(item => item.id !== organizador.id)
+        );
+        this.paginaActual.set(Math.min(this.paginaActual(), Math.max(1, this.totalPaginas())));
+        this.toast.success('Organizador eliminado', `El organizador #${organizador.id} fue eliminado correctamente.`);
+        this.onCerrarModal();
+      },
+      error: () => this.toast.error('Error al eliminar', 'No fue posible eliminar el organizador.')
+    });
   }
 
 }

@@ -13,4 +13,17 @@ export class OrganizadoresService {
   organizadores(): Observable<Organizador[]> {
     return this.http.get<Organizador[]>(this.apiUrl);
   }
+
+  guardar(data: Organizador): Observable<Organizador> {
+    return this.http.post<Organizador>(this.apiUrl, data);
+  }
+
+  actualizar(id: string, data: Organizador) {
+    return this.http.put<Organizador>(`${this.apiUrl}/${id}`, data);
+  }
+
+  eliminar(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
 }
