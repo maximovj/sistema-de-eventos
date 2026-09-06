@@ -1,0 +1,28 @@
+@for (position of positions; track position) {
+  <div class="toast-container" [class]="'toast-container toast-container-' + position" aria-live="polite" aria-atomic="true">
+    @for (toast of toastsAt(position); track toast.id) {
+      <div
+        class="toast"
+        [class]="'toast toast-' + toast.type"
+        [style.--toast-duration]="toast.duration + 'ms'"
+        role="status">
+        <span class="toast-icon" aria-hidden="true">
+          <i class="fas" [class]="'fas ' + iconFor(toast.type)"></i>
+        </span>
+        <div class="toast-content">
+          <div class="toast-title">{{ toast.title }}</div>
+          <div class="toast-message">{{ toast.message }}</div>
+        </div>
+        <button
+          type="button"
+          class="toast-close"
+          aria-label="Cerrar notificación"
+          title="Cerrar"
+          (click)="toastService.dismiss(toast.id)">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="toast-progress" aria-hidden="true"></div>
+      </div>
+  }
+  </div>
+}

@@ -15,7 +15,7 @@ export interface Evento {
   fechaActualizacion: Date;
   capacidadMaxima: number;
   boletosVendidos: number;
-  organizadorId: number;
+  organizadorId: string;
   presupuestoTotal: number;
   presupuestoEjercido: number;
   porcentajeAvance: number;

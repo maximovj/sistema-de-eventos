@@ -1,6 +1,7 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SettingsStorageService } from '@repo/shared-services';
+import { ToastContainerComponent } from '@repo/ui';
 import { TopHeaderComponent, NavVerticalComponent } from './shared/components';
 import { TabEventosComponent, TabDashboardComponent, TabPredeterminadoComponent, TabOrganizadoresComponent } from './features';
 import { Tab } from '@repo/shared-types';
@@ -8,6 +9,7 @@ import { Tab } from '@repo/shared-types';
   selector: 'app-root',
   standalone: true,
   imports: [
+    ToastContainerComponent,
     TopHeaderComponent,
     NavVerticalComponent,
     TabDashboardComponent,
