@@ -47,6 +47,13 @@
             <div class="form-group"><label>Antigüedad</label><input name="antiguedad" type="text" [(ngModel)]="editarOrganizador().antiguedad"></div>
             <div class="form-group view-full"><label>Dirección</label><input name="direccion" type="text" [(ngModel)]="editarOrganizador().direccion"></div>
           </div>
+          <div class="sidebar-title" style="margin-bottom: 20px;margin-top: 20px;">Contacto</div>
+          <div class="view-grid">
+            <div class="form-group"><label>Contacto Nombre</label><input name="contacto_nombre" type="text" [(ngModel)]="editarOrganizador().contacto_nombre"></div>
+            <div class="form-group"><label>Contacto Teléfono</label><input name="contacto_telefono" type="text" [(ngModel)]="editarOrganizador().contacto_telefono"></div>
+            <div class="form-group"><label>Contacto Cargo</label><input name="contacto_cargo" type="text" [(ngModel)]="editarOrganizador().contacto_cargo"></div>
+            <div class="form-group"><label>Contacto Celular</label><input name="contacto_celular" type="text" [(ngModel)]="editarOrganizador().contacto_celular"></div>
+          </div>
           <div class="form-actions">
             <button type="button" class="btn-outline" (click)="onClose()">Cancelar</button>
             <button type="submit" class="btn-primary">
