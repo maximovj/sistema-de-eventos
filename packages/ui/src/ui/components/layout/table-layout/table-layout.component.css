@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+.table-wrapper {
+  overflow: hidden;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.table-scroll table {
+  width: 100%;
+}
+
+.table-state {
+  color: #888;
+  padding: 2rem;
+  text-align: center;
+}

@@ -1,0 +1,39 @@
+<section class="table-layout">
+  <ng-content select="[table-toolbar]"></ng-content>
+  <ng-content select="[table-filters]"></ng-content>
+
+  @if (loading) {
+    <div class="table-wrapper">
+      <div class="table-state" role="status">
+        <ng-content select="[table-loading]"></ng-content>
+      </div>
+    </div>
+  } @else {
+    <div class="table-wrapper">
+      <div class="table-scroll">
+        <table>
+          <ng-content select="caption"></ng-content>
+          <ng-content select="thead"></ng-content>
+          <ng-content select="tbody"></ng-content>
+        </table>
+      </div>
+
+      @if (empty) {
+        <div class="table-state" role="status">
+          <ng-content select="[table-empty]"></ng-content>
+        </div>
+      }
+
+      <ui-pagination-layout
+        [currentPage]="currentPage"
+        [totalItems]="totalItems"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        [itemLabel]="itemLabel"
+        (pageChange)="pageChange.emit($event)"
+        (pageSizeChange)="pageSizeChange.emit($event)" />
+    </div>
+  }
+
+  <ng-content select="[table-footer]"></ng-content>
+</section>

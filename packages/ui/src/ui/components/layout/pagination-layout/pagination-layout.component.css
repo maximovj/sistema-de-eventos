@@ -1,0 +1,43 @@
+:host {
+  display: block;
+}
+
+.pagination-controls {
+  align-items: center;
+  display: flex;
+  gap: 4px;
+}
+
+.pagination-controls button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  height: 30px;
+  justify-content: center;
+  min-width: 30px;
+}
+
+.pagination-controls button:hover:not(:disabled),
+.pagination-controls button.active {
+  background: #ede9fe;
+  border-color: #c4b5fd;
+  color: #5b21b6;
+}
+
+.pagination-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.page-list {
+  display: flex;
+  gap: 4px;
+}
+
+.pagination-controls select {
+  margin-left: 8px;
+}
