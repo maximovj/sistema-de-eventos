@@ -1,0 +1,34 @@
+:host {
+  display: contents;
+}
+
+.organizador-chip .nombre i {
+  color: #7c3aed;
+  display: inline-block;
+  width: 18px;
+}
+
+.contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.contacto-nombre {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.contacto-cargo {
+  color: #888;
+  font-size: 0.65rem;
+}
+
+.telefono,
+.antiguedad {
+  font-size: 0.8rem;
+}
+
+.acciones-cell {
+  text-align: center;
+}

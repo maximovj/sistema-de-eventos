@@ -1,0 +1,36 @@
+<tr>
+  <td>
+    <div class="organizador-chip">
+      <span class="nombre">
+        <i [class]="obtenerIcono(organizador.tipo)" aria-hidden="true"></i>
+        {{ organizador.nombre }}
+      </span>
+      <br />
+      <span class="rfc">RFC: {{ organizador.rfc }}</span>
+    </div>
+  </td>
+  <td>
+    <span [class]="obtenerBadgeTipo(organizador.tipo)">{{ organizador.tipo }}</span>
+  </td>
+  <td>
+    <div class="contacto">
+      <span class="contacto-nombre">{{ organizador.contacto_nombre }}</span>
+      <span class="contacto-cargo">{{ organizador.contacto_cargo }}</span>
+    </div>
+  </td>
+  <td><span class="telefono">{{ organizador.contacto_telefono }}</span></td>
+  <td><span class="antiguedad">{{ organizador.antiguedad }}</span></td>
+  <td class="acciones-cell">
+    <div class="card-actions">
+      <button class="btn-ver" type="button" (click)="ver.emit(organizador)" title="Ver" aria-label="Ver organizador">
+        <i class="fas fa-eye" aria-hidden="true"></i>
+      </button>
+      <button class="btn-edit" type="button" (click)="editar.emit(organizador)" title="Editar" aria-label="Editar organizador">
+        <i class="fas fa-edit" aria-hidden="true"></i>
+      </button>
+      <button type="button" (click)="eliminar.emit(organizador)" title="Eliminar" aria-label="Eliminar organizador">
+        <i class="fas fa-trash-alt" aria-hidden="true"></i>
+      </button>
+    </div>
+  </td>
+</tr>
