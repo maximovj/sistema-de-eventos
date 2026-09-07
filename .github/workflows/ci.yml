@@ -30,8 +30,14 @@ jobs:
       - name: Check shared types
         run: npm run check-types --workspace=@repo/shared-types
 
-      - name: Build UI and web
-        run: npx turbo run build --filter=web...
+      - name: Build Servicios
+        run: npm run build --workspace=@repo/shared-services
+
+      - name: Build UI
+        run: npm run build --workspace=@repo/ui
+
+      - name: Build Web
+        run: npm run build --workspace=web
 
       - name: Check application types
         run: npx turbo run check-types --filter=web
