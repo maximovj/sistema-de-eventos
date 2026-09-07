@@ -3,7 +3,7 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { OrganizadoresService, ToastService } from '@repo/shared-services';
 import { Organizador, ThFiltro, TipoOrganizador } from '@repo/shared-types';
-import { SpinnerComponent, StatBoxComponent, ModalOrganizadorComponent } from '@repo/ui';
+import { SpinnerComponent, StatBoxComponent, ModalOrganizadorComponent, TableLayoutComponent, FilaOrganizadorComponent } from '@repo/ui';
 import { delay, finalize } from 'rxjs';
 import { TabContentComponent } from '../../shared/components';
 
@@ -17,6 +17,8 @@ import { TabContentComponent } from '../../shared/components';
     TabContentComponent,
     SpinnerComponent,
     StatBoxComponent,
+    TableLayoutComponent,
+    FilaOrganizadorComponent,
   ],
   templateUrl: './tab-organizadores.component.html',
   styleUrl: './tab-organizadores.component.css'
@@ -196,26 +198,6 @@ export class TabOrganizadoresComponent implements OnInit {
     this.resetearPaginacion();
   }
 
-  obtenerIcono(tipo: TipoOrganizador) {
-    switch(tipo){
-      case TipoOrganizador.ASOCIACION_CIVIL: return 'fas fa-hand-holding-heart';
-      case TipoOrganizador.EMPRESA_PUBLICA:
-      case TipoOrganizador.EMPRESA_PRIVADA: return 'fas fa-building';
-      case TipoOrganizador.PERSONA_FISICA: return 'fas fa-user-tie';
-      default: return 'fas fa-building';
-    }
-  }
-
-  obtenerBadgeTipo(tipo: TipoOrganizador) {
-    switch(tipo){
-      case TipoOrganizador.ASOCIACION_CIVIL: return 'badge-status asociacion';
-      case TipoOrganizador.EMPRESA_PUBLICA:
-      case TipoOrganizador.EMPRESA_PRIVADA: return 'badge-status empresa';
-      case TipoOrganizador.PERSONA_FISICA: return 'badge-status persona';
-      default: return 'badge-status empresa';
-    }
-  }
-
   cambiarPorPagina() {
     this.resetearPaginacion();
   }
@@ -245,6 +227,20 @@ export class TabOrganizadoresComponent implements OnInit {
     if (pagina >= 1 && pagina <= total) {
       this.paginaActual.set(pagina);
     }
+  }
+
+  onPageChange(value: number | Event) {
+    if (typeof value === 'number') {
+      this.irPagina(value);
+    }
+  }
+
+  onPageSizeChange(value: number | Event) {
+    const pageSize = typeof value === 'number'
+      ? value
+      : Number((value.target as HTMLSelectElement).value);
+    this.porPagina.set(pageSize);
+    this.cambiarPorPagina();
   }
 
   crearOrganizador() {

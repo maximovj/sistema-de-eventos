@@ -36,111 +36,68 @@
                 faIcon="fa-users"/>
         </div>
 
-        <!-- FILTERS BAR -->
-        <div class="filters-bar">
-            <div class="filter-group">
-                <i class="fas fa-search"></i>
-                <input type="text" id="filtroBusqueda" [(ngModel)]="filtroBusqueda" (ngModelChange)="aplicarFiltros()" placeholder="Buscar por nombre, RFC, contacto...">
-            </div>
-            <div class="filter-group">
-                <i class="fas fa-tag"></i>
-                <select id="filtroTipo" [(ngModel)]="filtroTipo" (ngModelChange)="aplicarFiltros()">
-                <option value="">Todos los tipos</option>
-                <option value="EMPRESA_PRIVADA">Empresa privada</option>
-                <option value="EMPRESA_PUBLICA">Empresa pública</option>
-                <option value="ASOCIACION_CIVIL">Asociación civil</option>
-                <option value="PERSONA_FISICA">Persona física</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <i class="fas fa-clock"></i>
-                <select id="filtroAntiguedad" [(ngModel)]="filtroAntiguedad" (ngModelChange)="aplicarFiltros()">
-                <option value="">Todas las antigüedades</option>
-                <option value="5">+5 años</option>
-                <option value="10">+10 años</option>
-                <option value="15">+15 años</option>
-                </select>
-            </div>
-            <div class="filter-actions">
-                <button class="btn-clear" (click)="limpiarFiltros()"><i class="fas fa-undo"></i> Limpiar</button>
-            </div>
-        </div>
-    
         <!-- TABLA -->
-        <div class="table-wrapper">
-            <div class="table-scroll">
-                <table>
-                <thead>
-                    <tr>
-                    <th (click)="ordenarPor('nombre')" [attr.class]="thFiltro().nombre">Organizador <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th (click)="ordenarPor('tipo')" [attr.class]="thFiltro().tipo">Tipo <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th (click)="ordenarPor('contacto_nombre')" [attr.class]="thFiltro().contacto_nombre">Contacto <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th (click)="ordenarPor('telefono')" [attr.class]="thFiltro().telefono">Teléfono <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th (click)="ordenarPor('antiguedad')" [attr.class]="thFiltro().antiguedad">Antigüedad <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
-                    <th style="text-align:center;">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="tablaBody">
-                @if (datosPaginados().length <= 0) {
-                    <tr><td colspan="6" style="text-align:center;padding:2rem;color:#aaa;">No se encontraron organizadores</td></tr>
-                } @else {
-                    @for (item of datosPaginados(); track item.id) {
-                    <tr>
-                        <td>
-                            <div class="organizador-chip">
-                            <span class="nombre"><i [attr.class]="obtenerIcono(item.tipo)" style="color:#7c3aed;width:18px;"></i> {{ item.nombre }}</span><br/>
-                            <span class="rfc">RFC: {{item.rfc}}</span>
-                            </div>
-                        </td>
-                        <td><span [attr.class]="obtenerBadgeTipo(item.tipo)">{{item.tipo}}</span></td>
-                        <td>
-                            <div style="display:flex;flex-direction:column;gap:1px;">
-                            <span style="font-weight:500;font-size:0.8rem;">{{item.contacto_nombre}}</span>
-                            <span style="font-size:0.65rem;color:#888;">{{item.contacto_cargo}}</span>
-                            </div>
-                        </td>
-                        <td><span style="font-size:0.8rem;">{{item.contacto_telefono}}</span></td>
-                        <td><span style="font-size:0.8rem;">{{item.antiguedad}}</span></td>
-                        <td style="text-align:center;">
-                            <div class="card-actions">
-                            <button class="btn-ver" type="button" (click)="verOrganizador(item)" title="Ver"><i class="fas fa-eye"></i></button>
-                            <button class="btn-edit" type="button" (click)="editarOrganizador(item)" title="Editar"><i class="fas fa-edit"></i></button>
-                            <button type="button" (click)="eliminarOrganizador(item)" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    }
-                }
-                </tbody>
-                </table>
+        <ui-table-layout
+            [empty]="datosPaginados().length === 0"
+            [currentPage]="paginaActual()"
+            [totalItems]="totalFiltrado()"
+            [pageSize]="porPagina()"
+            itemLabel="organizadores"
+            (pageChange)="onPageChange($event)"
+            (pageSizeChange)="onPageSizeChange($event)">
+            <div table-filters>
+                <div class="filters-bar">
+                    <div class="filter-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="filtroBusqueda" [(ngModel)]="filtroBusqueda" (ngModelChange)="aplicarFiltros()" placeholder="Buscar por nombre, RFC, contacto...">
+                    </div>
+                    <div class="filter-group">
+                        <i class="fas fa-tag"></i>
+                        <select id="filtroTipo" [(ngModel)]="filtroTipo" (ngModelChange)="aplicarFiltros()">
+                        <option value="">Todos los tipos</option>
+                        <option value="EMPRESA_PRIVADA">Empresa privada</option>
+                        <option value="EMPRESA_PUBLICA">Empresa pública</option>
+                        <option value="ASOCIACION_CIVIL">Asociación civil</option>
+                        <option value="PERSONA_FISICA">Persona física</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <i class="fas fa-clock"></i>
+                        <select id="filtroAntiguedad" [(ngModel)]="filtroAntiguedad" (ngModelChange)="aplicarFiltros()">
+                        <option value="">Todas las antigüedades</option>
+                        <option value="5">+5 años</option>
+                        <option value="10">+10 años</option>
+                        <option value="15">+15 años</option>
+                        </select>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn-clear" (click)="limpiarFiltros()"><i class="fas fa-undo"></i> Limpiar</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- PAGINACIÓN -->
-            <div class="pagination-wrapper">
-                <div class="info">
-                Mostrando <strong>{{ (paginaActual() - 1) * porPagina() + 1 }}</strong> - 
-                <strong>{{ mostradoTotal() }}</strong> de 
-                <strong>{{ totalFiltrado() }}</strong> organizadores
-                </div>
-                <div class="pagination" id="paginationControls">
-                <button type="button" (click)="cambiarPagina('primera')" [disabled]="habilitarPaginacionAnterior()"><i class="fas fa-angle-double-left"></i></button>
-                <button type="button" (click)="cambiarPagina('anterior')" [disabled]="habilitarPaginacionAnterior()"><i class="fas fa-angle-left"></i></button>
-                <div style="display:flex;gap:4px;align-items:center;">
-                    @for (pagina of paginas(); track $index) {
-                        <button [ngClass]="{'active': paginaActual() == pagina}" (click)="irPagina(pagina)">{{pagina}}</button>
-                    }
-                </div>
-                <button type="button" (click)="cambiarPagina('siguiente')" [disabled]="habilitarPaginacionSiguiente()"><i class="fas fa-angle-right"></i></button>
-                <button type="button" (click)="cambiarPagina('ultima')" [disabled]="habilitarPaginacionSiguiente()"><i class="fas fa-angle-double-right"></i></button>
-                <select class="page-size-select" [(ngModel)]="porPagina" (ngModelChange)="cambiarPorPagina()">
-                    <option [ngValue]="5">5</option>
-                    <option [ngValue]="10">10</option>
-                    <option [ngValue]="25">25</option>
-                    <option [ngValue]="50">50</option>
-                </select>
-                </div>
-            </div>
-        </div>
+            <thead>
+                <tr>
+                <th (click)="ordenarPor('nombre')" [attr.class]="thFiltro().nombre">Organizador <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                <th (click)="ordenarPor('tipo')" [attr.class]="thFiltro().tipo">Tipo <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                <th (click)="ordenarPor('contacto_nombre')" [attr.class]="thFiltro().contacto_nombre">Contacto <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                <th (click)="ordenarPor('telefono')" [attr.class]="thFiltro().telefono">Teléfono <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                <th (click)="ordenarPor('antiguedad')" [attr.class]="thFiltro().antiguedad">Antigüedad <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                <th style="text-align:center;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tablaBody">
+                @for (item of datosPaginados(); track item.id) {
+                <ui-fila-organizador
+                    [organizador]="item"
+                    (ver)="verOrganizador($event)"
+                    (editar)="editarOrganizador($event)"
+                    (eliminar)="eliminarOrganizador($event)" />
+                }
+            </tbody>
+
+            <div table-empty>No se encontraron organizadores</div>
+        </ui-table-layout>
         
         <!-- FOOTER -->
         <div class="footer">
