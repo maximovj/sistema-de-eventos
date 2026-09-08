@@ -1,0 +1,61 @@
+<app-tab-content
+    titulo="Sedes"
+    subtitulo="Administra todos los sedes del sistema"
+    breadcrumbItem="Panel"
+>
+    @if (cargando()) {
+        <ui-spinner size="medium" align="start"></ui-spinner>
+    } @else {
+        <ui-stats-sedes [sedes]="sedes()" />
+
+        <ui-table-layout
+            [empty]="datosPaginados().length === 0"
+            [currentPage]="paginaActual()"
+            [totalItems]="totalFiltrado()"
+            [pageSize]="porPagina()"
+            itemLabel="sedes"
+            (pageChange)="onPageChange($event)"
+            (pageSizeChange)="onPageSizeChange($event)"
+        >
+            <thead>
+                <tr>
+                <th>Sede <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                <th>Capacidad <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                <th>Área <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                <th>Costo renta <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                <th>Servicios <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                <th>Estado <span class="sort-icon"><i class="fas fa-sort"></i></span></th>
+                <th style="text-align:center;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tablaBody">
+                @for (item of datosPaginados(); track item.id) {
+                    <ui-fila-sede
+                        [sede]="item" 
+                        (ver)="verSede($event)"
+                        (editar)="editarSede($event)"
+                        (eliminar)="eliminarSede($event)"
+                    />
+                }
+            </tbody>
+            <div table-empty>No se encontraron sedes</div>
+        </ui-table-layout>
+        
+        <!-- FOOTER -->
+        <div class="footer">
+            <span><i class="fas fa-database"></i> &nbsp;<span>{{total()}}</span> sedes registrados</span>
+            <span>© 2026 Eventos Elite (EE) · v3.0</span>
+        </div>
+    }
+
+    <ui-modal-sede
+        [isOpen]="modalAbierto"
+        [mode]="modalTipo"
+        [sede]="sedeSeleccionado"
+        (close)="onCerrarModal()"
+        (save)="onGuardarSede($event)"
+        (edit)="onActualizarSede($event)"
+        (delete)="onEliminarSede($event)"
+        (yesDelete)="onSiEliminarSede($event)"
+    />
+</app-tab-content>
