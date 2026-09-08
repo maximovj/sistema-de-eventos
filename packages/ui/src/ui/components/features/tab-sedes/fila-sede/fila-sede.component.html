@@ -1,0 +1,31 @@
+<tr>
+    <td>
+    <div class="sede-info">
+        <span class="nombre"><i class="fas fa-map-pin"></i> {{sede.nombre}}</span>
+        <span class="direccion"><i class="fas fa-location-dot" style="color:#aaa;font-size:0.6rem;"></i> {{sede.direccion}}</span>
+        <span class="responsable"><i class="fas fa-user"></i> {{sede.responsable}}</span>
+    </div>
+    </td>
+    <td><span style="font-weight:600;font-size:0.9rem;">{{ sede.capacidad | number }}</span></td>
+    <td><span style="font-size:0.8rem;">{{sede.areaTotal | number}} m²</span></td>
+    <td><span style="font-weight:600;color:#7c3aed;">${{ sede.costoRenta | number }}</span></td>
+    <td style="max-width:180px;">
+    <div style="display:flex;flex-wrap:wrap;gap:2px;">
+        <span *ngIf="sede.tieneEstacionamiento" class="badge-feature active">🚗 Estac.</span>
+        <span *ngIf="sede.tieneAccesoDiscapacitados" class="badge-feature active">♿ Acceso</span>
+        <span *ngIf="sede.tieneWifi" class="badge-feature active">📶 WiFi</span>
+        <span *ngIf="sede.tieneAudio" class="badge-feature active">🔊 Audio</span>
+        <span *ngIf="sede.tieneIluminacion" class="badge-feature active">💡 Luz</span>
+        <span *ngIf="sede.tieneProyectores" class="badge-feature active">📽️ Proy.</span>
+        <span *ngIf="sede.tieneCamaras" class="badge-feature active">📹 Cám.</span>
+    </div>
+    </td>
+    <td><span class="badge-status {{sede.estado}}"><i [attr.class]="obtenerIcono(sede.estado)"></i> {{sede.estado}}</span></td>
+    <td style="text-align:center;">
+    <div class="card-actions">
+        <button class="btn-view" (click)="ver.emit(sede)" title="Ver"><i class="fas fa-eye"></i></button>
+        <button class="btn-edit" (click)="editar.emit(sede)" title="Editar"><i class="fas fa-edit"></i></button>
+        <button class="btn-delete" (click)="eliminar.emit(sede)" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+    </div>
+    </td>
+</tr>

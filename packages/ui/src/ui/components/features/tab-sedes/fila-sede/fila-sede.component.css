@@ -1,0 +1,89 @@
+:host {
+  display: contents;
+}
+
+/* Sede info */
+.sede-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sede-info .nombre {
+    font-weight: 600;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sede-info .nombre i {
+    color: #7c3aed;
+    font-size: 0.9rem;
+}
+
+.sede-info .direccion {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.sede-info .responsable {
+    font-size: 0.75rem;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.sede-info .responsable i {
+    font-size: 0.65rem;
+}
+
+/* Badges */
+.badge-status {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.badge-status.disponible {
+    text-transform: capitalize;
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+.badge-status.ocupada {
+    text-transform: capitalize;
+    background: #fce4ec;
+    color: #c62828;
+}
+.badge-status.mantenimiento {
+    text-transform: capitalize;
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.badge-feature {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 12px;
+    background: #f0edf5;
+    color: #888;
+    display: inline-block;
+    margin: 1px 2px;
+}
+
+.badge-feature.active {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.badge-feature.inactive {
+    background: #fce4ec;
+    color: #c62828;
+    opacity: 0.6;
+}
+
