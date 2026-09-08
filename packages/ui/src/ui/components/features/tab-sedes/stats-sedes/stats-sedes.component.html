@@ -1,0 +1,38 @@
+<div class="stats-panel">
+    <ui-stat-box
+        titulo="Total Sedes"
+        [valor]="total()"
+        colorIcon="purple"
+        faIcon="fa-building"
+    ></ui-stat-box>
+    <ui-stat-box
+        titulo="Disponibles"
+        [valor]="disponibles()"
+        colorIcon="green"
+        faIcon="fa-check-circle"
+    ></ui-stat-box>
+    <ui-stat-box
+        titulo="Ocupadas"
+        [valor]="ocupadas()"
+        colorIcon="pink"
+        faIcon="fa-clock"
+    ></ui-stat-box>
+    <ui-stat-box
+        titulo="Mantenimientos"
+        [valor]="mantenimientos()"
+        colorIcon="orange"
+        faIcon="fa-tools"
+    ></ui-stat-box>
+    <ui-stat-box
+        titulo="Costo total"
+        [valor]="costoTotal()"
+        colorIcon="green"
+        faIcon="fa-dollar-sign"
+    ></ui-stat-box>
+    <ui-stat-box
+        titulo="Capacidad total"
+        [valor]="capacidadTotal()"
+        colorIcon="blue"
+        faIcon="fa-users"
+    ></ui-stat-box>
+</div>
