@@ -17,3 +17,8 @@ export * from './ui/components/features/tab-organizadores/fila-organizador/fila-
 // Tab Eventos
 export * from './ui/components/features/tab-eventos/event-card/event-card.component';
 export * from './ui/components/features/tab-eventos/modal-event/modal-event.component';
+
+// Tab Sedes
+export * from './ui/components/features/tab-sedes/fila-sede/fila-sede.component';
+export * from './ui/components/features/tab-sedes/stats-sedes/stats-sedes.component';
+export * from './ui/components/features/tab-sedes/modal-sede/modal-sede.component';
