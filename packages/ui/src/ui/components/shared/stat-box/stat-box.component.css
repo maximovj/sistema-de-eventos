@@ -60,6 +60,11 @@
     color: #d81b60;
 }
 
+.stat-box .stat-icon.orange {
+    background: #fff3e0;
+    color: #e65100;
+}
+
 .stat-box .stat-icon.blue {
     background: #e3f2fd;
     color: #2563eb;

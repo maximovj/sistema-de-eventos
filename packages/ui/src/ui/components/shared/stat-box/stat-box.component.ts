@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-type Color = 'purple' | 'pink' | 'blue' | 'green';
+type Color = 'purple' | 'pink' | 'blue' | 'green' | 'orange';
 
 @Component({
   selector: 'ui-stat-box',
