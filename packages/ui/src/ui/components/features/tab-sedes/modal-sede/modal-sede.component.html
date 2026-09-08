@@ -1,0 +1,173 @@
+<ui-modal-layout
+    [isOpen]="isOpen" 
+    [mode]="mode"
+    [title]="titulo()"
+    [icons]="iconos()"
+    (close)="onClose()"
+>
+    <!-- MODO VER -->
+    @if (mode == modalModo.VER && sede) {
+        <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:1.2rem;">
+          <div><h2 style="font-size:1.2rem;font-weight:700;"><i class="fas fa-map-pin" style="color:#7c3aed;"></i> {{sede.nombre}}</h2>
+          <div style="display:flex;gap:12px;font-size:0.8rem;color:#666;margin-top:4px;"><span><i class="fas fa-hashtag" style="color:#7c3aed;"></i> {{sede.id}}</span><span><i class="fas fa-calendar-alt" style="color:#7c3aed;"></i> Evento #{{sede.eventoId}}</span></div></div>
+          <span class="badge-status {{sede.estado}}" style="font-size:0.75rem;padding:0.2rem 1rem;text-transform: capitalize;">{{sede.estado}}</span>
+        </div>
+        <div class="view-grid">
+          <div class="view-item view-full"><span class="label">Dirección</span><span class="value">{{sede.direccion}}</span></div>
+          <div class="view-item"><span class="label">Capacidad</span><span class="value">{{sede.capacidad | number}} personas</span></div>
+          <div class="view-item"><span class="label">Área total</span><span class="value">{{sede.areaTotal | number}} m²</span></div>
+          <div class="view-item"><span class="label">Área cubierta</span><span class="value">{{sede.areaCubierta | number}} m²</span></div>
+          <div class="view-item"><span class="label">Área descubierta</span><span class="value">{{sede.areaDescubierta | number}} m²</span></div>
+          <div class="view-item"><span class="label">Costo de renta</span><span class="value">{{sede.costoRenta | currency}}</span></div>
+          <div class="view-item"><span class="label">Responsable</span><span class="value">{{sede.responsable}}</span></div>
+          <div class="view-item"><span class="label">Fecha inicio ocupación</span><span class="value">{{sede.fechaInicioOcupacion | date:'dd/MM/yyyy HH:mm'}}</span></div>
+          <div class="view-item"><span class="label">Fecha fin ocupación</span><span class="value">{{sede.fechaFinOcupacion | date:'dd/MM/yyyy HH:mm'}}</span></div>
+          <div class="view-item view-full">
+            <span class="label">Servicios disponibles</span>
+            <ul class="grid-servicios">
+              <li>
+                <i class="fas fa-car" [class.servicio-activado]="sede.tieneEstacionamiento"></i>
+                <span style="color:#1a1a1a;">Estacionamiento</span>
+              </li>
+              <li>
+                <i class="fas fa-wheelchair"></i>
+                <span style="color:#1a1a1a;">Acceso discapacitados</span>
+              </li>
+              <li>
+                <i class="fas fa-wifi"></i>
+                <span style="color:#1a1a1a;">WiFi</span>
+              </li>
+              <li>
+                <i class="fas fa-volume-up"></i>
+                <span style="color:#aaa;">Audio</span>
+              </li>
+              <li>
+                <i class="fas fa-lightbulb"></i>
+                <span style="color:#1a1a1a;">Iluminación</span>
+              </li>
+              <li>
+                <i class="fas fa-video"></i>
+                <span style="color:#aaa;">Proyectores</span>
+              </li>
+              <li>
+                <i class="fas fa-camera"></i>
+                <span style="color:#1a1a1a;">Cámaras</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn-outline" (click)="onClose()">Cerrar</button>
+          <button class="btn-primary" (click)="onEdit()"><i class="fas fa-edit"></i> Editar</button>
+          <button class="btn-danger" (click)="onDelete()"><i class="fas fa-trash-alt"></i> Eliminar</button>
+        </div>
+        </div>
+    }
+
+    <!-- MODO CREAR/EDITAR -->
+    @if (mode == modalModo.CREAR || mode == modalModo.EDITAR) {
+        <div>
+        <form (ngSubmit)="onSave()">
+          <div class="view-grid">
+            <div class="form-group view-full"><label>Nombre de la sede</label><input type="text" name="nombre" [(ngModel)]="editarSede().nombre"></div>
+            <div class="form-group view-full"><label>Dirección</label><input type="text" name="direccion" [(ngModel)]="editarSede().direccion"></div>
+            <div class="form-group"><label>Capacidad (personas)</label><input type="number" name="capacidad" [(ngModel)]="editarSede().capacidad"></div>
+            <div class="form-group"><label>Área total (m²)</label><input type="number" name="areaTotal" [(ngModel)]="editarSede().areaTotal"></div>
+            <div class="form-group"><label>Área cubierta (m²)</label><input type="number" name="areaCubierta" [(ngModel)]="editarSede().areaCubierta"></div>
+            <div class="form-group"><label>Área descubierta (m²)</label><input type="number" name="areaDescubierta" [(ngModel)]="editarSede().areaDescubierta"></div>
+            <div class="form-group"><label>Costo de renta (MXN)</label><input type="number" name="costoRenta" [(ngModel)]="editarSede().costoRenta"></div>
+            <div class="form-group"><label>Responsable</label><input type="text" name="responsable" [(ngModel)]="editarSede().responsable"></div>
+            <div class="form-group view-full">
+              <label>Servicios disponibles</label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;">
+                <div class="form-group-check">
+                  <input 
+                  type="checkbox"
+                  name="tieneEstacionamiento" 
+                  [checked]="editarSede().tieneEstacionamiento" 
+                  (change)="actualizarCampoCheckbox('tieneEstacionamiento', $event)" />
+                  <label>Estacionamiento</label>
+                </div>
+                <div class="form-group-check">
+                  <input 
+                  type="checkbox"
+                  name="tieneAccesoDiscapacitados" 
+                  [checked]="editarSede().tieneAccesoDiscapacitados" 
+                  (change)="actualizarCampoCheckbox('tieneAccesoDiscapacitados', $event)">
+                  <label>Acceso discapacitados</label>
+                </div>
+                <div class="form-group-check">
+                  <input 
+                  type="checkbox"
+                  name="tieneWifi" 
+                  [checked]="editarSede().tieneWifi" 
+                  (change)="actualizarCampoCheckbox('tieneWifi', $event)">
+                  <label>WiFi</label>
+                </div>
+                <div class="form-group-check">
+                  <input 
+                  type="checkbox"
+                  name="tieneAudio" 
+                  [checked]="editarSede().tieneAudio" 
+                  (change)="actualizarCampoCheckbox('tieneAudio', $event)">
+                  <label>Audio</label>
+                </div>
+                <div class="form-group-check">
+                  <input 
+                  type="checkbox"
+                  name="tieneIluminacion" 
+                  [checked]="editarSede().tieneIluminacion" 
+                  (change)="actualizarCampoCheckbox('tieneIluminacion', $event)">
+                  <label>Iluminación</label>
+                </div>
+                <div class="form-group-check">
+                  <input 
+                  type="checkbox"
+                  name="tieneProyectores" 
+                  [checked]="editarSede().tieneProyectores" 
+                  (change)="actualizarCampoCheckbox('tieneProyectores', $event)">
+                  <label>Proyectores</label>
+                </div>
+                <div class="form-group-check">
+                  <input 
+                  type="checkbox"
+                  name="tieneCamaras" 
+                  [checked]="editarSede().tieneCamaras" 
+                  (change)="actualizarCampoCheckbox('tieneCamaras', $event)">
+                  <label>Cámaras</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group"><label>Estado</label>
+              <select name="estado" [(ngModel)]="editarSede().estado" [ngModelOptions]="{standalone:true}">
+                <option [ngValue]="'disponible'">Disponible</option>
+                <option [ngValue]="'ocupada'">Ocupada</option>
+                <option [ngValue]="'mantenimiento'">Mantenimiento</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Fecha inicio ocupación</label><input type="datetime-local" name="fechaInicioOcupacion" [(ngModel)]="editarSede().fechaInicioOcupacion"></div>
+            <div class="form-group"><label>Fecha fin ocupación</label><input type="datetime-local" name="fechaFinOcupacion" [(ngModel)]="editarSede().fechaFinOcupacion"></div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-outline" (click)="onClose()">Cancelar</button>
+            <button type="submit" class="btn-primary">
+              <i class="fas fa-save"></i> 
+              {{ mode === modalModo.CREAR ? 'Crear evento' : 'Guardar cambios' }}
+            </button>
+          </div>
+        </form>
+        </div>
+    }
+
+    <!-- MODO ELIMINAR -->
+    @if (mode == modalModo.ELIMINAR && sede) {
+        <span class="modal-icon" style="color:#dc2626;">🗑️</span>
+        <div class="modal-title">¿Eliminar sede?</div>
+        <div class="modal-message">Estás a punto de eliminar <strong>#{{sede.id}}</strong> — <strong>{{sede.nombre}}</strong>. Esta acción no se puede deshacer.</div>
+        <div class="modal-actions">
+          <button class="btn-outline" (click)="onClose()">Cancelar</button>
+          <button class="btn-danger" (click)="onYesDelete()"><i class="fas fa-trash-alt"></i> Sí, eliminar</button>
+        </div>
+    }
+</ui-modal-layout>
