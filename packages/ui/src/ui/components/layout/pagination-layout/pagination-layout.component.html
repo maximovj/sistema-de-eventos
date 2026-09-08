@@ -31,9 +31,9 @@
       <i class="fas fa-angle-double-right" aria-hidden="true"></i>
     </button>
 
-    <select class="page-size-select" [value]="pageSize" aria-label="Elementos por página" (change)="changePageSize($event)">
+    <select class="page-size-select" [(ngModel)]="pageSize" aria-label="Elementos por página" (change)="changePageSize($event)">
       @for (option of pageSizeOptions; track option) {
-        <option [value]="option">{{ option }}</option>
+        <option [ngValue]="option" [selected]="pageSize === option">{{ option }}</option>
       }
     </select>
   </div>

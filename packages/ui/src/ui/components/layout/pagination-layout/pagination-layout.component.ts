@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'ui-pagination-layout',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './pagination-layout.component.html',
   styleUrl: './pagination-layout.component.css'
 })
