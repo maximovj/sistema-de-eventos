@@ -47,11 +47,11 @@ button { cursor: pointer; }
 .nav-item .badge.azul { background: #2563eb; }
 .divider { background: var(--line-soft); height: 1px; margin: .6rem .8rem; }
 .content { flex: 1; min-width: 0; }
-.page-header { align-items: center; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; }
+.page-header { align-items: center; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; margin-bottom: 1rem; }
 .page-header h1 { color: var(--ink); font-size: 1.5rem; font-weight: 700; }
 .page-header h1 small { color: var(--muted); display: block; font-size: .75rem; font-weight: 400; margin-top: 2px; }
 .page-header .actions { display: flex; flex-wrap: wrap; gap: 8px; }
-.tab-actions {display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 10px; margin-bottom: 10px; }
+.tab-actions {display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; }
 .breadcrumb { color: var(--muted); font-size: .8rem; }
 .breadcrumb i, .breadcrumb span { color: var(--muted); }
 
