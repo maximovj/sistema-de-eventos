@@ -12,7 +12,13 @@
         
         <ng-template #defaultBreadcrumb>
             <div class="breadcrumb">
-                <i class="fas fa-home"></i> {{titulo}} @if(breadcrumbItem.trim().length > 0 ) { / <span>{{breadcrumbItem}}</span> }
+                <i class="fas fa-home"></i> {{titulo}} 
+                @if(breadcrumbItem.trim().length > 0 ) { 
+                    / 
+                    <span
+                    style="color: #555555;font-weight: bold;"
+                    >{{breadcrumbItem}}</span> 
+                }
             </div>
         </ng-template>
     </div>
