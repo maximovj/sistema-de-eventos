@@ -27,10 +27,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check shared types
+      - name: Check Shared types
         run: npm run check-types --workspace=@repo/shared-types
 
-      - name: Build Servicios
+      - name: Build Services
         run: npm run build --workspace=@repo/shared-services
 
       - name: Build UI
