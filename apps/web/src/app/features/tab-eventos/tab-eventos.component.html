@@ -1,12 +1,16 @@
 <app-tab-content titulo="Gestión de Eventos" subtitulo="Administra todos los eventos del sistema">
     <div breadcrumb #breadcrumb>
-        <!-- PAGE HEADER -->
-        <div class="actions">
-            <button class="btn-outline"><i class="fas fa-download"></i> Exportar</button>
-            <button class="btn-primary">
-                <i class="fas fa-plus-circle"></i> Nuevo evento
-            </button>
-        </div>
+        @if (cargando()) {
+            <ui-spinner align="start" />
+        } @else {
+            <!-- PAGE HEADER -->
+            <div class="actions">
+                <button class="btn-outline"><i class="fas fa-download"></i> Exportar</button>
+                <button class="btn-primary">
+                    <i class="fas fa-plus-circle"></i> Nuevo evento
+                </button>
+            </div>
+        }
     </div>
 
     @if (cargando()) {
