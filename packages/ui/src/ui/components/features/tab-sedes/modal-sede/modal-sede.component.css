@@ -289,10 +289,17 @@
 }
 
 .grid-servicios i,
-.grid-servicios i.servicio-desactivado {
+.grid-servicios i.servicio-desactivado,
+.grid-servicios span,
+.grid-servicios span.servicio-desactivado {
  color:#ccc;   
 }
 
 .grid-servicios i.servicio-activado {
  color:#22c55e;   
 }
+
+.grid-servicios span.servicio-activado {
+ color:#1a1a1a;   
+}
+

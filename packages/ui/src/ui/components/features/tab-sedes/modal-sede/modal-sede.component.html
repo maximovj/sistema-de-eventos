@@ -28,31 +28,31 @@
             <ul class="grid-servicios">
               <li>
                 <i class="fas fa-car" [class.servicio-activado]="sede.tieneEstacionamiento"></i>
-                <span style="color:#1a1a1a;">Estacionamiento</span>
+                <span [class.servicio-activado]="sede.tieneEstacionamiento">Estacionamiento</span>
               </li>
               <li>
-                <i class="fas fa-wheelchair"></i>
-                <span style="color:#1a1a1a;">Acceso discapacitados</span>
+                <i class="fas fa-wheelchair" [class.servicio-activado]="sede.tieneAccesoDiscapacitados"></i>
+                <span [class.servicio-activado]="sede.tieneAccesoDiscapacitados">Acceso discapacitados</span>
               </li>
               <li>
-                <i class="fas fa-wifi"></i>
-                <span style="color:#1a1a1a;">WiFi</span>
+                <i class="fas fa-wifi" [class.servicio-activado]="sede.tieneWifi"></i>
+                <span [class.servicio-activado]="sede.tieneWifi">WiFi</span>
               </li>
               <li>
-                <i class="fas fa-volume-up"></i>
-                <span style="color:#aaa;">Audio</span>
+                <i class="fas fa-volume-up" [class.servicio-activado]="sede.tieneAudio"></i>
+                <span [class.servicio-activado]="sede.tieneAudio">Audio</span>
               </li>
               <li>
-                <i class="fas fa-lightbulb"></i>
-                <span style="color:#1a1a1a;">Iluminación</span>
+                <i class="fas fa-lightbulb" [class.servicio-activado]="sede.tieneIluminacion"></i>
+                <span [class.servicio-activado]="sede.tieneIluminacion">Iluminación</span>
               </li>
               <li>
-                <i class="fas fa-video"></i>
-                <span style="color:#aaa;">Proyectores</span>
+                <i class="fas fa-video" [class.servicio-activado]="sede.tieneProyectores"></i>
+                <span [class.servicio-activado]="sede.tieneProyectores">Proyectores</span>
               </li>
               <li>
-                <i class="fas fa-camera"></i>
-                <span style="color:#1a1a1a;">Cámaras</span>
+                <i class="fas fa-camera" [class.servicio-activado]="sede.tieneCamaras"></i>
+                <span [class.servicio-activado]="sede.tieneCamaras">Cámaras</span>
               </li>
             </ul>
           </div>
