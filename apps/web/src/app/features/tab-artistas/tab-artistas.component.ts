@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ArtistasService } from '@repo/shared-services';
 import { Artista } from '@repo/shared-types';
 import { delay, finalize } from 'rxjs';
-import { SpinnerComponent, StatsArtistasComponent } from '@repo/ui';
+import { SpinnerComponent, StatsArtistasComponent, FiltrosArtistasComponent } from '@repo/ui';
 
 @Component({
   selector: 'app-tab-artistas',
@@ -13,7 +13,8 @@ import { SpinnerComponent, StatsArtistasComponent } from '@repo/ui';
     CommonModule,
     SpinnerComponent,
     TabContentComponent,
-    StatsArtistasComponent
+    StatsArtistasComponent,
+    FiltrosArtistasComponent
   ],
   templateUrl: './tab-artistas.component.html',
   styleUrl: './tab-artistas.component.css'
