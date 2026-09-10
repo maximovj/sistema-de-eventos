@@ -115,7 +115,7 @@ tr:hover td { background: #fcfaff; }
 .page-size-select { background: #fff; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); margin-left: 8px; padding: .3rem .6rem; }
 
 /* FOOTER */
-.footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: #aaa; border-top: 1px solid #e4dcec; padding-top: 1rem; margin-top: 1.5rem; }
+.footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: #aaa; border-top: 1px solid #e4dcec; padding-top: 1rem; margin-top: 1rem; }
 .footer i { color: #7c3aed; }
 
 /* MODAL */
