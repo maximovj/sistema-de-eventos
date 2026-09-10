@@ -1,10 +1,15 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { TabContentComponent } from "../../shared/components";
 import { CommonModule } from '@angular/common';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ArtistasService } from '@repo/shared-services';
 import { Artista } from '@repo/shared-types';
+import { 
+  FiltrosArtistasComponent,
+  GridTarjetasArtistasComponent,
+  SpinnerComponent,
+  StatsArtistasComponent,
+} from '@repo/ui';
 import { delay, finalize } from 'rxjs';
-import { SpinnerComponent, StatsArtistasComponent, FiltrosArtistasComponent } from '@repo/ui';
+import { TabContentComponent } from "../../shared/components";
 
 @Component({
   selector: 'app-tab-artistas',
@@ -14,7 +19,8 @@ import { SpinnerComponent, StatsArtistasComponent, FiltrosArtistasComponent } fr
     SpinnerComponent,
     TabContentComponent,
     StatsArtistasComponent,
-    FiltrosArtistasComponent
+    FiltrosArtistasComponent,
+    GridTarjetasArtistasComponent
   ],
   templateUrl: './tab-artistas.component.html',
   styleUrl: './tab-artistas.component.css'
