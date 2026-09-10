@@ -3,8 +3,16 @@ import { RouterOutlet } from '@angular/router';
 import { SettingsStorageService } from '@repo/shared-services';
 import { ToastContainerComponent } from '@repo/ui';
 import { TopHeaderComponent, NavVerticalComponent } from './shared/components';
-import { TabEventosComponent, TabDashboardComponent, TabPredeterminadoComponent, TabOrganizadoresComponent, TabSedesComponent } from './features';
 import { Tab } from '@repo/shared-types';
+import { 
+  TabEventosComponent,
+  TabDashboardComponent,
+  TabPredeterminadoComponent,
+  TabOrganizadoresComponent,
+  TabSedesComponent,
+  TabArtistasComponent,
+} from './features';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -17,6 +25,7 @@ import { Tab } from '@repo/shared-types';
     TabPredeterminadoComponent,
     TabOrganizadoresComponent,
     TabSedesComponent,
+    TabArtistasComponent,
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
