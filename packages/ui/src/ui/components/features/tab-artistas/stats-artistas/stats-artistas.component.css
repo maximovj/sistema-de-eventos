@@ -1,12 +1,12 @@
 /* ===== STATS GRID (con degradado multicolor) ===== */
-.stats-grid {
+.stats-artistas-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
   margin-bottom: 1.5rem;
 }
 
-.stat-card {
+.stat-artista-card {
   background: white;
   border-radius: 16px;
   padding: 1.1rem 1.2rem;
@@ -17,19 +17,19 @@
   overflow: hidden;
 }
 
-.stat-card:hover {
+.stat-artista-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
 }
 
-.stat-card .stat-header {
+.stat-artista-card .stat-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
 }
 
-.stat-card .stat-header .stat-icon {
+.stat-artista-card .stat-header .stat-icon {
   width: 36px;
   height: 36px;
   border-radius: 10px;
@@ -39,32 +39,32 @@
   font-size: 0.9rem;
 }
 
-.stat-card .stat-header .stat-icon.purple {
+.stat-artista-card .stat-header .stat-icon.purple {
   background: #f0eaff;
   color: #7c3aed;
 }
 
-.stat-card .stat-header .stat-icon.green {
+.stat-artista-card .stat-header .stat-icon.green {
   background: #e8f5e9;
   color: #2e7d32;
 }
 
-.stat-card .stat-header .stat-icon.orange {
+.stat-artista-card .stat-header .stat-icon.orange {
   background: #fff3e0;
   color: #e65100;
 }
 
-.stat-card .stat-header .stat-icon.pink {
+.stat-artista-card .stat-header .stat-icon.pink {
   background: #fce4ec;
   color: #d81b60;
 }
 
-.stat-card .stat-header .stat-icon.blue {
+.stat-artista-card .stat-header .stat-icon.blue {
   background: #e3f2fd;
   color: #2563eb;
 }
 
-.stat-card .stat-header .stat-trend {
+.stat-artista-card .stat-header .stat-trend {
   font-size: 0.6rem;
   font-weight: 700;
   padding: 2px 8px;
@@ -73,12 +73,12 @@
   color: #2e7d32;
 }
 
-.stat-card .stat-header .stat-trend.negative {
+.stat-artista-card .stat-header .stat-trend.negative {
   background: #fce4ec;
   color: #c62828;
 }
 
-.stat-card .stat-label {
+.stat-artista-card .stat-label {
   font-size: 0.62rem;
   text-transform: uppercase;
   color: #888;
@@ -86,7 +86,7 @@
   letter-spacing: 0.3px;
 }
 
-.stat-card .stat-value {
+.stat-artista-card .stat-value {
   font-size: 1.5rem;
   font-weight: 700;
   color: #1a1a1a;
@@ -95,7 +95,7 @@
 }
 
 /* Barra multicolor con degradado */
-.stat-card .stat-bar {
+.stat-artista-card .stat-bar {
   height: 5px;
   background: #f0edf5;
   border-radius: 5px;
@@ -103,28 +103,28 @@
   overflow: hidden;
 }
 
-.stat-card .stat-bar .fill {
+.stat-artista-card .stat-bar .fill {
   height: 100%;
   border-radius: 5px;
   transition: 0.6s;
 }
 
-.stat-card.purple .stat-bar .fill {
+.stat-artista-card.purple .stat-bar .fill {
   background: linear-gradient(90deg, #7c3aed, #c084fc);
 }
 
-.stat-card.green .stat-bar .fill {
+.stat-artista-card.green .stat-bar .fill {
   background: linear-gradient(90deg, #16a34a, #66bb6a);
 }
 
-.stat-card.orange .stat-bar .fill {
+.stat-artista-card.orange .stat-bar .fill {
   background: linear-gradient(90deg, #ea580c, #fbbf24);
 }
 
-.stat-card.pink .stat-bar .fill {
+.stat-artista-card.pink .stat-bar .fill {
   background: linear-gradient(90deg, #db2777, #f472b6);
 }
 
-.stat-card.blue .stat-bar .fill {
+.stat-artista-card.blue .stat-bar .fill {
   background: linear-gradient(90deg, #2563eb, #60a5fa);
 }
