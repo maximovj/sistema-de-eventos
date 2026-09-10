@@ -1,0 +1,386 @@
+:root {
+    display: contents;
+}
+
+/* ===== GRID DE CARDS DE ARTISTAS ===== */
+.artists-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.artist-card-v3 {
+    background: white;
+    border-radius: 18px;
+    border: 1px solid #e4dcec;
+    padding: 1.1rem 1.2rem;
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.artist-card-v3:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(124, 58, 237, 0.12);
+    border-color: #d6cce6;
+}
+
+/* Header del card */
+.artist-card-v3 .card-head-v3 {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.artist-card-v3 .avatar-v3 {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    color: white;
+    flex-shrink: 0;
+    letter-spacing: -0.5px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+}
+
+.artist-card-v3 .avatar-v3.g1 {
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+}
+
+.artist-card-v3 .avatar-v3.g2 {
+    background: linear-gradient(135deg, #2563eb, #60a5fa);
+}
+
+.artist-card-v3 .avatar-v3.g3 {
+    background: linear-gradient(135deg, #d81b60, #f06292);
+}
+
+.artist-card-v3 .avatar-v3.g4 {
+    background: linear-gradient(135deg, #2e7d32, #66bb6a);
+}
+
+.artist-card-v3 .avatar-v3.g5 {
+    background: linear-gradient(135deg, #e65100, #ff9800);
+}
+
+.artist-card-v3 .avatar-v3.g6 {
+    background: linear-gradient(135deg, #0891b2, #22d3ee);
+}
+
+.artist-card-v3 .avatar-v3 .status-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 18px;
+    border: 2px solid;
+    opacity: 0.5;
+}
+
+.artist-card-v3 .avatar-v3 .status-ring.confirmado {
+    border-color: #22c55e;
+}
+
+.artist-card-v3 .avatar-v3 .status-ring.pendiente {
+    border-color: #f59e0b;
+}
+
+.artist-card-v3 .avatar-v3 .status-ring.cancelado {
+    border-color: #ef4444;
+}
+
+.artist-card-v3 .card-title-v3 {
+    flex: 1;
+    min-width: 0;
+}
+
+.artist-card-v3 .card-title-v3 .name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.artist-card-v3 .card-title-v3 .alias {
+    font-size: 0.7rem;
+    color: #7c3aed;
+    font-style: italic;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.artist-card-v3 .card-title-v3 .id-tag {
+    font-size: 0.6rem;
+    color: #aaa;
+    margin-top: 3px;
+    font-weight: 500;
+}
+
+.artist-card-v3 .status-badge {
+    font-size: 0.58rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.artist-card-v3 .status-badge.confirmado {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.artist-card-v3 .status-badge.pendiente {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.artist-card-v3 .status-badge.cancelado {
+    background: #fce4ec;
+    color: #c62828;
+}
+
+/* Info rápida */
+.artist-card-v3 .info-row-v3 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.info-tag {
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: 8px;
+    background: #f5f3f9;
+    color: #7c3aed;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.info-tag.tipo {
+    background: #ede9fe;
+    color: #6d28d9;
+}
+
+.info-tag.genero {
+    background: #e0f2fe;
+    color: #0284c7;
+}
+
+.info-tag.origen {
+    background: #f0edf5;
+    color: #666;
+}
+
+/* Mini gráfico de barras de costos */
+.cost-chart {
+    margin-bottom: 10px;
+}
+
+.cost-chart .cost-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.cost-chart .cost-header .cost-label {
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    color: #aaa;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.cost-chart .cost-header .cost-total {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #7c3aed;
+    letter-spacing: -0.3px;
+}
+
+.cost-bars {
+    display: flex;
+    gap: 3px;
+    height: 20px;
+    align-items: flex-end;
+}
+
+.cost-bars .bar {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    background: #f0edf5;
+    transition: 0.3s;
+    position: relative;
+    min-height: 4px;
+}
+
+.cost-bars .bar.cache {
+    background: linear-gradient(180deg, #7c3aed, #c084fc);
+}
+
+.cost-bars .bar.transporte {
+    background: linear-gradient(180deg, #2563eb, #60a5fa);
+}
+
+.cost-bars .bar.hospedaje {
+    background: linear-gradient(180deg, #d81b60, #f472b6);
+}
+
+.cost-bars .bar.alimentacion {
+    background: linear-gradient(180deg, #e65100, #fbbf24);
+}
+
+.cost-legend {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.cost-legend span {
+    font-size: 0.55rem;
+    color: #aaa;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.cost-legend span::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+}
+
+.cost-legend .l-cache::before {
+    background: #7c3aed;
+}
+
+.cost-legend .l-trans::before {
+    background: #2563eb;
+}
+
+.cost-legend .l-hosp::before {
+    background: #d81b60;
+}
+
+.cost-legend .l-alim::before {
+    background: #e65100;
+}
+
+/* Meta info */
+.card-meta-v3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px dashed #f0edf5;
+    font-size: 0.68rem;
+    color: #888;
+}
+
+.card-meta-v3 .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card-meta-v3 .meta-item i {
+    color: #a78bfa;
+    font-size: 0.65rem;
+}
+
+/* Botones de acción */
+.card-actions-v3 {
+    display: flex;
+    gap: 4px;
+    margin-top: 10px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.25s;
+}
+
+.artist-card-v3:hover .card-actions-v3 {
+    opacity: 1;
+    max-height: 40px;
+}
+
+.card-actions-v3 button {
+    flex: 1;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background: #f5f3f9;
+    color: #666;
+    cursor: pointer;
+    font-size: 0.68rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: 0.2s;
+}
+
+.card-actions-v3 .btn-view:hover {
+    background: #e3f2fd;
+    color: #2563eb;
+}
+
+.card-actions-v3 .btn-edit:hover {
+    background: #fce4ec;
+    color: #d81b60;
+}
+
+.card-actions-v3 .btn-delete:hover {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* Empty */
+.empty-grid {
+    grid-column: 1 / -1;
+    padding: 4rem 2rem;
+    text-align: center;
+    background: white;
+    border-radius: 18px;
+    border: 2px dashed #e4dcec;
+}
+
+.empty-grid i {
+    font-size: 2.5rem;
+    color: #ddd;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.empty-grid h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.empty-grid p {
+    font-size: 0.82rem;
+    color: #aaa;
+}
