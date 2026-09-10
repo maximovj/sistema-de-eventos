@@ -10,6 +10,7 @@ export * from './models/organizador.model';
 export * from './models/tab-organizadores.model';
 export * from './models/settings-storage.model';
 export * from './models/sede.model';
+export * from './models/artista.model';
 
 // Schemas
 export * from './schemas/settings-storage.schema';
