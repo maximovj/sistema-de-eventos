@@ -1,0 +1,29 @@
+/* ===== LAYOUT DE 2 COLUMNAS: CARDS + PANEL ANALÍTICO ===== */
+.content-split {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 20px;
+    align-items: start;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1300px) {
+    .content-split {
+        grid-template-columns: 1fr 280px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .content-split {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-panel {
+        position: relative;
+        top: 0;
+    }
+}
