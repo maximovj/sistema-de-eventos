@@ -1,0 +1,311 @@
+
+.filters-artistas {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e4dcec;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.filters-artistas .filters-artistas-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.filters-artistas .filters-artistas-top .filter-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filters-artistas .filters-artistas-top .filter-title i {
+    color: #7c3aed;
+    font-size: 1rem;
+    background: #f0eaff;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+.filters-artistas .filters-artistas-top .filter-title h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.filters-artistas .filters-artistas-top .filter-title h4 small {
+    font-weight: 400;
+    color: #888;
+    font-size: 0.7rem;
+    display: block;
+}
+
+.filters-artistas .filters-artistas-top .filter-stats {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.filters-artistas .filters-artistas-top .filter-stats strong {
+    color: #1a1a1a;
+}
+
+.filters-artistas .filters-artistas-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr 1.2fr;
+    gap: 12px;
+    align-items: end;
+}
+
+.filter-artistas-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.filter-artistas-group label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.filter-artistas-group label i {
+    color: #7c3aed;
+    font-size: 0.65rem;
+}
+
+.filter-artistas-group input,
+.filter-artistas-group select {
+    padding: 0.45rem 0.8rem;
+    border-radius: 10px;
+    border: 1.5px solid #e4dcec;
+    background: #fcfaff;
+    font-size: 0.8rem;
+    color: #1a1a1a;
+    transition: 0.2s;
+    outline: none;
+    width: 100%;
+}
+
+.filter-artistas-group input:focus,
+.filter-artistas-group select:focus {
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.06);
+    background: white;
+}
+
+.filter-artistas-group input::placeholder {
+    color: #bbb;
+    font-size: 0.75rem;
+}
+
+.filter-artistas-group .input-icon {
+    position: relative;
+}
+
+.filter-artistas-group .input-icon i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 0.7rem;
+}
+
+.filter-artistas-group .input-icon input {
+    padding-left: 32px;
+}
+
+.filter-artistas-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    cursor: pointer;
+    padding-right: 32px;
+}
+
+.filter-artistas-group .range-inputs {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.filter-artistas-group .range-inputs input {
+    width: 100%;
+    padding: 0.45rem 0.5rem;
+}
+
+.filter-artistas-group .range-inputs span {
+    color: #ccc;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+}
+
+.filter-actions-modern {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.filter-actions-modern .btn-filter {
+    padding: 0.45rem 1.2rem;
+    border-radius: 30px;
+    border: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.btn-filter.apply {
+    background: #7c3aed;
+    color: white;
+}
+
+.btn-filter.apply:hover {
+    background: #6d2de0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+}
+
+.btn-filter.clear {
+    background: #f4f2f7;
+    color: #666;
+}
+
+.btn-filter.clear:hover {
+    background: #e8e4ed;
+    transform: translateY(-2px);
+}
+
+.btn-filter.export {
+    background: transparent;
+    color: #7c3aed;
+    border: 1.5px solid #7c3aed;
+}
+
+.btn-filter.export:hover {
+    background: #f0eaff;
+    transform: translateY(-2px);
+}
+
+.active-filters-artistas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #f0edf5;
+    align-items: center;
+}
+
+.active-filters-artistas .label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    color: #aaa;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.filter-tag-modern {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #f0eaff;
+    color: #7c3aed;
+    padding: 0.15rem 0.6rem 0.15rem 0.8rem;
+    border-radius: 30px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    animation: tagIn 0.3s ease;
+}
+
+.filter-tag-modern .remove {
+    cursor: pointer;
+    font-size: 0.6rem;
+    color: #7c3aed;
+    opacity: 0.5;
+    transition: 0.15s;
+}
+
+.filter-tag-modern .remove:hover {
+    opacity: 1;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1200px) {
+    .filters-artistas .filters-artistas-grid {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .filters-artistas .filters-artistas-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 850px) {
+    .filters-artistas .filters-artistas-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .filters-artistas .filters-artistas-top {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .filter-actions-modern {
+        justify-content: stretch;
+    }
+
+    .filter-actions-modern .btn-filter {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .filters-artistas .filters-artistas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-artistas .filters-artistas-top .filter-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .active-filters-artistas {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
