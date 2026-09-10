@@ -1,0 +1,24 @@
+<div class="pagination-wrap">
+    <div class="info">
+        Mostrando <strong id="inicioMostrando">1</strong> - <strong id="finMostrando">8</strong> de <strong
+            id="totalMostrando">8</strong>
+    </div>
+    <div class="pagination" id="paginationControls">
+        <button onclick="cambiarPagina('primera')" id="btnPrimera" disabled=""><i
+                class="fas fa-angle-double-left"></i></button>
+        <button onclick="cambiarPagina('anterior')" id="btnAnterior" disabled=""><i
+                class="fas fa-angle-left"></i></button>
+        <div id="paginacionNumeros" style="display:flex;gap:4px;align-items:center;"><button class="active"
+                onclick="irPagina(1)">1</button></div>
+        <button onclick="cambiarPagina('siguiente')" id="btnSiguiente" disabled=""><i
+                class="fas fa-angle-right"></i></button>
+        <button onclick="cambiarPagina('ultima')" id="btnUltima" disabled=""><i
+                class="fas fa-angle-double-right"></i></button>
+        <select id="pageSizeSelect" onchange="cambiarPageSize()">
+            <option value="6">6</option>
+            <option value="12" selected="">12</option>
+            <option value="24">24</option>
+            <option value="48">48</option>
+        </select>
+    </div>
+</div>
