@@ -3,5 +3,15 @@
     subtitulo="Administra artistas en el sistema"
     breadcrumbItem="Panel"
 >
+    @if (cargando()) {
+        <ui-spinner size="medium" align="start"></ui-spinner>
+    } @else {
+        <p>Mostrando artistas</p>
 
+        <!-- FOOTER -->
+        <div class="footer">
+            <span><i class="fas fa-database"></i> &nbsp;<span>{{total()}}</span> artistas registrados</span>
+            <span>© 2026 Eventos Elite (EE) · v3.0</span>
+        </div>
+    }
 </app-tab-content>
