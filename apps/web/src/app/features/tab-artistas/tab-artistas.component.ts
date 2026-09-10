@@ -8,6 +8,7 @@ import {
   SpinnerComponent,
   StatsArtistasComponent,
   PanelAnaliticoArtistasComponent,
+  PaginacionArtistasComponent,
 } from '@repo/ui';
 import { delay, finalize } from 'rxjs';
 import { TabContentComponent } from "../../shared/components";
@@ -22,8 +23,9 @@ import { TabContentComponent } from "../../shared/components";
     StatsArtistasComponent,
     FiltrosArtistasComponent,
     GridTarjetasArtistasComponent,
-    PanelAnaliticoArtistasComponent
-  ],
+    PanelAnaliticoArtistasComponent,
+    PaginacionArtistasComponent
+],
   templateUrl: './tab-artistas.component.html',
   styleUrl: './tab-artistas.component.css'
 })
