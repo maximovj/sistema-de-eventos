@@ -22,3 +22,6 @@ export * from './ui/components/features/tab-eventos/modal-event/modal-event.comp
 export * from './ui/components/features/tab-sedes/fila-sede/fila-sede.component';
 export * from './ui/components/features/tab-sedes/stats-sedes/stats-sedes.component';
 export * from './ui/components/features/tab-sedes/modal-sede/modal-sede.component';
+
+// Tab Artistas
+export * from './ui/components/features/tab-artistas';

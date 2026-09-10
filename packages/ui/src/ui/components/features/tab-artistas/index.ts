@@ -1,0 +1,1 @@
+export * from './stats-artistas/stats-artistas.component';
