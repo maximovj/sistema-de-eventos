@@ -18,7 +18,12 @@
         <ui-filtros-artistas />
 
         <div class="content-split">
-            <ui-grid-tarjetas-artistas />
+            <ui-grid-tarjetas-artistas 
+                [artistas]="artistas()"
+                (ver)="verArtista($event)"
+                (editar)="editarArtista($event)"
+                (eliminar)="eliminarArtista($event)"
+            />
             <ui-panel-analitico-artistas />
         </div>
 

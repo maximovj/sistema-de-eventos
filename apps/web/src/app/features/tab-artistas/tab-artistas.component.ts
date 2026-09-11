@@ -58,5 +58,19 @@ export class TabArtistasComponent implements OnInit {
     });
   }
 
+  verArtista(artista: Artista) {
+    alert(`Ver artista: #${artista.id} - ${artista.nombre}`);
+    console.log(`Ver artista: #${artista.id} - ${artista.nombre} => `, artista);
+  }
+
+  editarArtista(artista: Artista) {
+    alert(`Editar artista: #${artista.id} - ${artista.nombre}`);
+    console.log(`Editar artista: #${artista.id} - ${artista.nombre} => `, artista);
+  }
+
+  eliminarArtista(artista: Artista) {
+    alert(`Eliminar artista: #${artista.id} - ${artista.nombre}`);
+    console.log(`Eliminar artista: #${artista.id} - ${artista.nombre} =>`, artista);
+  }
 
 }
