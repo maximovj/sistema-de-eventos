@@ -7,7 +7,52 @@
 >
     <!-- MODO VER -->
     @if (mode == modalModo.VER && artista) {
-
+        <div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:1.2rem;">
+          <div style="display:flex;gap:14px;align-items:center;">
+            <div class="kanban-avatar g1" style="width:56px;height:56px;font-size:1.1rem;border-radius:16px;">
+              MB
+            </div>
+            <div>
+              <h2 style="font-size:1.2rem;font-weight:700;"><i class="fas fa-user-circle" style="color:#7c3aed;"></i> María Belén Acosta</h2>
+              <div style="font-size:0.8rem;color:#7c3aed;font-style:italic;margin-top:2px;">"Belén Soul"</div>
+              <div style="display:flex;gap:12px;font-size:0.75rem;color:#666;margin-top:4px;">
+                <span><i class="fas fa-hashtag" style="color:#7c3aed;"></i> 78</span>
+                <span><i class="fas fa-calendar-alt" style="color:#7c3aed;"></i> Evento #234</span>
+              </div>
+            </div>
+          </div>
+          <span style="font-size:0.75rem;padding:0.3rem 1rem;border-radius:20px;font-weight:600;background:#e8f5e9;color:#2e7d32;">
+            Confirmado
+          </span>
+        </div>
+        <div class="view-grid">
+          <div class="view-item"><span class="label">Tipo</span><span class="value">Cantante</span></div>
+          <div class="view-item"><span class="label">Género musical</span><span class="value">Fusión Latina</span></div>
+          <div class="view-item"><span class="label">Origen</span><span class="value">Guadalajara, México</span></div>
+          <div class="view-item"><span class="label">Teléfono</span><span class="value">33-9876-5432</span></div>
+          <div class="view-item"><span class="label">Email</span><span class="value">belen.soul.artista.com</span></div>
+          <div class="view-item"><span class="label">Web</span><span class="value">www.belensoul.com</span></div>
+          <div class="view-item"><span class="label">Instagram</span><span class="value">belen.soul</span></div>
+          <div class="view-item"><span class="label">Spotify</span><span class="value">belen-soul</span></div>
+          <div class="view-item"><span class="label">Caché</span><span class="value">$85,000</span></div>
+          <div class="view-item"><span class="label">Transporte</span><span class="value">$15,000</span></div>
+          <div class="view-item"><span class="label">Hospedaje</span><span class="value">$25,000</span></div>
+          <div class="view-item"><span class="label">Alimentación</span><span class="value">$5,000</span></div>
+          <div class="view-item"><span class="label">Costo total</span><span class="value" style="color:#7c3aed;font-weight:700;">$130,000</span></div>
+          <div class="view-item"><span class="label">Duración</span><span class="value">90 min</span></div>
+          <div class="view-item"><span class="label">Check-In</span><span class="value">15/10/2026, 2:00:00 p.m.</span></div>
+          <div class="view-item"><span class="label">SoundCheck</span><span class="value">15/10/2026, 5:00:00 p.m.</span></div>
+          <div class="view-item"><span class="label">Presentación</span><span class="value">15/10/2026, 8:00:00 p.m.</span></div>
+          <div class="view-item"><span class="label">Técnicos</span><span class="value">3</span></div>
+          <div class="view-item view-full"><span class="label">Requerimientos</span><span class="value">✅ Instrumentos · ✅ Backline</span></div>
+        </div>
+        <div class="form-actions">
+          <button class="btn-outline" >Cerrar</button>
+          <button class="btn-primary" ><i class="fas fa-edit"></i> Editar</button>
+          <button class="btn-danger" ><i class="fas fa-trash-alt"></i> Eliminar</button>
+        </div>
+      </div>
     }
 
     <!-- MODO CREAR/EDITAR -->
