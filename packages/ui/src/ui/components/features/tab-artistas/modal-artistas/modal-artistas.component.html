@@ -1,0 +1,29 @@
+<ui-modal-layout
+    [isOpen]="isOpen" 
+    [mode]="mode"
+    [title]="titulo()"
+    [icons]="iconos()"
+    (close)="onClose()"
+>
+    <!-- MODO VER -->
+    @if (mode == modalModo.VER && artista) {
+
+    }
+
+    <!-- MODO CREAR/EDITAR -->
+    @if (mode == modalModo.CREAR || mode == modalModo.EDITAR) {
+
+    }
+
+    <!-- MODO ELIMINAR -->
+    @if (mode == modalModo.ELIMINAR && artista) {
+        <span class="modal-icon" style="color:#dc2626;">🗑️</span>
+        <div class="modal-title">¿Eliminar {{this.modelo.toLowerCase()}}?</div>
+        <div class="modal-message">Estás a punto de eliminar <strong>#{{artista.id}}</strong> — <strong>{{artista.nombre}}</strong>. Esta acción no se puede deshacer.</div>
+        <div class="modal-actions">
+          <button class="btn-outline" (click)="onClose()">Cancelar</button>
+          <button class="btn-danger" (click)="onYesDelete()"><i class="fas fa-trash-alt"></i> Sí, eliminar</button>
+        </div>
+    }
+
+</ui-modal-layout>
