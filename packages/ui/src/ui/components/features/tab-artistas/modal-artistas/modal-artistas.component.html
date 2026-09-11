@@ -48,9 +48,9 @@
           <div class="view-item view-full"><span class="label">Requerimientos</span><span class="value">✅ Instrumentos · ✅ Backline</span></div>
         </div>
         <div class="form-actions">
-          <button class="btn-outline" >Cerrar</button>
-          <button class="btn-primary" ><i class="fas fa-edit"></i> Editar</button>
-          <button class="btn-danger" ><i class="fas fa-trash-alt"></i> Eliminar</button>
+          <button class="btn-outline" (click)="onClose()">Cerrar</button>
+          <button class="btn-primary" (click)="onEdit()"><i class="fas fa-edit"></i> Editar</button>
+          <button class="btn-danger" (click)="onDelete()"><i class="fas fa-trash-alt"></i> Eliminar</button>
         </div>
       </div>
     }
@@ -58,7 +58,7 @@
     <!-- MODO CREAR/EDITAR -->
     @if (mode == modalModo.CREAR || mode == modalModo.EDITAR) {
       <div>
-        <form onsubmit="event.preventDefault(); cerrarYMostrarToast('modalEditarArtista', 'success', 'Artista actualizado', 'Los cambios se guardaron correctamente.');">
+        <form (ngSubmit)="onSave()">
           <div class="view-grid">
             <div class="form-group view-full"><label>Nombre completo</label><input type="text" value="María Belén Acosta"></div>
             <div class="form-group view-full"><label>Nombre artístico</label><input type="text" value="Belén Soul"></div>
@@ -94,8 +94,9 @@
             </div>
           </div>
           <div class="form-actions">
-            <button type="button" class="btn-outline" onclick="closeModal('modalEditarArtista')">Cancelar</button>
-            <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Guardar cambios</button>
+            <button type="button" class="btn-outline" (click)="onClose()">Cancelar</button>
+            <button type="submit" class="btn-primary"><i class="fas fa-save"></i> 
+              {{ mode === modalModo.CREAR ? 'Crear artista' : 'Guardar cambios' }}</button>
           </div>
         </form>
       </div>
