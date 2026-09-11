@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ArtistasService } from '@repo/shared-services';
-import { Artista } from '@repo/shared-types';
+import { Artista, ModalModo } from '@repo/shared-types';
 import { 
+  ModalArtistasComponent,
   FiltrosArtistasComponent,
   GridTarjetasArtistasComponent,
   SpinnerComponent,
@@ -24,13 +25,19 @@ import { TabContentComponent } from "../../shared/components";
     FiltrosArtistasComponent,
     GridTarjetasArtistasComponent,
     PanelAnaliticoArtistasComponent,
-    PaginacionArtistasComponent
+    PaginacionArtistasComponent,
+    ModalArtistasComponent
 ],
   templateUrl: './tab-artistas.component.html',
   styleUrl: './tab-artistas.component.css'
 })
 export class TabArtistasComponent implements OnInit {
   private service = inject(ArtistasService);
+
+  // Estados literales
+  sedeSeleccionado: Artista | null = null;  
+  modalAbierto: boolean = false;
+  modalTipo: ModalModo = ModalModo.VER;
 
   // Estados signals
   cargando = signal<boolean>(false);
@@ -58,19 +65,58 @@ export class TabArtistasComponent implements OnInit {
     });
   }
 
+  //////////////////////////////
+  // * Operaciones CRUD
+  /////////////////////////////
+
+  crearArtista() {
+    this.modalAbierto = true;
+    this.modalTipo = ModalModo.CREAR;
+  }
+
   verArtista(artista: Artista) {
-    alert(`Ver artista: #${artista.id} - ${artista.nombre}`);
-    console.log(`Ver artista: #${artista.id} - ${artista.nombre} => `, artista);
+    this.sedeSeleccionado = artista;
+    this.modalAbierto = true;
+    this.modalTipo = ModalModo.VER;
   }
 
   editarArtista(artista: Artista) {
-    alert(`Editar artista: #${artista.id} - ${artista.nombre}`);
-    console.log(`Editar artista: #${artista.id} - ${artista.nombre} => `, artista);
+    this.sedeSeleccionado = artista;
+    this.modalAbierto = true;
+    this.modalTipo = ModalModo.EDITAR;
   }
 
   eliminarArtista(artista: Artista) {
-    alert(`Eliminar artista: #${artista.id} - ${artista.nombre}`);
-    console.log(`Eliminar artista: #${artista.id} - ${artista.nombre} =>`, artista);
+    this.sedeSeleccionado = artista;
+    this.modalAbierto = true;
+    this.modalTipo = ModalModo.ELIMINAR;
+  }
+
+  onGuardarArtista(artista: Artista) {
+    if (this.modalTipo === 'edit') {
+      
+      return;
+    }
+
+    //this.service.guardar(sede);
+  }
+
+  onActualizarArtista(artista: Artista) {
+    console.log("Actualizar sede: ", artista);
+    this.editarArtista(artista);
+  }
+  
+  onEliminarArtista(artista: Artista) {
+    console.log("Eliminar sede: ", artista);
+    this.eliminarArtista(artista);
+  }
+  
+  onSiEliminarArtista(artista: Artista) {
+    
+  }
+
+  onCerrarModal() {
+    this.modalAbierto = false; 
   }
 
 }
