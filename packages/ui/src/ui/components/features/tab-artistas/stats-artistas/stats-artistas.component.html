@@ -5,7 +5,7 @@
             <span class="stat-trend"><i class="fas fa-arrow-up"></i> 8%</span>
         </div>
         <div class="stat-label">Total artistas</div>
-        <div class="stat-value" id="statsTotal">7</div>
+        <div class="stat-value" id="statsTotal">{{totalArtistas()}}</div>
         <div class="stat-bar">
             <div class="fill" style="width:100%;"></div>
         </div>
@@ -16,7 +16,7 @@
             <span class="stat-trend"><i class="fas fa-arrow-up"></i> 12%</span>
         </div>
         <div class="stat-label">Confirmados</div>
-        <div class="stat-value" id="statsConfirmados">4</div>
+        <div class="stat-value" id="statsConfirmados">{{confirmados()}}</div>
         <div class="stat-bar">
             <div class="fill" id="barConfirmados" style="width: 57.1429%;"></div>
         </div>
@@ -27,7 +27,7 @@
             <span class="stat-trend negative"><i class="fas fa-arrow-down"></i> 3%</span>
         </div>
         <div class="stat-label">Pendientes</div>
-        <div class="stat-value" id="statsPendientes">2</div>
+        <div class="stat-value" id="statsPendientes">{{pendientes()}}</div>
         <div class="stat-bar">
             <div class="fill" id="barPendientes" style="width: 28.5714%;"></div>
         </div>
@@ -38,7 +38,7 @@
             <span class="stat-trend"><i class="fas fa-minus"></i> 0%</span>
         </div>
         <div class="stat-label">Cancelados</div>
-        <div class="stat-value" id="statsCancelados">1</div>
+        <div class="stat-value" id="statsCancelados">{{cancelados()}}</div>
         <div class="stat-bar">
             <div class="fill" id="barCancelados" style="width: 14.2857%;"></div>
         </div>
@@ -49,7 +49,7 @@
             <span class="stat-trend"><i class="fas fa-arrow-up"></i> 5%</span>
         </div>
         <div class="stat-label">Costo total</div>
-        <div class="stat-value" id="statsCostoTotal">$1102k</div>
+        <div class="stat-value" id="statsCostoTotal">{{costoTotal() | currency}}</div>
         <div class="stat-bar">
             <div class="fill" style="width:85%;"></div>
         </div>
