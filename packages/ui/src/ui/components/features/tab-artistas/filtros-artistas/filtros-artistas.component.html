@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="filter-stats">
-            <span><i class="fas fa-layer-group"></i> <strong id="resultCount">7</strong> resultados</span>
+            <span><i class="fas fa-layer-group"></i> <strong>{{ resultados }}</strong> resultados</span>
             <span><i class="fas fa-clock"></i> <span id="filtroTiempo">Última actualización: ahora</span></span>
         </div>
     </div>
@@ -18,45 +18,34 @@
             <label><i class="fas fa-search"></i> Buscar</label>
             <div class="input-icon">
                 <i class="fas fa-search"></i>
-                <input type="text" id="filtroBusqueda" placeholder="Nombre, alias, país...">
+                <input type="text" id="filtroBusqueda" [(ngModel)]="filtros.busqueda" placeholder="Nombre, alias, país...">
             </div>
         </div>
 
         <!-- Estatus -->
         <div class="filter-artistas-group">
             <label><i class="fas fa-circle"></i> Estatus</label>
-            <select id="filtroEstatus">
+            <select id="filtroEstatus" [(ngModel)]="filtros.estatus">
                 <option value="">Todos los estatus</option>
-                <option value="CONFIRMADO">✅ Confirmado</option>
-                <option value="PENDIENTE">⏳ Pendiente</option>
-                <option value="CANCELADO">❌ Cancelado</option>
+                <option *ngFor="let valor of estatus" [ngValue]="valor">{{ valor }}</option>
             </select>
         </div>
 
         <!-- Tipo de Artista -->
         <div class="filter-artistas-group">
             <label><i class="fas fa-music"></i> Tipo</label>
-            <select id="filtroTipoArtista">
+            <select id="filtroTipoArtista" [(ngModel)]="filtros.tipoArtista">
                 <option value="">Cualquier tipo</option>
-                <option value="MUSICO_CANTANTE">🎤 Músico Cantante</option>
-                <option value="MUSICO_INSTRUMENTISTA">🎸 Músico Instrumentista</option>
-                <option value="BANDA">🎶 Banda</option>
-                <option value="DJ">🎧 DJ</option>
-                <option value="OTRO">Otro</option>
+                <option *ngFor="let valor of tiposArtista" [ngValue]="valor">{{ valor }}</option>
             </select>
         </div>
 
         <!-- Género Musical -->
         <div class="filter-artistas-group">
             <label><i class="fas fa-compact-disc"></i> Género</label>
-            <select id="filtroGenero">
+            <select id="filtroGenero" [(ngModel)]="filtros.generoMusical">
                 <option value="">Cualquier género</option>
-                <option value="FUSION_LATINA">Fusión Latina</option>
-                <option value="POP">Pop</option>
-                <option value="ROC">Rock</option>
-                <option value="JAZZ">Jazz</option>
-                <option value="ELECTRONICA">Electrónica</option>
-                <option value="OTRO">Otro</option>
+                <option *ngFor="let valor of generosMusicales" [ngValue]="valor">{{ valor }}</option>
             </select>
         </div>
 
@@ -64,10 +53,10 @@
         <div class="filter-artistas-group">
             <label style="visibility:hidden;">Acciones</label>
             <div class="filter-actions-modern">
-                <button class="btn-filter clear" onclick="limpiarFiltros()"><i class="fas fa-undo"></i></button>
-                <button class="btn-filter apply" onclick="aplicarFiltros()"><i class="fas fa-filter"></i>
+                <button class="btn-filter clear" type="button" (click)="limpiarFiltros()"><i class="fas fa-undo"></i></button>
+                <button class="btn-filter apply" type="button" (click)="aplicarFiltros()"><i class="fas fa-filter"></i>
                     Filtrar</button>
-                <button class="btn-filter export" onclick="exportarFiltros()" title="Copiar URL"><i
+                <button class="btn-filter export" type="button" title="Copiar URL"><i
                         class="fas fa-link"></i></button>
             </div>
         </div>
