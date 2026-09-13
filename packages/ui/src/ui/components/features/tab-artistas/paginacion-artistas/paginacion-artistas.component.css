@@ -25,6 +25,12 @@
     align-items: center;
 }
 
+.pagination-wrap .page-list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .pagination-wrap .pagination button {
     width: 34px;
     height: 34px;
