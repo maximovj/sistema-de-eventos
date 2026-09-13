@@ -3,6 +3,9 @@ export * from './enums/tab.enum';
 export * from './enums/tipo-organizador.enum';
 export * from './enums/sede-estado.enum';
 export * from './enums/modal-modo.enums';
+export * from './enums/artista-tipo.enum';
+export * from './enums/artista-genero-musical.enum';
+export * from './enums/artista-estatus-artista.enum';
 
 // Models
 export * from './models/evento.model';

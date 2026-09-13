@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, signal, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Artista, ArtistaEstatusArtista, ArtistaGeneroMusical, ArtistaTipo, ModalModo } from '@repo/shared-types';
 import { ModalLayoutComponent } from '../../../layout/modal-layout/modal-layout.component';
-import { Artista, ModalModo } from '@repo/shared-types';
 
 type ArtistaBooleanField = {
   [K in keyof Artista]-?: Artista[K] extends boolean ? K : never
@@ -69,8 +69,8 @@ export class ModalArtistasComponent implements OnInit, OnDestroy, OnChanges {
       eventoId: '',
       nombre: '',
       nombreArtistico: '',
-      tipoArtista: 'OTRO',
-      generoMusical: 'OTRO',
+      tipoArtista: ArtistaTipo.OTRO,
+      generoMusical: ArtistaGeneroMusical.OTRO,
       paisOrigen: '',
       ciudadOrigen: '',
       telefono: '',
@@ -90,7 +90,7 @@ export class ModalArtistasComponent implements OnInit, OnDestroy, OnChanges {
       requiereBackline: false,
       checkIn: new Date().toISOString(),    // ISO 8601
       soundCheck: new Date().toISOString(), // ISO 8601
-      estatus: 'PENDIENTE',
+      estatus: ArtistaEstatusArtista.PENDIENTE,
     }
   }
 
