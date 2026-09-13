@@ -1,86 +1,22 @@
 <div class="analytics-panel">
-
     <!-- Distribución por género -->
     <div class="analytics-card">
         <div class="card-title-analytics"><i class="fas fa-chart-pie"></i> Distribución por género</div>
         <div class="genre-dist" id="genreDist">
-            <div class="genre-item">
-                <div class="genre-header">
-                    <span class="genre-name">
-                        <span class="genre-dot" style="background:#7c3aed;"></span>
-                        Fusión Latina
-                    </span>
-                    <span class="genre-count">2</span>
+            @for (genero of generos; track $index) {
+                <div class="genre-item">
+                    <div class="genre-header">
+                        <span class="genre-name">
+                            <span class="genre-dot" style="background:#7c3aed;"></span>
+                            {{genero[1]}}
+                        </span>
+                        <span class="genre-count">{{contarPorGenero(genero[0])}}</span>
+                    </div>
+                    <div class="genre-bar-bg">
+                        <div class="genre-bar-fill" style="width:100%;background:#fff; border: 1px solid #ccc;"></div>
+                    </div>
                 </div>
-                <div class="genre-bar-bg">
-                    <div class="genre-bar-fill" style="width:100%;background:#7c3aed;"></div>
-                </div>
-            </div>
-
-            <div class="genre-item">
-                <div class="genre-header">
-                    <span class="genre-name">
-                        <span class="genre-dot" style="background:#888;"></span>
-                        Otro
-                    </span>
-                    <span class="genre-count">1</span>
-                </div>
-                <div class="genre-bar-bg">
-                    <div class="genre-bar-fill" style="width:50%;background:#888;"></div>
-                </div>
-            </div>
-
-            <div class="genre-item">
-                <div class="genre-header">
-                    <span class="genre-name">
-                        <span class="genre-dot" style="background:#0891b2;"></span>
-                        Electrónica
-                    </span>
-                    <span class="genre-count">1</span>
-                </div>
-                <div class="genre-bar-bg">
-                    <div class="genre-bar-fill" style="width:50%;background:#0891b2;"></div>
-                </div>
-            </div>
-
-            <div class="genre-item">
-                <div class="genre-header">
-                    <span class="genre-name">
-                        <span class="genre-dot" style="background:#dc2626;"></span>
-                        Rock
-                    </span>
-                    <span class="genre-count">1</span>
-                </div>
-                <div class="genre-bar-bg">
-                    <div class="genre-bar-fill" style="width:50%;background:#dc2626;"></div>
-                </div>
-            </div>
-
-            <div class="genre-item">
-                <div class="genre-header">
-                    <span class="genre-name">
-                        <span class="genre-dot" style="background:#d81b60;"></span>
-                        Pop
-                    </span>
-                    <span class="genre-count">1</span>
-                </div>
-                <div class="genre-bar-bg">
-                    <div class="genre-bar-fill" style="width:50%;background:#d81b60;"></div>
-                </div>
-            </div>
-
-            <div class="genre-item">
-                <div class="genre-header">
-                    <span class="genre-name">
-                        <span class="genre-dot" style="background:#2563eb;"></span>
-                        Jazz
-                    </span>
-                    <span class="genre-count">1</span>
-                </div>
-                <div class="genre-bar-bg">
-                    <div class="genre-bar-fill" style="width:50%;background:#2563eb;"></div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 
@@ -88,55 +24,17 @@
     <div class="analytics-card">
         <div class="card-title-analytics"><i class="fas fa-trophy"></i> Top 5 — Mayor costo</div>
         <div class="top-costs" id="topCosts">
-            <div class="top-cost-item" onclick="verArtista('82')">
-                <span class="rank">1</span>
-                <span class="mini-avatar g5">LB</span>
-                <div class="info">
-                    <div class="name">La Banda del Sur</div>
-                    <div class="alias">"La Banda del Sur"</div>
+            @for (artista of top5Artistas(); track $index) { 
+                <div class="top-cost-item">
+                    <span class="rank">{{$index+1}}</span>
+                    <span class="mini-avatar g{{$index+1}}">{{ obtenerIniciales(artista.nombre) }}</span>
+                    <div class="info">
+                        <div class="name">{{artista.nombre}}</div>
+                        <div class="alias">"{{artista.nombreArtistico}}"</div>
+                    </div>
+                    <span class="amount">{{ artista.costoTotal | currency }}</span>
                 </div>
-                <span class="amount">$262k</span>
-            </div>
-
-            <div class="top-cost-item" onclick="verArtista('80')">
-                <span class="rank">2</span>
-                <span class="mini-avatar g3">AS</span>
-                <div class="info">
-                    <div class="name">Ana Sofía Herrera</div>
-                    <div class="alias">"Ana Nova"</div>
-                </div>
-                <span class="amount">$203k</span>
-            </div>
-
-            <div class="top-cost-item" onclick="verArtista('83')">
-                <span class="rank">3</span>
-                <span class="mini-avatar g6">JA</span>
-                <div class="info">
-                    <div class="name">Jazmín Alejandra Cruz</div>
-                    <div class="alias">"Jazz Cruz"</div>
-                </div>
-                <span class="amount">$194k</span>
-            </div>
-
-            <div class="top-cost-item" onclick="verArtista('81')">
-                <span class="rank">4</span>
-                <span class="mini-avatar g4">LF</span>
-                <div class="info">
-                    <div class="name">Luis Fernando Ortega</div>
-                    <div class="alias">"DJ Loki"</div>
-                </div>
-                <span class="amount">$151k</span>
-            </div>
-
-            <div class="top-cost-item" onclick="verArtista('78')">
-                <span class="rank">5</span>
-                <span class="mini-avatar g1">MB</span>
-                <div class="info">
-                    <div class="name">María Belén Acosta</div>
-                    <div class="alias">"Belén Soul"</div>
-                </div>
-                <span class="amount">$130k</span>
-            </div>
+            }
         </div>
     </div>
 
@@ -144,46 +42,15 @@
     <div class="analytics-card">
         <div class="card-title-analytics"><i class="fas fa-tags"></i> Resumen por tipo</div>
         <div class="type-summary" id="typeSummary">
+            @for (tipoArtista of tipoArtistas; track tipoArtista[0]) {
             <div class="type-summary-item">
                 <span class="type-name">
                     <i class="fas fa-microphone"></i>
-                    Cantante
+                    {{tipoArtista[1]}}
                 </span>
-                <span class="type-count">3</span>
+                <span class="type-count">{{contarPorTipoArtista(tipoArtista[0])}}</span>
             </div>
-
-            <div class="type-summary-item">
-                <span class="type-name">
-                    <i class="fas fa-user"></i>
-                    Otro
-                </span>
-                <span class="type-count">1</span>
-            </div>
-
-            <div class="type-summary-item">
-                <span class="type-name">
-                    <i class="fas fa-guitar"></i>
-                    Instrumentista
-                </span>
-                <span class="type-count">1</span>
-            </div>
-
-            <div class="type-summary-item">
-                <span class="type-name">
-                    <i class="fas fa-headphones"></i>
-                    DJ
-                </span>
-                <span class="type-count">1</span>
-            </div>
-
-            <div class="type-summary-item">
-                <span class="type-name">
-                    <i class="fas fa-users"></i>
-                    Banda
-                </span>
-                <span class="type-count">1</span>
-            </div>
+            }
         </div>
     </div>
-
 </div>
