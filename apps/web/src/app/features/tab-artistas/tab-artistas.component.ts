@@ -10,6 +10,7 @@ import {
   StatsArtistasComponent,
   PanelAnaliticoArtistasComponent,
   PaginacionArtistasComponent,
+  FiltrosArtistas,
 } from '@repo/ui';
 import { delay, finalize } from 'rxjs';
 import { TabContentComponent } from "../../shared/components";
@@ -42,9 +43,41 @@ export class TabArtistasComponent implements OnInit {
   // Estados signals
   cargando = signal<boolean>(false);
   artistas = signal<Artista[]>([]);
+  filtros = signal<FiltrosArtistas>({
+    busqueda: '',
+    estatus: '',
+    tipoArtista: '',
+    generoMusical: '',
+  });
+  paginaActual = signal(1);
+  porPagina = signal(12);
 
   // Estados computadas
   total = computed(() => this.artistas().length || 0);
+  artistasFiltrados = computed(() => {
+    const filtros = this.filtros();
+    const busqueda = filtros.busqueda.trim().toLowerCase();
+
+    return this.artistas().filter((artista) => {
+      const coincideBusqueda = !busqueda || [
+        artista.nombre,
+        artista.nombreArtistico,
+        artista.paisOrigen,
+        artista.ciudadOrigen,
+        artista.email,
+      ].some((valor) => valor.toLowerCase().includes(busqueda));
+
+      return coincideBusqueda
+        && (!filtros.estatus || artista.estatus === filtros.estatus)
+        && (!filtros.tipoArtista || artista.tipoArtista === filtros.tipoArtista)
+        && (!filtros.generoMusical || artista.generoMusical === filtros.generoMusical);
+    });
+  });
+  artistasPaginados = computed(() => {
+    const inicio = (this.paginaActual() - 1) * this.porPagina();
+    return this.artistasFiltrados().slice(inicio, inicio + this.porPagina());
+  });
+  totalFiltrado = computed(() => this.artistasFiltrados().length);
   
   ngOnInit(): void {
     this.cargarArtistas();
@@ -61,8 +94,23 @@ export class TabArtistasComponent implements OnInit {
     .subscribe({
       next: (value) => {
         this.artistas.set(value);
+        this.paginaActual.set(1);
       },
     });
+  }
+
+  onFiltrosChange(filtros: FiltrosArtistas): void {
+    this.filtros.set(filtros);
+    this.paginaActual.set(1);
+  }
+
+  onPaginaChange(pagina: number): void {
+    this.paginaActual.set(pagina);
+  }
+
+  onPorPaginaChange(porPagina: number): void {
+    this.porPagina.set(porPagina);
+    this.paginaActual.set(1);
   }
 
   //////////////////////////////

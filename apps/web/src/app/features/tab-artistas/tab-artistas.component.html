@@ -17,25 +17,34 @@
         <ui-stats-artistas 
             [artistas]="artistas()"
         />
-        <ui-filtros-artistas />
+        <ui-filtros-artistas
+            [resultados]="totalFiltrado()"
+            (filtrosChange)="onFiltrosChange($event)"
+        />
 
         <div class="content-split">
             <ui-grid-tarjetas-artistas 
-                [artistas]="artistas()"
+                [artistas]="artistasPaginados()"
                 (ver)="verArtista($event)"
                 (editar)="editarArtista($event)"
                 (eliminar)="eliminarArtista($event)"
             />
             <ui-panel-analitico-artistas 
-                [artistas]="artistas()"
+                [artistas]="artistasFiltrados()"
             />
         </div>
 
-        <ui-paginacion-artistas />
+        <ui-paginacion-artistas
+            [paginaActual]="paginaActual()"
+            [totalItems]="totalFiltrado()"
+            [porPagina]="porPagina()"
+            (paginaChange)="onPaginaChange($event)"
+            (porPaginaChange)="onPorPaginaChange($event)"
+        />
 
         <!-- FOOTER -->
         <div class="footer">
-            <span><i class="fas fa-database"></i> &nbsp;<span>{{total()}}</span> artistas registrados</span>
+            <span><i class="fas fa-database"></i> &nbsp;<span>{{totalFiltrado()}}</span> artistas mostrados</span>
             <span>© 2026 Eventos Elite (EE) · v3.0</span>
         </div>
     }
