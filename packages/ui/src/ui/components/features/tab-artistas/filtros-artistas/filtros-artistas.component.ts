@@ -33,6 +33,27 @@ export class FiltrosArtistasComponent {
   tiposArtista = Object.entries(ArtistaTipo);
   generosMusicales = Object.entries(ArtistaGeneroMusical);
 
+  get filtrosActivos(): string[] {
+    const filtrosActivos: string[] = [];
+
+    if (this.filtros.busqueda.trim()) {
+      filtrosActivos.push(`Búsqueda: ${this.filtros.busqueda.trim()}`);
+    }
+    if (this.filtros.estatus) {
+      filtrosActivos.push(`Estatus: ${this.filtros.estatus}`);
+    }
+    if (this.filtros.tipoArtista) {
+      const tipo = this.tiposArtista.find(([clave]) => clave === this.filtros.tipoArtista);
+      filtrosActivos.push(`Tipo: ${tipo?.[1] ?? this.filtros.tipoArtista}`);
+    }
+    if (this.filtros.generoMusical) {
+      const genero = this.generosMusicales.find(([clave]) => clave === this.filtros.generoMusical);
+      filtrosActivos.push(`Género: ${genero?.[1] ?? this.filtros.generoMusical}`);
+    }
+
+    return filtrosActivos;
+  }
+
   aplicarFiltros(): void {
     this.filtrosChange.emit({ ...this.filtros });
   }

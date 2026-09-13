@@ -65,8 +65,10 @@
     <!-- Filtros activos -->
     <div class="active-filters-artistas" id="activeFilters">
         <span class="label"><i class="fas fa-tags"></i> Filtros activos:</span>
-        <span style="color: rgb(170, 170, 170); font-size: 0.75rem; display: block;" id="noFilters">Ningún filtro
+        <span *ngIf="!filtrosActivos.length" style="color: rgb(170, 170, 170); font-size: 0.75rem;">Ningún filtro
             aplicado</span>
-        <div id="filterTags" style="display:flex;flex-wrap:wrap;gap:4px;"></div>
+        <span *ngFor="let filtro of filtrosActivos" class="filter-tag-modern">
+            {{ filtro }}
+        </span>
     </div>
 </div>
