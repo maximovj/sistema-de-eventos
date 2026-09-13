@@ -1,14 +1,14 @@
-export type TipoArtista = 'MUSICO_CANTANTE' | 'MUSICO_INSTRUMENTISTA' | 'BANDA' | 'DJ' | 'OTRO';
-export type GeneroMusical = 'FUSION_LATINA' | 'ROC' | 'POP' | 'JAZZ' | 'ELECTRONICA' | 'OTRO';
-export type EstatusArtista = 'CONFIRMADO' | 'PENDIENTE' | 'CANCELADO';
+import { ArtistaEstatusArtista } from "../enums/artista-estatus-artista.enum";
+import { ArtistaGeneroMusical } from "../enums/artista-genero-musical.enum";
+import { ArtistaTipo } from "../enums/artista-tipo.enum";
 
 export interface Artista {
   id: string;
   eventoId: string;
   nombre: string;
   nombreArtistico: string;
-  tipoArtista: TipoArtista;
-  generoMusical: GeneroMusical;
+  tipoArtista: ArtistaTipo;
+  generoMusical: ArtistaGeneroMusical;
   paisOrigen: string;
   ciudadOrigen: string;
   telefono: string;
@@ -28,5 +28,5 @@ export interface Artista {
   requiereBackline: boolean;
   checkIn: string  | Date;                // ISO 8601
   soundCheck: string | Date;             // ISO 8601
-  estatus: EstatusArtista;
+  estatus: ArtistaEstatusArtista;
 }
