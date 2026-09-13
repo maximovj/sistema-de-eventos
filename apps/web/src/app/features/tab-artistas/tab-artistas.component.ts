@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { ArtistasService } from '@repo/shared-services';
+import { ArtistasService, ToastService } from '@repo/shared-services';
 import { Artista, ModalModo } from '@repo/shared-types';
 import { 
   ModalArtistasComponent,
@@ -34,6 +34,7 @@ import { TabContentComponent } from "../../shared/components";
 })
 export class TabArtistasComponent implements OnInit {
   private service = inject(ArtistasService);
+  private toast = inject(ToastService);
 
   // Estados literales
   sedeSeleccionado: Artista | null = null;  
@@ -78,6 +79,12 @@ export class TabArtistasComponent implements OnInit {
     return this.artistasFiltrados().slice(inicio, inicio + this.porPagina());
   });
   totalFiltrado = computed(() => this.artistasFiltrados().length);
+  siguienteId = computed(() => {
+    const ids = this.artistas()
+      .map((artista) => Number(artista.id))
+      .filter((id) => Number.isFinite(id));
+    return String(ids.length ? Math.max(...ids) + 1 : 1);
+  });
   
   ngOnInit(): void {
     this.cargarArtistas();
@@ -141,12 +148,30 @@ export class TabArtistasComponent implements OnInit {
   }
 
   onGuardarArtista(artista: Artista) {
-    if (this.modalTipo === 'edit') {
-      
+    if (this.modalTipo === ModalModo.EDITAR) {
+      this.service.actualizar(artista.id, artista).subscribe({
+        next: (artistaActualizado) => {
+          this.artistas.update((artistas) => artistas.map((item) =>
+            item.id === artistaActualizado.id ? artistaActualizado : item
+          ));
+          this.toast.success('Artista actualizado', 'Los cambios se guardaron correctamente.');
+          this.onCerrarModal();
+        },
+        error: () => this.toast.error('Error al actualizar', 'No fue posible guardar los cambios.'),
+      });
       return;
     }
 
-    //this.service.guardar(sede);
+    const artistaNuevo = { ...artista, id: this.siguienteId() };
+    this.service.guardar(artistaNuevo).subscribe({
+      next: (artistaCreado) => {
+        this.artistas.update((artistas) => [...artistas, artistaCreado]);
+        this.paginaActual.set(1);
+        this.toast.success('Artista creado', 'El artista se agregó correctamente.');
+        this.onCerrarModal();
+      },
+      error: () => this.toast.error('Error al crear', 'No fue posible crear el artista.'),
+    });
   }
 
   onActualizarArtista(artista: Artista) {
@@ -160,7 +185,16 @@ export class TabArtistasComponent implements OnInit {
   }
   
   onSiEliminarArtista(artista: Artista) {
-    
+    this.service.eliminar(artista.id).subscribe({
+      next: () => {
+        this.artistas.update((artistas) => artistas.filter((item) => item.id !== artista.id));
+        const totalPaginas = Math.ceil(this.totalFiltrado() / this.porPagina());
+        this.paginaActual.update((pagina) => Math.min(pagina, Math.max(1, totalPaginas)));
+        this.toast.success('Artista eliminado', `El artista #${artista.id} fue eliminado correctamente.`);
+        this.onCerrarModal();
+      },
+      error: () => this.toast.error('Error al eliminar', 'No fue posible eliminar el artista.'),
+    });
   }
 
   onCerrarModal() {
