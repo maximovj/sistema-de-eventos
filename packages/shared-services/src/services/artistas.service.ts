@@ -14,16 +14,16 @@ export class ArtistasService {
         return this.http.get<Artista[]>(`${this.apiUrl}`);
     }
 
-    guardar(data: Artista) {
-        this.http.put(`${this.apiUrl}`, data);
+    guardar(data: Artista): Observable<Artista> {
+        return this.http.post<Artista>(this.apiUrl, data);
     }
 
-    actualizar(id: string, data: Artista) {
-        this.http.put(`${this.apiUrl}/${id}`, data);
+    actualizar(id: string, data: Artista): Observable<Artista> {
+        return this.http.put<Artista>(`${this.apiUrl}/${id}`, data);
     }
 
-    eliminar(id: string) {
-        this.http.delete(`${this.apiUrl}/${id}`);
+    eliminar(id: string): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/${id}`);
     }
 
 }
