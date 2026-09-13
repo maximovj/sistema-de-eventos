@@ -56,7 +56,7 @@ export class ModalArtistasComponent implements OnInit, OnDestroy, OnChanges {
 
     if (this.mode === 'create' && (seAbrio || entroEnCrear)) {
       this.editarArtista.set(this.artistaVacio());
-    } else if (changes['organizador'] || changes['mode']) {
+    } else if (changes['artista'] || changes['mode']) {
       this.editarArtista.set(this.artista ? { ...this.artista } : this.artistaVacio());
     }
   }
@@ -69,8 +69,8 @@ export class ModalArtistasComponent implements OnInit, OnDestroy, OnChanges {
       eventoId: '',
       nombre: '',
       nombreArtistico: '',
-      tipoArtista: ArtistaTipo.OTRO,
-      generoMusical: ArtistaGeneroMusical.OTRO,
+      tipoArtista: 'OTRO' as ArtistaTipo,
+      generoMusical: 'OTRO' as ArtistaGeneroMusical,
       paisOrigen: '',
       ciudadOrigen: '',
       telefono: '',
@@ -106,6 +106,13 @@ export class ModalArtistasComponent implements OnInit, OnDestroy, OnChanges {
     this.editarArtista.update((artistaActual) => ({
       ...artistaActual,
       [campo]: checked,
+    }));
+  }
+
+  actualizarCampo(campo: keyof Artista, valor: Artista[keyof Artista]): void {
+    this.editarArtista.update((artistaActual) => ({
+      ...artistaActual,
+      [campo]: valor,
     }));
   }
 

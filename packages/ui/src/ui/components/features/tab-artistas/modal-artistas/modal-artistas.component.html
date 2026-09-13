@@ -60,36 +60,37 @@
       <div>
         <form (ngSubmit)="onSave()">
           <div class="view-grid">
-            <div class="form-group view-full"><label>Nombre completo</label><input type="text" value="María Belén Acosta"></div>
-            <div class="form-group view-full"><label>Nombre artístico</label><input type="text" value="Belén Soul"></div>
+            <div class="form-group view-full"><label>Nombre completo</label><input type="text" [ngModel]="editarArtista().nombre" (ngModelChange)="actualizarCampo('nombre', $event)" name="nombre" required></div>
+            <div class="form-group view-full"><label>Nombre artístico</label><input type="text" [ngModel]="editarArtista().nombreArtistico" (ngModelChange)="actualizarCampo('nombreArtistico', $event)" name="nombreArtistico" required></div>
             <div class="form-group"><label>Tipo de artista</label>
-              <select>
-                <option value="MUSICO_CANTANTE" selected="">Músico Cantante</option>
-                <option value="MUSICO_INSTRUMENTISTA">Músico Instrumentista</option>
-                <option value="BANDA">Banda</option>
-                <option value="DJ">DJ</option>
-                <option value="OTRO">Otro</option>
+              <select [ngModel]="editarArtista().tipoArtista" (ngModelChange)="actualizarCampo('tipoArtista', $event)" name="tipoArtista">
+                <option [ngValue]="'MUSICO_CANTANTE'">Músico Cantante</option>
+                <option [ngValue]="'MUSICO_INSTRUMENTISTA'">Músico Instrumentista</option>
+                <option [ngValue]="'BANDA'">Banda</option>
+                <option [ngValue]="'DJ'">DJ</option>
+                <option [ngValue]="'OTRO'">Otro</option>
               </select>
             </div>
             <div class="form-group"><label>Género musical</label>
-              <select>
-                <option value="FUSION_LATINA" selected="">Fusión Latina</option>
-                <option value="POP">Pop</option>
-                <option value="ROC">Rock</option>
-                <option value="JAZZ">Jazz</option>
-                <option value="ELECTRONICA">Electrónica</option>
+              <select [ngModel]="editarArtista().generoMusical" (ngModelChange)="actualizarCampo('generoMusical', $event)" name="generoMusical">
+                <option [ngValue]="'FUSION_LATINA'">Fusión Latina</option>
+                <option [ngValue]="'POP'">Pop</option>
+                <option [ngValue]="'ROCK'">Rock</option>
+                <option [ngValue]="'JAZZ'">Jazz</option>
+                <option [ngValue]="'ELECTRONICA'">Electrónica</option>
+                <option [ngValue]="'OTRO'">Otro</option>
               </select>
             </div>
-            <div class="form-group"><label>País</label><input type="text" value="México"></div>
-            <div class="form-group"><label>Ciudad</label><input type="text" value="Guadalajara"></div>
-            <div class="form-group"><label>Caché (MXN)</label><input type="number" value="85000"></div>
-            <div class="form-group"><label>Costo Total</label><input type="number" value="130000"></div>
-            <div class="form-group"><label>Fecha presentación</label><input type="datetime-local" value="2026-10-15T20:00"></div>
+            <div class="form-group"><label>País</label><input type="text" [ngModel]="editarArtista().paisOrigen" (ngModelChange)="actualizarCampo('paisOrigen', $event)" name="paisOrigen"></div>
+            <div class="form-group"><label>Ciudad</label><input type="text" [ngModel]="editarArtista().ciudadOrigen" (ngModelChange)="actualizarCampo('ciudadOrigen', $event)" name="ciudadOrigen"></div>
+            <div class="form-group"><label>Caché (MXN)</label><input type="number" [ngModel]="editarArtista().cache" (ngModelChange)="actualizarCampo('cache', +$event)" name="cache"></div>
+            <div class="form-group"><label>Costo Total</label><input type="number" [ngModel]="editarArtista().costoTotal" (ngModelChange)="actualizarCampo('costoTotal', +$event)" name="costoTotal"></div>
+            <div class="form-group"><label>Fecha presentación</label><input type="datetime-local" [ngModel]="editarArtista().fechaPresentacion" (ngModelChange)="actualizarCampo('fechaPresentacion', $event)" name="fechaPresentacion"></div>
             <div class="form-group"><label>Estatus</label>
-              <select>
-                <option value="CONFIRMADO" selected="">Confirmado</option>
-                <option value="PENDIENTE">Pendiente</option>
-                <option value="CANCELADO">Cancelado</option>
+              <select [ngModel]="editarArtista().estatus" (ngModelChange)="actualizarCampo('estatus', $event)" name="estatus">
+                <option [ngValue]="'CONFIRMADO'">Confirmado</option>
+                <option [ngValue]="'PENDIENTE'">Pendiente</option>
+                <option [ngValue]="'CANCELADO'">Cancelado</option>
               </select>
             </div>
           </div>
