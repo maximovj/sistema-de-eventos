@@ -14,7 +14,9 @@
             <button class="btn-outline"><i class="fas fa-download"></i> Exportar</button>
         </div>
 
-        <ui-stats-artistas />
+        <ui-stats-artistas 
+            [artistas]="artistas()"
+        />
         <ui-filtros-artistas />
 
         <div class="content-split">
@@ -24,7 +26,9 @@
                 (editar)="editarArtista($event)"
                 (eliminar)="eliminarArtista($event)"
             />
-            <ui-panel-analitico-artistas />
+            <ui-panel-analitico-artistas 
+                [artistas]="artistas()"
+            />
         </div>
 
         <ui-paginacion-artistas />
