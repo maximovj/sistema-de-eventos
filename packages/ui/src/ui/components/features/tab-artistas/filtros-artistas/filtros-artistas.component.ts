@@ -30,8 +30,8 @@ export class FiltrosArtistasComponent {
   };
 
   estatus = Object.values(ArtistaEstatusArtista);
-  tiposArtista = Object.values(ArtistaTipo);
-  generosMusicales = Object.values(ArtistaGeneroMusical);
+  tiposArtista = Object.entries(ArtistaTipo);
+  generosMusicales = Object.entries(ArtistaGeneroMusical);
 
   aplicarFiltros(): void {
     this.filtrosChange.emit({ ...this.filtros });
