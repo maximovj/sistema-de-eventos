@@ -11,6 +11,7 @@ import {
   TabOrganizadoresComponent,
   TabSedesComponent,
   TabArtistasComponent,
+  TabActividadesComponent
 } from './features';
 
 @Component({
@@ -26,6 +27,7 @@ import {
     TabOrganizadoresComponent,
     TabSedesComponent,
     TabArtistasComponent,
+    TabActividadesComponent,
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
