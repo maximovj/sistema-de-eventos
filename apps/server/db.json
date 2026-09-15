@@ -172,7 +172,7 @@
   "eventos": [
     {
       "id": "235",
-      "organizadorId": "7456",
+      "organizadorId": "8923",
       "nombreEvento": "Cumbre de Innovación Tecnológica LATAM 2026",
       "tipoEvento": "CONFERENCIA",
       "categoria": "TECNOLOGICO",
@@ -196,7 +196,7 @@
     },
     {
       "id": "236",
-      "organizadorId": "10234",
+      "organizadorId": "8923",
       "nombreEvento": "Maratón Internacional CDMX 2026",
       "tipoEvento": "FERIA",
       "categoria": "DEPORTIVO",
@@ -220,7 +220,7 @@
     },
     {
       "id": "237",
-      "organizadorId": "5678",
+      "organizadorId": "8923",
       "nombreEvento": "Expo Gastronómica y Vino 2026",
       "tipoEvento": "EXPOSICION",
       "categoria": "SOCIAL",
@@ -244,7 +244,7 @@
     },
     {
       "id": "238",
-      "organizadorId": "9876",
+      "organizadorId": "12634",
       "nombreEvento": "Foro de Emprendimiento y Startups 2026",
       "tipoEvento": "TALLER",
       "categoria": "EDUCATIVO",
@@ -268,7 +268,7 @@
     },
     {
       "id": "239",
-      "organizadorId": "4567",
+      "organizadorId": "10245",
       "nombreEvento": "Gala Benéfica Navideña 2026",
       "tipoEvento": "CONCIERTO",
       "categoria": "SOCIAL",
@@ -294,7 +294,7 @@
   "sedes": [
     {
       "id": "12",
-      "eventoId": "234",
+      "eventoId": "235",
       "nombre": "Centro de Convenciones Metropolitano",
       "direccion": "Av. Insurgentes Sur 3000, Colonia Del Valle, CDMX",
       "capacidad": 12000,
@@ -432,7 +432,7 @@
     },
     {
       "id": "18",
-      "eventoId": "240",
+      "eventoId": "239",
       "nombre": "Arena Ciudad de México",
       "direccion": "Av. de las Granjas 800, Santa Barbara, Azcapotzalco, CDMX",
       "capacidad": 25000,
@@ -457,7 +457,7 @@
   "artistas": [
     {
       "id": "78",
-      "eventoId": "234",
+      "eventoId": "235",
       "nombre": "María Belén Acosta",
       "nombreArtistico": "Belén Soul",
       "tipoArtista": "MUSICO_CANTANTE",
@@ -485,7 +485,7 @@
     },
     {
       "id": "79",
-      "eventoId": "234",
+      "eventoId": "235",
       "nombre": "Carlos Eduardo Ramírez",
       "nombreArtistico": "El Sonido de la Sierra",
       "tipoArtista": "MUSICO_INSTRUMENTISTA",
@@ -513,7 +513,7 @@
     },
     {
       "id": "80",
-      "eventoId": "234",
+      "eventoId": "237",
       "nombre": "Ana Sofía Herrera",
       "nombreArtistico": "Ana Nova",
       "tipoArtista": "MUSICO_CANTANTE",
@@ -541,7 +541,7 @@
     },
     {
       "id": "81",
-      "eventoId": "234",
+      "eventoId": "238",
       "nombre": "Luis Fernando Ortega",
       "nombreArtistico": "DJ Loki",
       "tipoArtista": "DJ",
@@ -569,7 +569,7 @@
     },
     {
       "id": "82",
-      "eventoId": "234",
+      "eventoId": "238",
       "nombre": "La Banda del Sur",
       "nombreArtistico": "La Banda del Sur",
       "tipoArtista": "BANDA",
@@ -597,7 +597,7 @@
     },
     {
       "id": "83",
-      "eventoId": "234",
+      "eventoId": "239",
       "nombre": "Jazmín Alejandra Cruz",
       "nombreArtistico": "Jazz Cruz",
       "tipoArtista": "MUSICO_CANTANTE",
@@ -625,7 +625,7 @@
     },
     {
       "id": "84",
-      "eventoId": "234",
+      "eventoId": "239",
       "nombre": "Ricardo Montoya",
       "nombreArtistico": "Rick Montoya",
       "tipoArtista": "OTRO",
@@ -655,7 +655,7 @@
   "actividades": [
     {
       "id": "456",
-      "eventoId": "234",
+      "eventoId": "235",
       "sedeId": "12",
       "nombre": "Montaje de escenario principal",
       "descripcion": "Instalación de estructura, sonido, iluminación y pantallas LED",
@@ -672,7 +672,7 @@
   "ventas": [
     {
       "id": "567",
-      "eventoId": "234",
+      "eventoId": "235",
       "tipoBoleto": "VIP",
       "nombreBoleto": "Pase VIP - Acceso a todas las áreas",
       "precio": 3500,
@@ -690,7 +690,7 @@
   "proveedores": [
     {
       "id": "34",
-      "eventoId": "234",
+      "eventoId": "235",
       "nombre": "Sonido Profesional del Centro",
       "tipo": "EQUIPO_SONIDO",
       "contacto": "Ing. Luis Fernández",
@@ -706,7 +706,7 @@
   "patrocinadores": [
     {
       "id": "56",
-      "eventoId": "234",
+      "eventoId": "235",
       "nombre": "Cervecería Modelo",
       "tipo": "PATROCINADOR_MASTER",
       "monto": 1500000,
@@ -721,7 +721,7 @@
   "gastos": [
     {
       "id": "1234",
-      "eventoId": "234",
+      "eventoId": "235",
       "categoria": "LOGISTICA",
       "concepto": "Renta de centro de convenciones",
       "descripcion": "Primer pago - 50% del total",
@@ -736,7 +736,7 @@
   "staff": [
     {
       "id": "567",
-      "eventoId": "234",
+      "eventoId": "235",
       "nombre": "Miguel Ángel Herrera",
       "puesto": "Coordinador de Producción",
       "area": "PRODUCCION",
@@ -752,7 +752,7 @@
   "incidencias": [
     {
       "id": "78",
-      "eventoId": "234",
+      "eventoId": "235",
       "fecha": "2026-08-15T16:30",
       "tipo": "CANCELACION_ARTISTA",
       "descripcion": "El artista internacional 'The Groove Collective' canceló su participación por problemas de agenda",
