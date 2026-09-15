@@ -4,3 +4,4 @@ export { TabPredeterminadoComponent } from './tab-predeterminado/tab-predetermin
 export { TabOrganizadoresComponent } from "./tab-organizadores/tab-organizadores.component";
 export { TabSedesComponent } from "./tab-sedes/tab-sedes.component";
 export { TabArtistasComponent } from "./tab-artistas/tab-artistas.component";
+export { TabActividadesComponent } from './tab-actividades/tab-actividades.component';
