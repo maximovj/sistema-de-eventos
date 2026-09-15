@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { TabContentComponent } from '../../shared/components';
 
 @Component({
   selector: 'app-tab-actividades',
   standalone: true,
   imports: [
     CommonModule,
+    TabContentComponent,
   ],
   templateUrl: './tab-actividades.component.html',
   styleUrl: './tab-actividades.component.css'
