@@ -3,8 +3,18 @@
     subtitulo="Administra todos las actividades"
     breadcrumbItem="Panel"
 >
-    <ui-spinner />
-    <ui-stats-actividades />
-    <ui-grid-tarjetas-actividades />
-    <ui-paginacion-actividades />
+    @if (cargando()) {
+        <ui-spinner />
+    } @else {
+        <ui-stats-actividades />
+        <ui-filtros-actividades />
+        <ui-grid-tarjetas-actividades />
+        <ui-paginacion-actividades />
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <span><i class="fas fa-database"></i> &nbsp;<span>{{total()}}</span> actividades registradas</span>
+            <span>© 2026 Eventos Elite (EE) · v3.0</span>
+        </div>
+    }
 </app-tab-content>
