@@ -4,3 +4,4 @@ export * from './settings-storage.service';
 export * from './toast.service';
 export * from './sedes.service';
 export * from './artistas.service';
+export * from './actividades.service';
