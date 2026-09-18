@@ -10,11 +10,10 @@
         <ui-filtros-actividades />
         <ui-grid-tarjetas-actividades />
         <ui-paginacion-actividades />
-
-        <!-- FOOTER -->
-        <div class="footer">
-            <span><i class="fas fa-database"></i> &nbsp;<span>{{total()}}</span> actividades registradas</span>
-            <span>© 2026 Eventos Elite (EE) · v3.0</span>
-        </div>
+        
+        <ui-footer-layout 
+            modelo="actividades" 
+            [total]="total()" 
+        />
     }
 </app-tab-content>

@@ -6,7 +6,8 @@ import {
   StatsActividadesComponent,
   GridTarjetasActividadesComponent,
   PaginacionActividadesComponent,
-  FiltrosActividadesComponent
+  FiltrosActividadesComponent,
+  FooterLayoutComponent
 } from '@repo/ui';
 import { ActividadesService } from '@repo/shared-services';
 import { delay, finalize } from 'rxjs';
@@ -17,6 +18,7 @@ import { Actividad } from '@repo/shared-types';
   standalone: true,
   imports: [
     CommonModule,
+    FooterLayoutComponent,
     TabContentComponent,
     SpinnerComponent,
     StatsActividadesComponent,
