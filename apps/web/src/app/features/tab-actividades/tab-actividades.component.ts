@@ -1,6 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { TabContentComponent } from '../../shared/components';
+import { 
+  SpinnerComponent,
+  StatsActividadesComponent,
+  GridTarjetasActividadesComponent,
+  PaginacionActividadesComponent,
+  FiltrosActividadesComponent
+} from '@repo/ui';
 
 @Component({
   selector: 'app-tab-actividades',
@@ -8,10 +15,16 @@ import { TabContentComponent } from '../../shared/components';
   imports: [
     CommonModule,
     TabContentComponent,
-  ],
+    SpinnerComponent,
+    StatsActividadesComponent,
+    PaginacionActividadesComponent,
+    GridTarjetasActividadesComponent
+],
   templateUrl: './tab-actividades.component.html',
   styleUrl: './tab-actividades.component.css'
 })
 export class TabActividadesComponent {
+
+  cargando = signal<boolean>(false);
 
 }
