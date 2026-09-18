@@ -25,3 +25,6 @@ export * from './ui/components/features/tab-sedes/modal-sede/modal-sede.componen
 
 // Tab Artistas
 export * from './ui/components/features/tab-artistas';
+
+// Tab Actividades
+export * from './ui/components/features/tab-actividades';
