@@ -3,6 +3,10 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "check:types": "npm run check-types --workspace=@repo/shared-types",
+    "build:services": "npm run build --workspace=@repo/shared-services",
+    "build:ui": "npm run build --workspace=@repo/ui",
+    "build:web": "npm run build --workspace=web",
     "start:ui": "turbo run start --filter=@repo/ui --only",
     "start": "turbo run start --filter=web --filter=server --only",
     "test": "turbo run test",
