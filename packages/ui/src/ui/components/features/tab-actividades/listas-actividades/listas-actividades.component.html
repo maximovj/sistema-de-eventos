@@ -1,1 +1,143 @@
-<p>listas-actividades works!</p>
+<div class="actividad-list-panel">
+    <div class="actividad-list-head">
+        <span class="head-title"><i class="fas fa-tasks"></i> Actividades</span>
+        <span class="head-info" id="listCount">7</span>
+    </div>
+    <div class="actividad-list-scroll" id="actividadListScroll">
+        <div class="actividad-item selected" onclick="seleccionarActividad('456')">
+            <div class="item-avatar logistica">
+                <i class="fas fa-boxes"></i>
+                <span class="mini-dot progreso"></span>
+            </div>
+            <div class="item-info">
+                <div class="item-name">Montaje de escenario principal</div>
+                <div class="item-tipo">Logística · Cumbre LATAM 2026</div>
+                <div class="item-progress">
+                    <div class="mini-bar">
+                        <div class="fill baja" style="width:40%;"></div>
+                    </div>
+                    <span class="pct">40%</span>
+                </div>
+            </div>
+            <span class="item-priority alta">ALTA</span>
+        </div>
+
+        <div class="actividad-item " onclick="seleccionarActividad('457')">
+            <div class="item-avatar operativa">
+                <i class="fas fa-cogs"></i>
+                <span class="mini-dot pendiente"></span>
+            </div>
+            <div class="item-info">
+                <div class="item-name">Registro y acreditación de asistentes</div>
+                <div class="item-tipo">Operativa · Cumbre LATAM 2026</div>
+                <div class="item-progress">
+                    <div class="mini-bar">
+                        <div class="fill baja" style="width:0%;"></div>
+                    </div>
+                    <span class="pct">0%</span>
+                </div>
+            </div>
+            <span class="item-priority alta">ALTA</span>
+        </div>
+
+        <div class="actividad-item " onclick="seleccionarActividad('458')">
+            <div class="item-avatar logistica">
+                <i class="fas fa-boxes"></i>
+                <span class="mini-dot progreso"></span>
+            </div>
+            <div class="item-info">
+                <div class="item-name">Habilitación de puntos de hidratación</div>
+                <div class="item-tipo">Logística · Maratón CDMX</div>
+                <div class="item-progress">
+                    <div class="mini-bar">
+                        <div class="fill baja" style="width:15%;"></div>
+                    </div>
+                    <span class="pct">15%</span>
+                </div>
+            </div>
+            <span class="item-priority alta">ALTA</span>
+        </div>
+
+        <div class="actividad-item " onclick="seleccionarActividad('459')">
+            <div class="item-avatar logistica">
+                <i class="fas fa-boxes"></i>
+                <span class="mini-dot progreso"></span>
+            </div>
+            <div class="item-info">
+                <div class="item-name">Montaje de stands gastronómicos</div>
+                <div class="item-tipo">Logística · Expo Gastronómica</div>
+                <div class="item-progress">
+                    <div class="mini-bar">
+                        <div class="fill alta" style="width:85%;"></div>
+                    </div>
+                    <span class="pct">85%</span>
+                </div>
+            </div>
+            <span class="item-priority media">MEDIA</span>
+        </div>
+
+        <div class="actividad-item " onclick="seleccionarActividad('460')">
+            <div class="item-avatar tecnica">
+                <i class="fas fa-wrench"></i>
+                <span class="mini-dot progreso"></span>
+            </div>
+            <div class="item-info">
+                <div class="item-name">Prueba de plataforma virtual y streaming</div>
+                <div class="item-tipo">Técnica · Foro Startups</div>
+                <div class="item-progress">
+                    <div class="mini-bar">
+                        <div class="fill baja" style="width:20%;"></div>
+                    </div>
+                    <span class="pct">20%</span>
+                </div>
+            </div>
+            <span class="item-priority alta">ALTA</span>
+        </div>
+
+        <div class="actividad-item " onclick="seleccionarActividad('461')">
+            <div class="item-avatar logistica">
+                <i class="fas fa-boxes"></i>
+                <span class="mini-dot progreso"></span>
+            </div>
+            <div class="item-info">
+                <div class="item-name">Montaje de escenario para gala benéfica</div>
+                <div class="item-tipo">Logística · Gala Benéfica</div>
+                <div class="item-progress">
+                    <div class="mini-bar">
+                        <div class="fill baja" style="width:10%;"></div>
+                    </div>
+                    <span class="pct">10%</span>
+                </div>
+            </div>
+            <span class="item-priority alta">ALTA</span>
+        </div>
+
+        <div class="actividad-item " onclick="seleccionarActividad('462')">
+            <div class="item-avatar tecnica">
+                <i class="fas fa-wrench"></i>
+                <span class="mini-dot pendiente"></span>
+            </div>
+            <div class="item-info">
+                <div class="item-name">Ensayo general de artistas y protocolo</div>
+                <div class="item-tipo">Técnica · Gala Benéfica</div>
+                <div class="item-progress">
+                    <div class="mini-bar">
+                        <div class="fill baja" style="width:0%;"></div>
+                    </div>
+                    <span class="pct">0%</span>
+                </div>
+            </div>
+            <span class="item-priority media">MEDIA</span>
+        </div>
+    </div>
+    <div class="actividad-list-pager">
+        <span class="list-pager-info"><strong id="listRangeStart">1</strong>–<strong id="listRangeEnd">7</strong> de
+            <strong id="listRangeTotal">7</strong></span>
+        <div class="list-pager-btns">
+            <button onclick="cambiarPagina('anterior')" id="btnPrevList" disabled=""><i
+                    class="fas fa-chevron-left"></i></button>
+            <button onclick="cambiarPagina('siguiente')" id="btnNextList" disabled=""><i
+                    class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+</div>
