@@ -1,1 +1,77 @@
-<p>stats-actividades works!</p>
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-ring purple">
+            <svg viewBox="0 0 54 54">
+                <circle class="ring-bg" cx="27" cy="27" r="23"></circle>
+                <circle class="ring-fill" cx="27" cy="27" r="23" id="ringTotal"
+                    style="stroke-dasharray: 144.513px; stroke-dashoffset: 0px;"></circle>
+            </svg>
+            <span class="ring-icon"><i class="fas fa-tasks"></i></span>
+        </div>
+        <div class="stat-info">
+            <div class="stat-label">Total</div>
+            <div class="stat-value" id="statsTotal">7</div>
+            <span class="stat-change"><i class="fas fa-arrow-up"></i> 8%</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-ring blue">
+            <svg viewBox="0 0 54 54">
+                <circle class="ring-bg" cx="27" cy="27" r="23"></circle>
+                <circle class="ring-fill" cx="27" cy="27" r="23" id="ringProgreso"
+                    style="stroke-dasharray: 144.513px; stroke-dashoffset: 41.2895px;"></circle>
+            </svg>
+            <span class="ring-icon"><i class="fas fa-spinner"></i></span>
+        </div>
+        <div class="stat-info">
+            <div class="stat-label">En progreso</div>
+            <div class="stat-value" id="statsEnProgreso">5</div>
+            <span class="stat-change"><i class="fas fa-arrow-up"></i> 12%</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-ring orange">
+            <svg viewBox="0 0 54 54">
+                <circle class="ring-bg" cx="27" cy="27" r="23"></circle>
+                <circle class="ring-fill" cx="27" cy="27" r="23" id="ringPendientes"
+                    style="stroke-dasharray: 144.513px; stroke-dashoffset: 103.224px;"></circle>
+            </svg>
+            <span class="ring-icon"><i class="fas fa-clock"></i></span>
+        </div>
+        <div class="stat-info">
+            <div class="stat-label">Pendientes</div>
+            <div class="stat-value" id="statsPendientes">2</div>
+            <span class="stat-change negative"><i class="fas fa-arrow-down"></i> 3%</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-ring green">
+            <svg viewBox="0 0 54 54">
+                <circle class="ring-bg" cx="27" cy="27" r="23"></circle>
+                <circle class="ring-fill" cx="27" cy="27" r="23" id="ringCompletadas"
+                    style="stroke-dasharray: 144.513px; stroke-dashoffset: 144.513px;"></circle>
+            </svg>
+            <span class="ring-icon"><i class="fas fa-check-circle"></i></span>
+        </div>
+        <div class="stat-info">
+            <div class="stat-label">Completadas</div>
+            <div class="stat-value" id="statsCompletadas">0</div>
+            <span class="stat-change"><i class="fas fa-arrow-up"></i> 5%</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-ring pink">
+            <svg viewBox="0 0 54 54">
+                <circle class="ring-bg" cx="27" cy="27" r="23"></circle>
+                <circle class="ring-fill" cx="27" cy="27" r="23" id="ringAvance"
+                    style="stroke-dasharray: 144.513px; stroke-dashoffset: 109.417px;"></circle>
+            </svg>
+            <span class="ring-icon"><i class="fas fa-chart-line"></i></span>
+        </div>
+        <div class="stat-info">
+            <div class="stat-label">Avance prom.</div>
+            <div class="stat-value" id="statsAvance">24%</div>
+            <span class="stat-change neutral"><i class="fas fa-minus"></i> 0%</span>
+        </div>
+    </div>
+</div>

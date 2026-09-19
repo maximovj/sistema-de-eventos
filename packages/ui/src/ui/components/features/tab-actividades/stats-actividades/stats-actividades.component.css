@@ -1,0 +1,145 @@
+/* ===== STATS CARDS (anillo circular) ===== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 1.5rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid #e4dcec;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.stat-ring {
+    position: relative;
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+}
+
+.stat-ring svg {
+    transform: rotate(-90deg);
+    width: 54px;
+    height: 54px;
+}
+
+.stat-ring .ring-bg {
+    fill: none;
+    stroke: #f0edf5;
+    stroke-width: 4;
+}
+
+.stat-ring .ring-fill {
+    fill: none;
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.8s ease;
+}
+
+.stat-ring.purple .ring-fill {
+    stroke: #7c3aed;
+}
+
+.stat-ring.green .ring-fill {
+    stroke: #2e7d32;
+}
+
+.stat-ring.pink .ring-fill {
+    stroke: #d81b60;
+}
+
+.stat-ring.orange .ring-fill {
+    stroke: #e65100;
+}
+
+.stat-ring.blue .ring-fill {
+    stroke: #2563eb;
+}
+
+.stat-ring .ring-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.stat-ring.purple .ring-icon {
+    color: #7c3aed;
+}
+
+.stat-ring.green .ring-icon {
+    color: #2e7d32;
+}
+
+.stat-ring.pink .ring-icon {
+    color: #d81b60;
+}
+
+.stat-ring.orange .ring-icon {
+    color: #e65100;
+}
+
+.stat-ring.blue .ring-icon {
+    color: #2563eb;
+}
+
+.stat-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.stat-info .stat-label {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stat-info .stat-value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-top: 2px;
+}
+
+.stat-info .stat-change {
+    font-size: 0.58rem;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 20px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    margin-top: 3px;
+}
+
+.stat-info .stat-change.negative {
+    background: #fce4ec;
+    color: #c62828;
+}
+
+.stat-info .stat-change.neutral {
+    background: #f0edf5;
+    color: #888;
+}
