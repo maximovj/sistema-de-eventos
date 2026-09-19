@@ -1,1 +1,136 @@
-<p>detalle-panel-actividades works!</p>
+<div class="detail-panel" id="detailPanel">
+  <div class="detail-header">
+    <div class="detail-avatar logistica">
+      <i class="fas fa-boxes"></i>
+      <span class="big-dot progreso"></span>
+    </div>
+    <div class="detail-title">
+      <h2>Montaje de escenario principal</h2>
+      <div class="alias">Logística · Cumbre LATAM 2026</div>
+      <div class="meta">
+        <span><i class="fas fa-hashtag"></i> #456</span>
+        <span><i class="fas fa-user"></i> Ing. Ricardo Fuentes Mena</span>
+        <span><i class="fas fa-map-pin"></i> Sede #12</span>
+      </div>
+    </div>
+    <div class="detail-actions-top">
+      <button onclick="editarActividad('456')" title="Editar"><i class="fas fa-edit"></i></button>
+      <button class="del" onclick="confirmarEliminar('456')" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+    </div>
+  </div>
+  <div class="detail-body">
+
+    <!-- Progreso -->
+    <div class="detail-section">
+      <div class="section-title"><i class="fas fa-chart-line"></i> Progreso de la actividad</div>
+      <div class="big-progress">
+        <div class="bp-header">
+          <span class="bp-label">Avance general</span>
+          <span class="bp-pct">40%</span>
+        </div>
+        <div class="bp-bar-bg">
+          <div class="bp-bar-fill baja" style="width:40%;"></div>
+        </div>
+        <div class="bp-stats">
+          <span><strong>11-oct</strong> inicio</span>
+          <span><strong>14-oct</strong> fin</span>
+          <span><strong>4</strong> días</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline visual -->
+    <div class="detail-section">
+      <div class="section-title"><i class="fas fa-bars-staggered"></i> Timeline</div>
+      <div class="timeline-visual">
+        <div class="tv-months">
+          <span>Sep 2026</span>
+          <span>Oct 2026</span>
+          <span>Nov 2026</span>
+          <span>Dic 2026</span>
+        </div>
+        <div class="tv-track">
+          <div class="tv-today" style="left: 30%;"></div>
+          <div class="tv-bar logistica" style="left:40%; width:20%;">
+            4d
+          </div>
+        </div>
+        <div class="tv-dates">
+          <span><i class="fas fa-play" style="color:#2563eb;"></i> <strong>11-oct</strong></span>
+          <span><i class="fas fa-stop" style="color:#e65100;"></i> <strong>14-oct</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Información general -->
+    <div class="detail-section">
+      <div class="section-title"><i class="fas fa-info-circle"></i> Información general</div>
+      <div class="data-grid">
+        <div class="data-item full"><span class="data-label">Descripción</span><span class="data-value">Instalación de
+            estructura, sonido, iluminación y pantallas LED</span></div>
+        <div class="data-item"><span class="data-label">Tipo</span><span class="data-value">Logística</span></div>
+        <div class="data-item"><span class="data-label">Prioridad</span><span class="data-value">ALTA</span></div>
+        <div class="data-item"><span class="data-label">Responsable</span><span class="data-value">Ing. Ricardo Fuentes
+            Mena</span></div>
+        <div class="data-item"><span class="data-label">Sede</span><span class="data-value">#12</span></div>
+        <div class="data-item"><span class="data-label">Fecha inicio</span><span class="data-value">11 oct 2026, 08:00
+            a.m.</span></div>
+        <div class="data-item"><span class="data-label">Fecha fin</span><span class="data-value">14 oct 2026, 10:00
+            p.m.</span></div>
+      </div>
+    </div>
+
+    <!-- Dependencias -->
+    <div class="detail-section">
+      <div class="section-title"><i class="fas fa-link"></i> Dependencias</div>
+
+      <div class="info-chips">
+        <span class="info-chip green"><i class="fas fa-check"></i> Sin dependencias</span>
+      </div>
+
+    </div>
+
+    <!-- Estado y etiquetas -->
+    <div class="detail-section">
+      <div class="section-title"><i class="fas fa-tags"></i> Estado</div>
+      <div class="info-chips">
+        <span class="info-chip blue">
+          <i class="fas fa-circle" style="font-size:0.5rem;"></i> En progreso
+        </span>
+        <span class="info-chip purple"><i class="fas fa-boxes"></i> Logística</span>
+        <span class="info-chip pink">
+          <i class="fas fa-flag"></i> Prioridad ALTA
+        </span>
+      </div>
+    </div>
+
+    <!-- Timeline de eventos -->
+    <div class="detail-section">
+      <div class="section-title"><i class="fas fa-clock"></i> Cronología</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-dot inicio"></span>
+          <div class="timeline-content">
+            <div class="timeline-label"><i class="fas fa-play-circle"></i> Inicio de actividad</div>
+            <div class="timeline-time">11 oct 2026, 08:00 a.m.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot actual"></span>
+          <div class="timeline-content">
+            <div class="timeline-label"><i class="fas fa-spinner"></i> Estado actual</div>
+            <div class="timeline-time">En progreso · 40% de avance</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot cierre"></span>
+          <div class="timeline-content">
+            <div class="timeline-label"><i class="fas fa-stop-circle"></i> Cierre programado</div>
+            <div class="timeline-time">14 oct 2026, 10:00 p.m.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
