@@ -7,6 +7,8 @@ import {
   GridTarjetasActividadesComponent,
   PaginacionActividadesComponent,
   FiltrosActividadesComponent,
+  ListasActividadesComponent,
+  DetallePanelActividadesComponent,
   FooterLayoutComponent
 } from '@repo/ui';
 import { ActividadesService } from '@repo/shared-services';
@@ -24,6 +26,8 @@ import { Actividad } from '@repo/shared-types';
     StatsActividadesComponent,
     FiltrosActividadesComponent,
     GridTarjetasActividadesComponent,
+    ListasActividadesComponent,
+    DetallePanelActividadesComponent,
     PaginacionActividadesComponent,
 ],
   templateUrl: './tab-actividades.component.html',
