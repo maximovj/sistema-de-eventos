@@ -1,3 +1,7 @@
+:root {
+    display: contents;
+}
+
 /* ===== PANEL DE DETALLE DERECHO ===== */
 .detail-panel {
     background: white;

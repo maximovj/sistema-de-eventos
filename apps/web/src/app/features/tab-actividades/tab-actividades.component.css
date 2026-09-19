@@ -1,0 +1,7 @@
+/* ===== SPLIT VIEW ===== */
+.split-view {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 16px;
+    align-items: start;
+}
