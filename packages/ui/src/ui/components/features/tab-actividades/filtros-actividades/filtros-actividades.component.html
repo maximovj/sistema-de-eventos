@@ -1,1 +1,73 @@
-<p>filtros-actividades works!</p>
+<div class="filters-segmented">
+    <div class="filter-bar-top">
+        <div class="search-compact">
+            <i class="fas fa-search"></i>
+            <input type="text" id="filtroBusqueda" placeholder="Buscar por nombre, responsable o evento...">
+        </div>
+        <div class="filter-actions-bar">
+            <button class="icon-btn-filter" onclick="limpiarFiltros()" title="Limpiar filtros"><i
+                    class="fas fa-undo"></i></button>
+            <button class="icon-btn-filter" onclick="exportarFiltros()" title="Copiar URL"><i
+                    class="fas fa-link"></i></button>
+        </div>
+    </div>
+
+    <div class="filter-segments">
+        <span class="segment active" data-filtro="estatus" data-valor="">
+            <i class="fas fa-list"></i> Todas
+            <span class="seg-count" id="segTodos">7</span>
+        </span>
+        <span class="segment" data-filtro="estatus" data-valor="PENDIENTE">
+            <i class="fas fa-clock"></i> Pendientes
+            <span class="seg-count" id="segPendientes">2</span>
+        </span>
+        <span class="segment" data-filtro="estatus" data-valor="EN_PROGRESO">
+            <i class="fas fa-spinner"></i> En progreso
+            <span class="seg-count" id="segProgreso">5</span>
+        </span>
+        <span class="segment" data-filtro="estatus" data-valor="COMPLETADA">
+            <i class="fas fa-check-circle"></i> Completadas
+            <span class="seg-count" id="segCompletadas">0</span>
+        </span>
+        <span class="segment" data-filtro="estatus" data-valor="CANCELADA">
+            <i class="fas fa-times-circle"></i> Canceladas
+            <span class="seg-count" id="segCanceladas">0</span>
+        </span>
+    </div>
+
+    <div class="filter-segments">
+        <span class="segment active" data-filtro="tipo" data-valor="">
+            <i class="fas fa-list"></i> Tipos
+        </span>
+        <span class="segment" data-filtro="tipo" data-valor="LOGISTICA">
+            <i class="fas fa-boxes"></i> Logística
+        </span>
+        <span class="segment" data-filtro="tipo" data-valor="OPERATIVA">
+            <i class="fas fa-cogs"></i> Operativa
+        </span>
+        <span class="segment" data-filtro="tipo" data-valor="TECNICA">
+            <i class="fas fa-wrench"></i> Técnica
+        </span>
+        <span class="segment" data-filtro="tipo" data-valor="ADMINISTRATIVA">
+            <i class="fas fa-clipboard-list"></i> Administrativa
+        </span>
+        <span class="segment" data-filtro="tipo" data-valor="MARKETING">
+            <i class="fas fa-bullhorn"></i> Marketing
+        </span>
+    </div>
+
+    <div class="filter-segments">
+        <span class="segment active" data-filtro="prioridad" data-valor="">
+            <i class="fas fa-flag"></i> Prioridades
+        </span>
+        <span class="segment" data-filtro="prioridad" data-valor="ALTA">
+            <i class="fas fa-exclamation-circle"></i> Alta
+        </span>
+        <span class="segment" data-filtro="prioridad" data-valor="MEDIA">
+            <i class="fas fa-minus-circle"></i> Media
+        </span>
+        <span class="segment" data-filtro="prioridad" data-valor="BAJA">
+            <i class="fas fa-arrow-down"></i> Baja
+        </span>
+    </div>
+</div>
