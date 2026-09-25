@@ -6,7 +6,9 @@
     @if (cargando()) {
         <ui-spinner />
     } @else {
-        <ui-stats-actividades />
+        <ui-stats-actividades 
+            [actividades]="actividades()"
+        />
         <ui-filtros-actividades />
         <div class="split-view">
             <ui-listas-actividades />
