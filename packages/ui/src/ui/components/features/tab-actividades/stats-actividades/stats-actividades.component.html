@@ -10,8 +10,8 @@
         </div>
         <div class="stat-info">
             <div class="stat-label">Total</div>
-            <div class="stat-value" id="statsTotal">7</div>
-            <span class="stat-change"><i class="fas fa-arrow-up"></i> 8%</span>
+            <div class="stat-value" id="statsTotal">{{total()}}</div>
+            <!-- <span class="stat-change"><i class="fas fa-arrow-up"></i> 8%</span> -->
         </div>
     </div>
     <div class="stat-card">
@@ -25,8 +25,8 @@
         </div>
         <div class="stat-info">
             <div class="stat-label">En progreso</div>
-            <div class="stat-value" id="statsEnProgreso">5</div>
-            <span class="stat-change"><i class="fas fa-arrow-up"></i> 12%</span>
+            <div class="stat-value" id="statsEnProgreso">{{totalProceso()}}</div>
+            <!-- <span class="stat-change"><i class="fas fa-arrow-up"></i> 12%</span> -->
         </div>
     </div>
     <div class="stat-card">
@@ -40,8 +40,8 @@
         </div>
         <div class="stat-info">
             <div class="stat-label">Pendientes</div>
-            <div class="stat-value" id="statsPendientes">2</div>
-            <span class="stat-change negative"><i class="fas fa-arrow-down"></i> 3%</span>
+            <div class="stat-value" id="statsPendientes">{{totalPendientes()}}</div>
+            <!-- <span class="stat-change negative"><i class="fas fa-arrow-down"></i> 3%</span> -->
         </div>
     </div>
     <div class="stat-card">
@@ -55,11 +55,11 @@
         </div>
         <div class="stat-info">
             <div class="stat-label">Completadas</div>
-            <div class="stat-value" id="statsCompletadas">0</div>
-            <span class="stat-change"><i class="fas fa-arrow-up"></i> 5%</span>
+            <div class="stat-value" id="statsCompletadas">{{totalCompletadas()}}</div>
+            <!-- <span class="stat-change"><i class="fas fa-arrow-up"></i> 5%</span> -->
         </div>
     </div>
-    <div class="stat-card">
+    <!-- <div class="stat-card">
         <div class="stat-ring pink">
             <svg viewBox="0 0 54 54">
                 <circle class="ring-bg" cx="27" cy="27" r="23"></circle>
@@ -73,5 +73,5 @@
             <div class="stat-value" id="statsAvance">24%</div>
             <span class="stat-change neutral"><i class="fas fa-minus"></i> 0%</span>
         </div>
-    </div>
+    </div> -->
 </div>
